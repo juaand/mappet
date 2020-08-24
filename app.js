@@ -17,7 +17,8 @@ require('./config/hbs.config')
 
 const routeGuard = require('./middlewares/session.middleware')
 
-//Routers
+// Routers
+const indexRouter = require('./routes/index.routes')
 
 const app = express()
 
@@ -33,8 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 //Routes middlewares
-
-const index = require('./routes/index')
-app.use('/', index)
+app.use('/', indexRouter)
 
 module.exports = app
