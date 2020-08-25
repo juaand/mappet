@@ -13,9 +13,6 @@ const commentSchema = new Schema(
     spotId: {
       type: ObjectId,
       ref: 'Spot'
-    },
-    imagePath: {
-      type: String
     }
   },
   {

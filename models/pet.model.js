@@ -30,4 +30,4 @@ const petSchema = new Schema(
   }
 )
 
-module.exports = model('Project', petSchema)
+module.exports = model('Pet', petSchema)
