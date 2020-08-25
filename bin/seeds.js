@@ -46,7 +46,7 @@ Promise.all([
               creatorId: user._id,
               name: faker.name.title(),
               content: faker.lorem.paragraph(),
-              pictures: faker.image.food(),
+              pictures: faker.random.image(),
               url: faker.internet.url(),
               rate: faker.random.number(),
               phone: faker.phone.phoneNumber(),
