@@ -15,8 +15,9 @@ const spotSchema = new Schema(
       ref: 'User',
       required: true
     },
-    picPath: {
-      type: String
+    pictures: {
+      type: [String],
+      default: []
     },
     url: {
       type: String
