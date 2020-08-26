@@ -20,6 +20,7 @@ const routeGuard = require('./middlewares/session.middleware')
 
 // Routers
 const indexRouter = require('./routes/index.routes')
+const navRouter = require('./routes/nav.routes')
 
 const app = express()
 
@@ -41,5 +42,6 @@ app.use((req, res, next) => {
 
 //Routes middlewares
 app.use('/', indexRouter)
+app.use('/', navRouter)
 
 module.exports = app
