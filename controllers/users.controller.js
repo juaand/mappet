@@ -12,6 +12,3 @@ module.exports.getHome = (req, res, next) => {
     })
     .catch((error) => next(error))
 }
-
-module.exports.getLogin = (req, res, next) => {}
-module.exports.getRegister = (req, res, next) => {}
