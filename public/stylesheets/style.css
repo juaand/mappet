@@ -506,7 +506,7 @@ h1.title {
 .results .card .info .rating svg,
 .slider .card .info .rating svg {
   width: 2.4rem;
-  margin-right: 1rem;
+  margin: 0 1rem;
 }
 
 .results .card .info .rating .value-rate,
