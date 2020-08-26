@@ -1,4 +1,100 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Raleway:wght@300;700&display=swap");
+/*
+<span class="mappet-events"></span>
+*/
+@font-face {
+  font-family: "mappetfont";
+  src: url("../fonts/mappetfont.eot?2afki7");
+  src: url("../fonts/mappetfont.eot?2afki7#iefix") format("embedded-opentype"), url("../fonts/mappetfont.ttf?2afki7") format("truetype"), url("../fonts/mappetfont.woff?2afki7") format("woff"), url("../fonts/mappetfont.svg?2afki7#mappetfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='mappet-'],
+[class*=' mappet-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "mappetfont" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mappet-activities:before {
+  content: "";
+}
+
+.mappet-animal-shelter:before {
+  content: "";
+}
+
+.mappet-beach:before {
+  content: "";
+}
+
+.mappet-bone:before {
+  content: "";
+}
+
+.mappet-events:before {
+  content: "";
+}
+
+.mappet-grooming:before {
+  content: "";
+}
+
+.mappet-hiking:before {
+  content: "";
+}
+
+.mappet-hotel:before {
+  content: "";
+}
+
+.mappet-park:before {
+  content: "";
+}
+
+.mappet-pipcan:before {
+  content: "";
+}
+
+.mappet-restaurant:before {
+  content: "";
+}
+
+.mappet-services:before {
+  content: "";
+}
+
+.mappet-store:before {
+  content: "";
+}
+
+.mappet-tour:before {
+  content: "";
+}
+
+.mappet-training:before {
+  content: "";
+}
+
+.mappet-vet:before {
+  content: "";
+}
+
+.mappet-walk:before {
+  content: "";
+}
+
 /*
 font-family: 'Quicksand', sans-serif;
 font-family: 'Raleway', sans-serif;
