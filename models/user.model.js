@@ -45,7 +45,7 @@ const userSchema = new Schema(
     },
     bio: {
       type: String,
-      maxlength: 100
+      maxlength: 500
     },
     activation: {
       active: {

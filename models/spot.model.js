@@ -1,81 +1,83 @@
 // models/spot.model.js
-const { Schema, model, ObjectId } = require("mongoose");
+const { Schema, model, ObjectId } = require('mongoose')
 
 const spotSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     content: {
-      type: String,
+      type: String
     },
     creatorId: {
       type: ObjectId,
-      ref: "User",
-      required: true,
+      ref: 'User',
+      required: true
     },
     pictures: {
       type: [String],
-      default: [],
+      default: []
     },
     url: {
-      type: String,
+      type: String
     },
     category: {
-      enum: ["Restaurant", "Service", "Activity", "Event"],
+      type: [String],
+      enum: ['Restaurants', 'Services', 'Activities', 'Events']
     },
     subcategory: {
-      type: String,
+      type: String
     },
     coordenate: {
-      type: [Number],
+      type: [Number]
     },
     rate: {
-      type: Number,
+      type: Number
     },
     phone: {
-      type: String,
+      type: String
     },
     city: {
-      type: String,
+      type: String
     },
     address: {
-      type: String,
+      type: String
     },
     zipCode: {
-      type: String,
+      type: String
     },
     days: {
-      enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      type: [String],
+      enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     open: {
-      type: String,
+      type: String
     },
     snap: {
-      type: String,
+      type: String
     },
     close: {
-      type: String,
-    },
+      type: String
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
-);
+)
 
-spotSchema.virtual("comments", {
-  ref: "Comment",
-  localField: "_id",
-  foreignField: "spotId",
-  justOne: false,
-});
+spotSchema.virtual('comments', {
+  ref: 'Comment',
+  localField: '_id',
+  foreignField: 'spotId',
+  justOne: false
+})
 
-spotSchema.virtual("likes", {
-  ref: "Like",
-  localField: "_id",
-  foreignField: "spot",
-  justOne: false,
-});
+spotSchema.virtual('likes', {
+  ref: 'Like',
+  localField: '_id',
+  foreignField: 'spot',
+  justOne: false
+})
 
-module.exports = model("Spot", spotSchema);
+module.exports = model('Spot', spotSchema)

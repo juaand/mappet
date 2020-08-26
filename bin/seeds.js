@@ -22,7 +22,7 @@ Promise.all([
       email: faker.internet.email(),
       username: faker.internet.userName(),
       avatar: faker.image.avatar(),
-      bio: faker.lorem.sentence(),
+      bio: faker.lorem.paragraph(),
       createdAt: faker.date.past()
     })
 
@@ -46,12 +46,26 @@ Promise.all([
           content: faker.lorem.paragraph(),
           pictures: faker.random.image(),
           url: faker.internet.url(),
+          category: faker.random.arrayElement([
+            'Restaurants',
+            'Services',
+            'Activities',
+            'Events'
+          ]),
           rate: faker.random.float({ min: 0, max: 5 }).toFixed(1),
           phone: faker.phone.phoneNumber(),
           city: faker.address.city(),
           address: faker.address.streetAddress(),
           zipCode: faker.address.zipCode(),
-          days: 'mon-sat',
+          days: faker.random.arrayElement([
+            'Mon',
+            'Tue',
+            'Wed',
+            'Thu',
+            'Fri',
+            'Sat',
+            'Sun'
+          ]),
           open: '10:00-14:00',
           snap: '14:00-16:00',
           close: '16:00-20:30',
