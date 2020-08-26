@@ -1,0 +1,123 @@
+@import 'variables';
+
+/*
+<span class="mappet-events"></span>
+*/
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2afki7');
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?2afki7#iefix')
+      format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?2afki7')
+      format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?2afki7')
+      format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?2afki7##{$icomoon-font-family}')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='mappet-'],
+[class*=' mappet-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mappet-activities {
+  &:before {
+    content: $mappet-activities;
+  }
+}
+.mappet-animal-shelter {
+  &:before {
+    content: $mappet-animal-shelter;
+  }
+}
+.mappet-beach {
+  &:before {
+    content: $mappet-beach;
+  }
+}
+.mappet-bone {
+  &:before {
+    content: $mappet-bone;
+  }
+}
+.mappet-events {
+  &:before {
+    content: $mappet-events;
+  }
+}
+.mappet-grooming {
+  &:before {
+    content: $mappet-grooming;
+  }
+}
+.mappet-hiking {
+  &:before {
+    content: $mappet-hiking;
+  }
+}
+.mappet-hotel {
+  &:before {
+    content: $mappet-hotel;
+  }
+}
+.mappet-park {
+  &:before {
+    content: $mappet-park;
+  }
+}
+.mappet-pipcan {
+  &:before {
+    content: $mappet-pipcan;
+  }
+}
+.mappet-restaurant {
+  &:before {
+    content: $mappet-restaurant;
+  }
+}
+.mappet-services {
+  &:before {
+    content: $mappet-services;
+  }
+}
+.mappet-store {
+  &:before {
+    content: $mappet-store;
+  }
+}
+.mappet-tour {
+  &:before {
+    content: $mappet-tour;
+  }
+}
+.mappet-training {
+  &:before {
+    content: $mappet-training;
+  }
+}
+.mappet-vet {
+  &:before {
+    content: $mappet-vet;
+  }
+}
+.mappet-walk {
+  &:before {
+    content: $mappet-walk;
+  }
+}
