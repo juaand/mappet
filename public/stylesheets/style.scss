@@ -592,8 +592,9 @@ h1 {
       width: 11rem;
       height: 11rem;
       display: flex;
-      justify-content: center;
-      align-items: flex-end;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
       border: solid 0.1rem $white;
       border-radius: 0.5rem;
       font-weight: 600;
@@ -605,7 +606,15 @@ h1 {
       &:hover {
         background-color: rgba($purple, 0.9) !important;
         border: $purple;
-        $t-decoration: none;
+        text-decoration: none;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      [class*='mappet-'] {
+        font-size: 3rem;
       }
     }
   }

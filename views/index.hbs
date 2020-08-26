@@ -34,10 +34,9 @@
         <form action="/" method="POST">
           <select class="form-control form-control-lg">
             <option value="null">Select one...</option>
-            <option value="restaurants">Restaurants</option>
-            <option value="services">Services</option>
-            <option value="activities">Activities</option>
-            <option value="events">Events</option>
+            {{#each allCategories as |category|}}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {{/each}}
           </select>
         </form>
       </div>
@@ -122,7 +121,6 @@
               <img class="card-img-top" src="{{value.pictures}}" alt="Card image cap">
               <h3 class="card-title">{{value.name}}</h3>
             </picture>
-
             <div class="card-body">
               <a href="{{value.url}}" class="go-single"><svg aria-hidden="true" focusable="false" data-prefix="far"
                   data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
@@ -163,140 +161,14 @@
       </div>
       <div class="col-12">
         <div class="row cat-items justify-content-center">
+          {{#each allCategories as |category|}}
           <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/walk.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Walk</p>
+            <a href="/" class="col-12 cat-card">
+              <span class="mappet-{{category.id}}"></span>
+              <p>{{category.name}}</p>
             </a>
           </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/food.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Food</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/walk.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Walk</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/food.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Food</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/walk.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Walk</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/food.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Food</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/walk.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Walk</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/food.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Food</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/walk.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Walk</p>
-            </a>
-          </div>
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/food.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Food</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
-
-          <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card" style="
-                    background: url(./images/tree.svg) no-repeat center 2rem /
-                      3.7rem 3.7rem;
-                  ">
-              <p>Park</p>
-            </a>
-          </div>
+          {{/each}}
         </div>
       </div>
     </div>
