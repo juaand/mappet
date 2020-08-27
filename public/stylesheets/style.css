@@ -16,7 +16,6 @@
 [class*=' mappet-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "mappetfont" !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -249,6 +248,21 @@ h1.title {
   opacity: 0.7;
 }
 
+.navbar .nav-item .nav-link.active {
+  font-weight: 600;
+  position: relative;
+}
+
+.navbar .nav-item .nav-link.active:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.3rem;
+  background: #fff;
+  bottom: -1rem;
+  left: 0;
+}
+
 .navbar .navbar-collapse {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -349,9 +363,24 @@ h1.title {
   opacity: 0.5;
 }
 
-.banner.restaurants {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events {
   height: 88rem;
+}
+
+.banner.restaurants {
   background: url(../images/rest-bg.jpg) no-repeat center center/cover;
+}
+
+.banner.services {
+  background: url(../images/services-bg.jpg) no-repeat center bottom/cover;
+}
+
+.banner.activities {
+  background: url(../images/activities-bg.jpg) no-repeat center bottom/cover;
+}
+
+.banner.events {
+  background: url(../images/events-bg.jpg) no-repeat center bottom/cover;
 }
 
 .attributtes,

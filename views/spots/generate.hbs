@@ -1,9 +1,9 @@
-<section class="container-fluid banner events"></section>
+<section class="container-fluid banner {{category}}"></section>
 <section class="container-fluid results">
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-10">
-        <h1 class="title">pet friendly events</h1>
+        <h1 class="title">pet friendly {{category}}</h1>
 
 
         <div class="row">
@@ -14,8 +14,9 @@
               <h3 class="card-title">{{value.name}}</h3>
             </picture>
             <div class="card-body">
-              <a href="{{value.url}}" class="go-single"><svg aria-hidden="true" focusable="false" data-prefix="far"
-                  data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
+              <a href="{{value.url}}" class="go-single">
+                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
                   class="svg-inline--fa fa-angle-right fa-w-6 fa-3x">
                   <path fill="#fff"
                     d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
@@ -35,7 +36,7 @@
                 <div class="city col-8 text-right">{{value.city}}</div>
               </div>
             </div>
-            <div class="card-footer">{{value.category}}</div>
+            <div class="card-footer">{{value.category}} {{date value.createdAt}}</div>
           </div>
           {{/each}}
         </div>

@@ -1,5 +1,6 @@
+{{#unless admin}}
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="/">
     <img src="./images/logo.svg" alt="mappet logo" class="logo" />
     <img src="./images/res-logo.svg" alt="mappet logo" class="res-logo" />
   </a>
@@ -16,21 +17,47 @@
   <div class="collapse navbar-collapse" id="navbarToggle">
     <ul class="navbar-nav col-12 col-sm-6 p-0">
       <li class="nav-item">
-        <a class="nav-link" href="/restaurants">Restaurants</a>
+        <a class="nav-link {{#ifvalue category equals="restaurants"}}active{{/ifvalue}}"
+          href="/restaurants">Restaurants</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/services">Services</a>
+        <a class="nav-link {{#ifvalue category equals="services"}}active{{/ifvalue}}" href="/services">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/activities">Activities</a>
+        <a class="nav-link {{#ifvalue category equals="activities"}}active{{/ifvalue}}"
+          href="/activities">Activities</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/events">Events</a>
+        <a class="nav-link {{#ifvalue category equals="events"}}active{{/ifvalue}}" href="/events">Events</a>
       </li>
 
       <li class="nav-item login">
-        <a class="nav-link" href="/login">Login</a>
-        <a class="nav-link" href="/register">Register</a>
+        <ul>{{#if user}}
+          <li class="user-info">
+            <a href="/user-profile/{{user._id}}" class="nav-avatar"
+              style="background: #65c9ff url({{user.avatar}}) no-repeat center center / cover; width:30px; height:30px; display:block;">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z" />
+              </svg>
+            </a>
+            <p>Hi <strong>@{{user.username}}</strong></p>
+          </li>
+          <li class="nav-item logout">
+            <form id="logout-form" action="/logout" method="POST">
+              <button class="nav-link">Logout</button>
+            </form>
+          </li>
+          {{else}}
+          <li class="nav-item no-user">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <li class="nav-item no-user">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          {{/if}}
+        </ul>
       </li>
 
       <li class="nav-item dropdown more">
@@ -48,3 +75,4 @@
     </ul>
   </div>
 </nav>
+{{/unless}}

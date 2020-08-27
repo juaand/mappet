@@ -7,7 +7,8 @@ module.exports.getHome = (req, res, next) => {
     .then((values) => {
       // res.json(values)
       res.render('index', {
-        values
+        values,
+        title: 'Welcome to mappet'
       })
     })
     .catch((error) => next(error))

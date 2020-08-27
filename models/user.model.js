@@ -68,7 +68,6 @@ const userSchema = new Schema(
       default: 'puppy'
     },
     social: {
-      slack: String,
       google: String,
       facebook: String
     }
