@@ -9,7 +9,7 @@ module.exports.getLogin = (req, res, next) => {
   if (req.session.currentUser) {
     res.redirect('/')
   } else {
-    res.render('auth/login', { title: 'Log in here' })
+    res.render('auth/login', { title: 'Log in here', category: 'login' })
   }
 }
 
@@ -58,7 +58,7 @@ module.exports.postLogin = (req, res, next) => {
 }
 
 module.exports.getRegister = (req, res, next) => {
-  res.render('auth/register', { title: 'Register here' })
+  res.render('auth/register', { title: 'Register here', category: 'register' })
 }
 
 module.exports.postRegister = (req, res, next) => {

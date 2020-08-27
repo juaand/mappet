@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Raleway:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&family=Raleway:wght@300;400;700&display=swap");
 /*
 <span class="mappet-events"></span>
 */
@@ -107,7 +107,7 @@ body {
   color: #333;
   font-size: 1.4rem;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 body strong {
@@ -129,6 +129,119 @@ h1.title {
   font-size: 5rem;
   font-weight: 300;
   margin-bottom: 3rem;
+}
+
+.modal {
+  background: rgba(53, 57, 110, 0.95);
+}
+
+.modal .modal-content {
+  background: transparent;
+  border: solid 0.1rem #fff;
+  padding: 4rem;
+  border-radius: 2.4rem;
+}
+
+.modal .modal-content h1 {
+  margin-top: 0;
+}
+
+.modal .modal-content label {
+  color: #fff;
+}
+
+form {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+form label {
+  font-size: 1.4rem;
+}
+
+form #avatar {
+  outline: none;
+}
+
+form #avatar::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+form #avatar::before {
+  content: 'Select avatar';
+  display: inline-block;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 4rem;
+  padding: 1rem 2rem;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+form #avatar:hover::before {
+  border-color: #ea7676;
+  color: #ea7676;
+}
+
+form #avatar:active {
+  outline: none;
+}
+
+form .form-control {
+  font-size: 1.6rem;
+  border-radius: 2.4rem;
+  height: 4.5rem;
+  padding-left: 2rem;
+  border: solid 0.1rem #fff;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+form .form-control::-webkit-input-placeholder {
+  color: #fff;
+}
+
+form .form-control:-ms-input-placeholder {
+  color: #fff;
+}
+
+form .form-control::-ms-input-placeholder {
+  color: #fff;
+}
+
+form .form-control::placeholder {
+  color: #fff;
+}
+
+form .form-control.textarea {
+  height: auto;
+}
+
+form .form-btn {
+  background: #ea7676;
+  color: #fff;
+  padding: 1rem 4rem;
+  border-radius: 4rem;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+form .form-btn:hover {
+  color: #fff;
+  background: #35396e;
+}
+
+form hr {
+  background: rgba(255, 255, 255, 0.7);
+  margin: 4rem 0;
+}
+
+form .no-user a {
+  color: #ea7676;
 }
 
 .navbar {
@@ -189,17 +302,44 @@ h1.title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 9rem;
 }
 
 .navbar .nav-item.login {
   border-left: solid 0.1rem #fff;
-  padding-left: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-right: 0;
+}
+
+.navbar .nav-item.login ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0;
+}
+
+.navbar .nav-item.login ul button {
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.navbar .nav-item.login ul .user-register {
+  margin: 0 4.5rem;
+}
+
+.navbar .nav-item.login ul .user-login {
+  background: rgba(234, 118, 118, 0.9);
+  padding: 0 4rem;
+  margin-right: 5rem;
 }
 
 .navbar .nav-item.more {
@@ -219,6 +359,7 @@ h1.title {
   font-weight: 700;
   border-left: solid 0.1rem #fff;
   position: relative;
+  margin-right: 0;
 }
 
 .navbar .nav-item.more .dropdown-menu {
@@ -251,6 +392,7 @@ h1.title {
 .navbar .nav-item .nav-link.active {
   font-weight: 600;
   position: relative;
+  pointer-events: none;
 }
 
 .navbar .nav-item .nav-link.active:before {
@@ -273,9 +415,9 @@ h1.title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .banner {
@@ -363,7 +505,7 @@ h1.title {
   opacity: 0.5;
 }
 
-.banner.restaurants, .banner.services, .banner.activities, .banner.events {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login {
   height: 88rem;
 }
 
@@ -381,6 +523,21 @@ h1.title {
 
 .banner.events {
   background: url(../images/events-bg.jpg) no-repeat center bottom/cover;
+}
+
+.banner.register {
+  background: url(../images/register-bg.jpg) no-repeat center bottom/cover;
+}
+
+.banner.register .color-bg {
+  background: rgba(53, 57, 110, 0.8);
+  padding: 4rem;
+  border-top: solid 0.3rem #ea7676;
+  border-radius: 0 0 2.4rem 2.4rem;
+}
+
+.banner.login {
+  background: url(../images/login-bg.jpg) no-repeat center center/cover;
 }
 
 .attributtes,
@@ -561,6 +718,26 @@ h1.title {
 .slider .card:hover .card-img-top {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.social-btn a {
+  background: rgba(53, 57, 110, 0.6);
+  padding: 1rem 4rem;
+  font-size: 1.4rem;
+  border-radius: 4rem;
+  width: 100%;
+  border: 0;
+  height: 4.5rem;
+}
+
+.social-btn a svg {
+  height: 1.6rem;
+  margin-right: 1rem;
+}
+
+.social-btn a:hover {
+  background: #35396e;
+  border-color: #35396e;
 }
 
 .lastest-spots {
@@ -993,6 +1170,24 @@ footer .copy {
   .navbar .navbar-collapse .navbar-nav .login {
     padding: 0;
     border: 0;
+    height: auto;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul .user-register {
+    margin: 0;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul .user-login {
+    width: 100%;
+    padding: 0;
   }
   .navbar .navbar-collapse .navbar-nav .nav-link {
     padding-left: 1.5rem;

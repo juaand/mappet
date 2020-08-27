@@ -19,6 +19,7 @@ const routeGuard = require('./middlewares/session.middleware')
 const indexRouter = require('./routes/index.routes')
 const navRouter = require('./routes/nav.routes')
 const authRouter = require('./routes/auth.routes')
+const socialRouter = require('./routes/social.routes')
 
 const app = express()
 
@@ -45,5 +46,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter)
 app.use('/', navRouter)
 app.use('/', authRouter)
+app.use('/', socialRouter)
 
 module.exports = app

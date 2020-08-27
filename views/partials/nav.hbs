@@ -30,9 +30,9 @@
       <li class="nav-item">
         <a class="nav-link {{#ifvalue category equals="events"}}active{{/ifvalue}}" href="/events">Events</a>
       </li>
-
       <li class="nav-item login">
-        <ul>{{#if user}}
+        <ul>
+          {{#if user}}
           <li class="user-info">
             <a href="/user-profile/{{user._id}}" class="nav-avatar"
               style="background: #65c9ff url({{user.avatar}}) no-repeat center center / cover; width:30px; height:30px; display:block;">
@@ -50,16 +50,17 @@
             </form>
           </li>
           {{else}}
-          <li class="nav-item no-user">
-            <a class="nav-link" href="/register">Register</a>
+          <li class="nav-item user-register">
+            <a href="/register" class="nav-link {{#ifvalue category equals="register"}}active{{/ifvalue}}">Register</a>
           </li>
-          <li class="nav-item no-user">
-            <a class="nav-link" href="/login">Login</a>
+          <li class="nav-item user-login">
+            <a href="/login" type="button" class="nav-link">Login</a>
           </li>
           {{/if}}
         </ul>
       </li>
 
+      {{#if user}}
       <li class="nav-item dropdown more">
         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
@@ -72,6 +73,7 @@
           <a class="dropdown-item" href="#">Logout</a>
         </div>
       </li>
+      {{/if}}
     </ul>
   </div>
 </nav>

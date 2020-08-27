@@ -7,7 +7,6 @@ const routeGuard = require('../middlewares/session.middleware')
 const authController = require('../controllers/auth.controller')
 
 router.get('/login', routeGuard.isNotAuthenticated, authController.getLogin)
-
 router.post('/login', routeGuard.isNotAuthenticated, authController.postLogin)
 
 router.get(
