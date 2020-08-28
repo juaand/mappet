@@ -87,7 +87,7 @@ form {
     content: 'Select avatar';
     display: inline-block;
     background: transparent;
-    border: 1px solid $white;
+    border: 0.1rem solid $white;
     border-radius: 4rem;
     padding: 1rem 2rem;
     outline: none;
@@ -162,7 +162,7 @@ form {
   .navbar-toggler {
     outline: none;
     .fa-bars {
-      width: 20px;
+      width: 2rem;
       color: white;
     }
   }
@@ -203,8 +203,12 @@ form {
 
       ul {
         display: flex;
-        justify-content: space-between;
-        padding-left: 0;
+        justify-content: space-around;
+        padding: 0;
+
+        &.logged {
+          padding: 0 3rem;
+        }
 
         button {
           background: transparent;
@@ -220,6 +224,30 @@ form {
           background: rgba($pink, 0.9);
           padding: 0 4rem;
           margin-right: 5rem;
+        }
+
+        .user-info {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+
+          .nav-avatar {
+            border-radius: 50%;
+            border: solid 0.2rem $dark-purple;
+            margin-right: 1rem;
+            position: relative;
+            width: 4rem;
+            height: 4rem;
+            display: block;
+          }
+
+          p {
+            margin: 0;
+          }
+
+          strong {
+            margin-right: 2rem;
+          }
         }
       }
     }
@@ -238,12 +266,15 @@ form {
       margin-right: 0;
 
       .dropdown-menu {
-        left: -8.6rem;
+        left: -18rem;
         font-size: 1.4rem;
         font-family: 'Quicksand', sans-serif;
-        background: rgba($white, 0.3);
-        border: solid 0.1rem $white;
-        border-radius: 0 0 0.4rem 0.4rem;
+        background: rgba(255, 255, 255, 0.3);
+        border: solid 0.1rem #fff;
+        border-radius: 0 0 2.4rem 2.4rem;
+        width: 18rem;
+        padding: 1rem 0 1.6rem 0;
+        top: 4.9rem;
 
         .dropdown-item {
           color: $white;
@@ -431,7 +462,7 @@ form {
 
 .attributtes {
   background: $dark-purple;
-  box-shadow: inset 0px -20px 47px -24px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 -2rem 5rem -2.4rem rgba(0, 0, 0, 0.75);
 
   &:before {
     box-shadow: 0 -15rem 0 $dark-purple;
@@ -451,6 +482,7 @@ form {
 
   .card {
     color: $text;
+    margin-bottom: 4rem;
 
     picture {
       overflow: hidden;
@@ -471,7 +503,20 @@ form {
         color: $white;
         width: 100%;
         left: 0;
-        padding: 1rem 2rem;
+        padding: 2rem;
+
+        .cat-label {
+          position: absolute;
+          top: -1rem;
+          left: 1.5rem;
+          background: $pink;
+          z-index: 5;
+          color: $white;
+          font-weight: 600;
+          padding: 0.5rem 0.8rem;
+          font-size: 1rem;
+          border-radius: 3rem;
+        }
       }
     }
 
@@ -503,6 +548,17 @@ form {
     .city {
       font-weight: 600;
       font-family: 'Quicksand', sans-serif;
+
+      .added {
+        display: block;
+        font-size: 1.2rem;
+        color: rgba($text, 0.7);
+        font-weight: 400;
+        strong {
+          color: $text;
+          font-weight: 600;
+        }
+      }
     }
 
     .info {
@@ -971,8 +1027,24 @@ footer {
           justify-content: flex-start;
 
           ul {
-            flex-direction: column;
             width: 100%;
+            padding: 0 1.5rem;
+
+            &.logged {
+              background: rgba($white, 0.4);
+              padding: 1rem;
+              position: relative;
+
+              .user-info {
+                .nav-avatar {
+                  border: solid 0.4rem $dark-purple;
+                  width: 8rem;
+                  height: 8rem;
+                  position: absolute;
+                  right: 2rem;
+                }
+              }
+            }
 
             .user-register {
               margin: 0;

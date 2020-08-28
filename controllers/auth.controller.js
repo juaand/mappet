@@ -9,7 +9,11 @@ module.exports.getLogin = (req, res, next) => {
   if (req.session.currentUser) {
     res.redirect('/')
   } else {
-    res.render('auth/login', { title: 'Log in here', category: 'login' })
+    res.render('auth/login', {
+      title: 'Log in here',
+      message: 'Please check your mail to activate your account',
+      category: 'login'
+    })
   }
 }
 
@@ -131,7 +135,7 @@ module.exports.getToken = (req, res, next) => {
         user
           .save()
           .then((user) => {
-            res.render('auth/confirm', {
+            res.render('auth/login', {
               message: 'Your account has been activated, log in below!'
             })
           })

@@ -171,7 +171,7 @@ form #avatar::before {
   content: 'Select avatar';
   display: inline-block;
   background: transparent;
-  border: 1px solid #fff;
+  border: 0.1rem solid #fff;
   border-radius: 4rem;
   padding: 1rem 2rem;
   outline: none;
@@ -262,7 +262,7 @@ form .no-user a {
 }
 
 .navbar .navbar-toggler .fa-bars {
-  width: 20px;
+  width: 2rem;
   color: white;
 }
 
@@ -320,10 +320,13 @@ form .no-user a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-left: 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0;
+}
+
+.navbar .nav-item.login ul.logged {
+  padding: 0 3rem;
 }
 
 .navbar .nav-item.login ul button {
@@ -340,6 +343,36 @@ form .no-user a {
   background: rgba(234, 118, 118, 0.9);
   padding: 0 4rem;
   margin-right: 5rem;
+}
+
+.navbar .nav-item.login ul .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.navbar .nav-item.login ul .user-info .nav-avatar {
+  border-radius: 50%;
+  border: solid 0.2rem #35396e;
+  margin-right: 1rem;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  display: block;
+}
+
+.navbar .nav-item.login ul .user-info p {
+  margin: 0;
+}
+
+.navbar .nav-item.login ul .user-info strong {
+  margin-right: 2rem;
 }
 
 .navbar .nav-item.more {
@@ -363,12 +396,15 @@ form .no-user a {
 }
 
 .navbar .nav-item.more .dropdown-menu {
-  left: -8.6rem;
+  left: -18rem;
   font-size: 1.4rem;
   font-family: 'Quicksand', sans-serif;
   background: rgba(255, 255, 255, 0.3);
   border: solid 0.1rem #fff;
-  border-radius: 0 0 0.4rem 0.4rem;
+  border-radius: 0 0 2.4rem 2.4rem;
+  width: 18rem;
+  padding: 1rem 0 1.6rem 0;
+  top: 4.9rem;
 }
 
 .navbar .nav-item.more .dropdown-menu .dropdown-item {
@@ -564,8 +600,8 @@ form .no-user a {
 
 .attributtes {
   background: #35396e;
-  -webkit-box-shadow: inset 0px -20px 47px -24px rgba(0, 0, 0, 0.75);
-          box-shadow: inset 0px -20px 47px -24px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: inset 0 -2rem 5rem -2.4rem rgba(0, 0, 0, 0.75);
+          box-shadow: inset 0 -2rem 5rem -2.4rem rgba(0, 0, 0, 0.75);
 }
 
 .attributtes:before {
@@ -592,6 +628,7 @@ form .no-user a {
 .results .card,
 .slider .card {
   color: #333;
+  margin-bottom: 4rem;
 }
 
 .results .card picture,
@@ -619,7 +656,21 @@ form .no-user a {
   color: #fff;
   width: 100%;
   left: 0;
-  padding: 1rem 2rem;
+  padding: 2rem;
+}
+
+.results .card picture h3 .cat-label,
+.slider .card picture h3 .cat-label {
+  position: absolute;
+  top: -1rem;
+  left: 1.5rem;
+  background: #ea7676;
+  z-index: 5;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 3rem;
 }
 
 .results .card .card-body,
@@ -662,6 +713,24 @@ form .no-user a {
 .slider .card .city {
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
+}
+
+.results .card .card-title .added,
+.results .card .city .added,
+.slider .card .card-title .added,
+.slider .card .city .added {
+  display: block;
+  font-size: 1.2rem;
+  color: rgba(51, 51, 51, 0.7);
+  font-weight: 400;
+}
+
+.results .card .card-title .added strong,
+.results .card .city .added strong,
+.slider .card .card-title .added strong,
+.slider .card .city .added strong {
+  color: #333;
+  font-weight: 600;
 }
 
 .results .card .info,
@@ -1176,11 +1245,20 @@ footer .copy {
             justify-content: flex-start;
   }
   .navbar .navbar-collapse .navbar-nav .login ul {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     width: 100%;
+    padding: 0 1.5rem;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul.logged {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 1rem;
+    position: relative;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul.logged .user-info .nav-avatar {
+    border: solid 0.4rem #35396e;
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    right: 2rem;
   }
   .navbar .navbar-collapse .navbar-nav .login ul .user-register {
     margin: 0;
