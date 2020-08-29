@@ -1,0 +1,82 @@
+<section class="container-fluid banner register" style="height: 120vh;">
+  <div class="col-12 col-sm-3">
+    <h1 class="title">Upload a Spot!</h1>
+    <form action="/spot/{{user._id}}/new" method="POST" enctype="multipart/form-data">
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="name"><span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-ad"></i></span>Project
+          name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
+      <div class="form-group form-row align-items-center">
+
+        <label for="content"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fa fa-pencil-square-o bigicon"></i></span>Content</label>
+        <textarea type="text" class="form-control" id="content" name="content" rows="5"></textarea>
+      </div>
+      <div class="form-group form-row align-items-center">
+        <label for="pictures"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="far fa-folder-open"></i></span>Upload files</label>
+        <input type="file" class="form-control-file" id="pictures" placeholder="Upload files" name="pictures" value="string" multiple />
+      </div>
+      <h4>Choose categories</h4>
+      {{#each allCategories as |category|}}
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="{{category.id}}" value="{{category.name}}" name="categories">
+        <label class="form-check-label" for="{{category.id}}">{{category.name}}</label>
+      </div>
+      {{/each}}
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="url"><span class="col-md-1 col-md-offset-2 text-center"><i class="fab fa-jsfiddle"></i></span>Spot
+          Web</label>
+        <input type="text" class="form-control" id="url" placeholder="Url" name="url">
+      </div>
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="address"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Address" name="address">
+      </div>
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="city"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>City</label>
+        <input type="text" class="form-control" id="city" placeholder="City" name="city">
+      </div>
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="zipCode"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>Zip code</label>
+        <input type="text" class="form-control" id="zipCode" placeholder="Zip code" name="zipCode">
+      </div>
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="phone"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>Phone</label>
+        <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
+      </div>
+
+      <div class="form-group form-row align-items-center">
+
+        <label for="open"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>Open</label>
+        <input type="text" class="form-control" id="open" placeholder="Open time" name="open">
+        <label for="close"><span class="col-md-1 col-md-offset-2 text-center"><i
+              class="fab fa-jsfiddle"></i></span>Close</label>
+        <input type="text" class="form-control" id="close" placeholder="Close time" name="close">
+      </div>
+
+
+      <button type="submit" class="btn" id="{{user._id}}">Create a spot
+        <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-file-alt"></i></span>
+      </button>
+    </form>
+  </div>
+</section>

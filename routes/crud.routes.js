@@ -5,8 +5,10 @@ const router = new Router()
 const uploads = require('../config/multer.config')
 const routeGuard = require('../middlewares/session.middleware')
 const crudController = require('../controllers/crud.controller')
+
 const User = require('../models/user.model')
 const mongoose = require('mongoose')
+
 
 
 router.get(
@@ -22,6 +24,23 @@ router.post(
   crudController.saveEditedUser
 )
 
+router.get(
+  '/user-profile/:id/delete',
+  routeGuard.isAuthenticated,
+  crudController.deleteUser)
+
+router.get(
+  '/spot/:id/new',
+  routeGuard.isAuthenticated,
+  crudController.createSpot
+)
+
+router.post(
+  '/spot/:id/new',
+  routeGuard.isAuthenticated,
+  uploads.array('pictures'),
+  crudController.saveSpot
+)
 
 module.exports = router
 

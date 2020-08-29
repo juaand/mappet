@@ -1,5 +1,6 @@
 // models/spot.model.js
 const { Schema, model, ObjectId } = require('mongoose')
+const categories = require('../data/categories')
 
 const spotSchema = new Schema(
   {
@@ -24,10 +25,8 @@ const spotSchema = new Schema(
     },
     category: {
       type: [String],
-      enum: ['Restaurants', 'Services', 'Activities', 'Events']
-    },
-    subcategory: {
-      type: String
+      enum: categories.map((c) => c.name),
+      default: []
     },
     coordenate: {
       type: [Number]
@@ -52,9 +51,6 @@ const spotSchema = new Schema(
       enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     },
     open: {
-      type: String
-    },
-    snap: {
       type: String
     },
     close: {

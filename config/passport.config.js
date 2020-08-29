@@ -1,4 +1,6 @@
 const passport = require('passport')
+const bcryptjs = require('bcryptjs')
+const saltRounds = 10
 const User = require('../models/user.model')
 const { json } = require('express')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
@@ -23,13 +25,16 @@ const google = new GoogleStrategy(
             username: profile._json.email.split('@')[0],
             email: profile._json.email,
             avatar: profile._json.picture,
+            bio: "",
             password:
               profile.provider + Math.random().toString(36).substring(7),
             social: {
               google: profile._json.sub
             }
           })
-
+          bcryptjs
+          .genSalt(saltRounds)
+          .then((salt) => bcryptjs.hash(password, salt))
           newUser
             .save()
             .then((user) => {
@@ -69,6 +74,10 @@ const facebook = new FacebookStrategy(
               facebook: profile._json.id
             }
           })
+          
+          bcryptjs
+          .genSalt(saltRounds)
+          .then((salt) => bcryptjs.hash(password, salt))
 
           newUser
             .save()

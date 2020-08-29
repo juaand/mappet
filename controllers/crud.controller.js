@@ -1,8 +1,16 @@
 // controller/crud.controller.js
 
 const User = require('../models/user.model')
+const Spot = require('../models/spot.model')
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
+
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////// RENDER USER ///////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+
 
 module.exports.editUser = (req, res, next) => {
   const id = req.params.id
@@ -21,6 +29,10 @@ module.exports.editUser = (req, res, next) => {
     })
     .catch((error) => next(error))
 }
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////// EDIT USER /////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
 module.exports.saveEditedUser = (req, res, next) => {
   const { username, email, avatar, password, bio, name } = req.body
@@ -67,5 +79,56 @@ module.exports.saveEditedUser = (req, res, next) => {
     })
     .catch((error) => next(error))
   // close .catch()
+}
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////// DELETE USER /////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+module.exports.deleteUser = (req, res, next) => {
+  const id = req.params.id
+  User.findByIdAndDelete(id)
+    .then(() => {
+      if (req.session.currentUser.role === 'ADMIN') {
+        res.redirect('/admin')
+      } else {
+        req.session.destroy()
+        res.redirect('/')
+      }
+    })
+    .catch((error) => next(error))
+}
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////// USER SPOTS ////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+module.exports.createSpot = (req, res, next) => {
+  res.render('spots/new-spot')
+}
+
+module.exports.saveSpot = (req, res, next) => {
+  // req.body.pictures = req.files ? req.files.map(file => file.secure_url) : ""
+    const id = req.params.id
+    const kk = `${process.env.CLOUDINARY_SECURE}/`
+    return Spot.create({
+      name: req.body.name,
+      content: req.body.content,
+      creatorId: id,
+      // pictures: `${process.env.CLOUDINARY_SECURE}/${req.files ? req.files.map(file => file.filename) : ''}`,
+      // pictures: `${process.env.CLOUDINARY_SECURE}/${req.body.pictures}`,
+      pictures: req.files ? req.files.map(file => kk.concat(file.filename)) : '',
+      url: req.body.url,
+      category: req.body.categories,
+      address: req.body.address,
+      city: req.body.city,
+      zipCode: req.body.zipcode,
+      open: req.body.open,
+      close: req.body.close      
+    })
+      .then(() => {
+        res.redirect(`/`)
+      })
+      .catch((error) => next(error))
 }
 

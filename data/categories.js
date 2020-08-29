@@ -41,7 +41,7 @@ module.exports = [
   },
   {
     id: 'restaurant',
-    name: 'Restaurant'
+    name: 'Restaurants'
   },
   {
     id: 'services',
