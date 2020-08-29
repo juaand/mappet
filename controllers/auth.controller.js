@@ -10,7 +10,6 @@ module.exports.getLogin = (req, res, next) => {
     res.redirect('/')
   } else {
     res.render('auth/login', {
-      title: 'Log in here',
       message: 'Please check your mail to activate your account',
       category: 'login'
     })
@@ -136,7 +135,8 @@ module.exports.getToken = (req, res, next) => {
           .save()
           .then((user) => {
             res.render('auth/login', {
-              message: 'Your account has been activated, log in below!'
+              message: 'Your account has been activated, log in below!',
+              category: 'login'
             })
           })
           .catch((e) => next)
@@ -144,7 +144,8 @@ module.exports.getToken = (req, res, next) => {
         res.render('auth/login', {
           error: {
             validation: {
-              message: 'Invalid link'
+              message: 'Invalid link',
+              category: 'login'
             }
           }
         })
