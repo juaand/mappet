@@ -158,3 +158,4 @@ module.exports.doLogout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
+

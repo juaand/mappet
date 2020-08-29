@@ -28,6 +28,6 @@ router.get(
   authController.getToken
 )
 
-router.get('/logout', routeGuard.isAuthenticated, authController.doLogout)
+router.post('/logout', routeGuard.isAuthenticated, authController.doLogout)
 
 module.exports = router

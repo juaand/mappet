@@ -20,6 +20,7 @@ const indexRouter = require('./routes/index.routes')
 const navRouter = require('./routes/nav.routes')
 const authRouter = require('./routes/auth.routes')
 const socialRouter = require('./routes/social.routes')
+const crudRouter = require('./routes/crud.routes')
 
 const app = express()
 
@@ -47,5 +48,8 @@ app.use('/', indexRouter)
 app.use('/', navRouter)
 app.use('/', authRouter)
 app.use('/', socialRouter)
+app.use('/', crudRouter)
+
+
 
 module.exports = app
