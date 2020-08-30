@@ -6,10 +6,6 @@ const uploads = require('../config/multer.config')
 const routeGuard = require('../middlewares/session.middleware')
 const crudController = require('../controllers/crud.controller')
 
-const User = require('../models/user.model')
-const mongoose = require('mongoose')
-
-
 
 router.get(
   '/user-profile/:id',
