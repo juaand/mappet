@@ -11,12 +11,10 @@ hbs.registerHelper('date', (date) => {
   )
 })
 
-hbs.registerHelper("ifvalue", function(conditional, options) {
+hbs.registerHelper('ifvalue', function (conditional, options) {
   if (conditional == options.hash.equals) {
-      return options.fn(this);
+    return options.fn(this)
   } else {
-      return options.inverse(this);
+    return options.inverse(this)
   }
-});
-
-
+})

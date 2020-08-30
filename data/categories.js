@@ -1,15 +1,18 @@
 module.exports = [
   {
     id: 'activities',
-    name: 'Activities'
+    name: 'Activities',
+    master_cat: 'Activities'
   },
   {
     id: 'animal-shelter',
-    name: 'Animal Shelter'
+    name: 'Animal Shelter',
+    master_cat: 'Services'
   },
   {
     id: 'beach',
-    name: 'Beach'
+    name: 'Beach',
+    master_cat: 'Activities'
   },
   {
     id: 'bone',
@@ -17,54 +20,67 @@ module.exports = [
   },
   {
     id: 'events',
-    name: 'Events'
+    name: 'Events',
+    master_cat: 'Events'
   },
   {
     id: 'grooming',
-    name: 'Grooming'
+    name: 'Grooming',
+    master_cat: 'Services'
   },
   {
     id: 'hiking',
-    name: 'Hiking'
+    name: 'Hiking',
+    master_cat: 'Activities'
   },
   {
     id: 'hotel',
-    name: 'Hotel'
+    name: 'Hotel',
+    master_cat: 'Services'
   },
   {
     id: 'park',
-    name: 'Park'
+    name: 'Park',
+    master_cat: 'Activities'
   },
   {
     id: 'pipican',
-    name: 'Pipican'
+    name: 'Pipican',
+    master_cat: 'Activities'
   },
   {
     id: 'restaurant',
-    name: 'Restaurants'
+    name: 'Restaurants',
+    master_cat: 'Restaurants'
   },
   {
     id: 'services',
-    name: 'Services'
+    name: 'Services',
+    master_cat: 'Services'
   },
   {
     id: 'store',
-    name: 'Store'
+    name: 'Store',
+    master_cat: 'Activities'
   },
   {
     id: 'tour',
-    name: 'Tour'
+    name: 'Tour',
+    master_cat: 'Activities'
   },
   {
     id: 'training',
-    name: 'Training'
+    name: 'Training',
+    master_cat: 'Services'
   },
   {
     id: 'vet',
-    name: 'Veterinary'
+    name: 'Veterinary',
+    master_cat: 'Services'
   },
   {
     id: 'walk',
-    name: 'Walk'
+    name: 'Walk',
+    master_cat: 'Activities'
   }
 ]
