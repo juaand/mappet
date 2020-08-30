@@ -542,7 +542,7 @@ form .no-user a {
 }
 
 .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login {
-  height: 88rem;
+  height: 66rem;
 }
 
 .banner.restaurants {
@@ -662,15 +662,29 @@ form .no-user a {
 .results .card picture h3 .cat-label,
 .slider .card picture h3 .cat-label {
   position: absolute;
-  top: -1rem;
+  top: -1.6rem;
   left: 1.5rem;
-  background: #ea7676;
   z-index: 5;
+}
+
+.results .card picture h3 .cat-label .label-pill,
+.slider .card picture h3 .cat-label .label-pill {
+  background: #ea7676;
   color: #fff;
   font-weight: 600;
   padding: 0.5rem 0.8rem;
   font-size: 1rem;
   border-radius: 3rem;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  border: solid 0.2rem #ea7676;
+}
+
+.results .card picture h3 .cat-label .label-pill:hover,
+.slider .card picture h3 .cat-label .label-pill:hover {
+  background: rgba(234, 118, 118, 0.6);
+  text-decoration: none;
+  border: solid 0.2rem #fff;
 }
 
 .results .card .card-body,

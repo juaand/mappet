@@ -406,7 +406,7 @@ form {
   &.events,
   &.register,
   &.login {
-    height: 88rem;
+    height: 66rem;
   }
 
   &.restaurants {
@@ -507,15 +507,26 @@ form {
 
         .cat-label {
           position: absolute;
-          top: -1rem;
+          top: -1.6rem;
           left: 1.5rem;
-          background: $pink;
           z-index: 5;
-          color: $white;
-          font-weight: 600;
-          padding: 0.5rem 0.8rem;
-          font-size: 1rem;
-          border-radius: 3rem;
+
+          .label-pill {
+            background: $pink;
+            color: $white;
+            font-weight: 600;
+            padding: 0.5rem 0.8rem;
+            font-size: 1rem;
+            border-radius: 3rem;
+            transition: all 200ms ease;
+            border: solid 0.2rem $pink;
+
+            &:hover {
+              background: rgba($pink, 0.6);
+              text-decoration: none;
+              border: solid 0.2rem $white;
+            }
+          }
         }
       }
     }

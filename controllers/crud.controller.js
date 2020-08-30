@@ -116,7 +116,7 @@ module.exports.saveSpot = (req, res, next) => {
         )
       : '',
     url: req.body.url,
-    category: req.body.categories,
+    category: [...new Set(req.body.categories)],
     address: req.body.address,
     city: req.body.city,
     zipCode: req.body.zipcode,
