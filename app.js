@@ -21,6 +21,7 @@ const navRouter = require('./routes/nav.routes')
 const authRouter = require('./routes/auth.routes')
 const socialRouter = require('./routes/social.routes')
 const crudRouter = require('./routes/crud.routes')
+const singleRouter = require('./routes/single.routes')
 
 const app = express()
 
@@ -49,7 +50,6 @@ app.use('/', navRouter)
 app.use('/', authRouter)
 app.use('/', socialRouter)
 app.use('/', crudRouter)
-
-
+app.use('/', singleRouter)
 
 module.exports = app

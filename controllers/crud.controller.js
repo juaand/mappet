@@ -110,8 +110,7 @@ module.exports.saveSpot = (req, res, next) => {
     name: req.body.name,
     content: req.body.content,
     creatorId: id,
-    pictures: req.files
-      ? req.files.map((file) =>
+    pictures: req.files ? req.files.map((file) =>
           `${process.env.CLOUDINARY_SECURE}/`.concat(file.filename)
         )
       : '',

@@ -1,4 +1,4 @@
-<section class="container-fluid banner {{category}}">
+<section class="container-fluid banner single">
   <div class="redes">
     <a href="/"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-instagram fa-w-14 fa-3x">
@@ -26,54 +26,18 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-10">
-        <h1 class="title">pet friendly {{category}}</h1>
-        <div class="row">
-          {{#each values as |value|}}
-          <div class="card col-12 col-sm-4">
-            <picture>
-              <img class="card-img-top" src="{{value.pictures.[0]}}" alt="Card image cap">
-              <h3 class="card-title">
-                <span class="cat-label">
-                  {{#each value.category as |label|}}
-                  <a href="/{{label}}" class="label-pill">{{label}}</a>
-                  {{/each}}
-                </span>
-                {{value.name}}
-              </h3>
-            </picture>
-            <div class="card-body">
-              <a href="/{{category.[0]}}/{{value._id}}" class="go-single">
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
-                  class="svg-inline--fa fa-angle-right fa-w-6 fa-3x">
-                  <path fill="#fff"
-                    d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
-                    class=""></path>
-                </svg></a>
-              <div class="info">
-                <div class="rating col-5">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.15 55.1" fill="#ea7676">
-                    <path
-                      d="M28.58,12.7C18,12.7,10.32,21.27,10.32,31.83c0,7.31,8.28,16.59,13.92,21.62a6.52,6.52,0,0,0,8.67,0c5.64-5,13.93-14.31,13.93-21.62C46.84,21.27,39.14,12.7,28.58,12.7Z" />
-                    <circle cx="52.4" cy="16.26" r="4.75" />
-                    <circle cx="4.75" cy="16.26" r="4.75" />
-                    <circle cx="18.64" cy="4.75" r="4.75" />
-                    <circle cx="39.46" cy="4.75" r="4.75" />
-                  </svg>
-                  <span class="value-rate">{{value.rate}}</span> / 5</div>
-                <div class="city col-7 text-right">{{value.city}}
-                  <span class="added"><strong>added</strong> {{date value.createdAt}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
-        </div>
-
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit vitae leo, platea consequat odio curabitur senectus
+          cursus potenti molestie inceptos, natoque magna sapien pretium mi semper dictum faucibus. Pretium enim
+          habitant aenean varius est fermentum posuere urna fusce sociosqu erat semper inceptos conubia a, vehicula in
+          tortor eros lacinia dapibus ante phasellus curae quam maecenas suscipit curabitur. Facilisis penatibus
+          habitant auctor maecenas donec aptent varius rhoncus, egestas montes feugiat cum mattis nascetur.</p>
+        <p>Sodales ac sed tincidunt vehicula sapien nam eleifend hendrerit conubia viverra vulputate, tristique suscipit
+          diam sociis id sagittis accumsan interdum mattis erat. Lacus ridiculus odio tempor lacinia erat egestas
+          aenean, aliquam luctus imperdiet semper maecenas posuere magnis, tristique scelerisque proin tellus eros
+          ornare. Praesent cras eleifend curabitur sodales sociosqu et, senectus libero aliquam rutrum ad lacus
+          pellentesque, duis dis ut neque phasellus. Lectus mi volutpat cum taciti nulla dapibus, mattis mus
+          pellentesque rhoncus quam congue, interdum a lobortis purus pulvinar.</p>
       </div>
-      <aside class="col-12 col-sm-2">
-        ASIDE
-      </aside>
     </div>
   </div>
 </section>

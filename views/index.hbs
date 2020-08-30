@@ -120,12 +120,16 @@
             <picture>
               <img class="card-img-top" src="{{value.pictures.[0]}}" alt="Card image cap">
               <h3 class="card-title">
-                <span class="cat-label">{{value.category}}</span>
+                <span class="cat-label">
+                  {{#each value.category as |label|}}
+                  <a href="/{{label}}" class="label-pill">{{label}}</a>
+                  {{/each}}
+                </span>
                 {{value.name}}
               </h3>
             </picture>
             <div class="card-body">
-              <a href="{{value.url}}" class="go-single">
+              <a href="/{{category.[0]}}/{{value._id}}" class="go-single">
                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
                   class="svg-inline--fa fa-angle-right fa-w-6 fa-3x">
