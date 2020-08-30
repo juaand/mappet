@@ -5,12 +5,9 @@ const Spot = require('../models/spot.model')
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 
-
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////// RENDER USER ///////////////////////////////
 ////////////////////////////////////////////////////////////////////////
-
-
 
 module.exports.editUser = (req, res, next) => {
   const id = req.params.id
@@ -54,19 +51,19 @@ module.exports.saveEditedUser = (req, res, next) => {
       const id = req.params.id
       console.log(req.body)
       if (req.body.avatar) {
-         return User.findByIdAndUpdate(id, {
+        return User.findByIdAndUpdate(id, {
           // username: username
           name: req.body.name,
           avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
           password: hashedPassword,
           bio: req.body.bio
         })
-        .then(() => {
-          res.redirect(`/user-profile/${id}`)
-        })
-        .catch((error) => next(error))
+          .then(() => {
+            res.redirect(`/user-profile/${id}`)
+          })
+          .catch((error) => next(error))
       } else {
-         return User.findByIdAndUpdate(id, {
+        return User.findByIdAndUpdate(id, {
           // username: username
           name: req.body.name,
           password: hashedPassword,
@@ -108,27 +105,26 @@ module.exports.createSpot = (req, res, next) => {
 }
 
 module.exports.saveSpot = (req, res, next) => {
-  // req.body.pictures = req.files ? req.files.map(file => file.secure_url) : ""
-    const id = req.params.id
-    const kk = `${process.env.CLOUDINARY_SECURE}/`
-    return Spot.create({
-      name: req.body.name,
-      content: req.body.content,
-      creatorId: id,
-      // pictures: `${process.env.CLOUDINARY_SECURE}/${req.files ? req.files.map(file => file.filename) : ''}`,
-      // pictures: `${process.env.CLOUDINARY_SECURE}/${req.body.pictures}`,
-      pictures: req.files ? req.files.map(file => kk.concat(file.filename)) : '',
-      url: req.body.url,
-      category: req.body.categories,
-      address: req.body.address,
-      city: req.body.city,
-      zipCode: req.body.zipcode,
-      open: req.body.open,
-      close: req.body.close      
+  const id = req.params.id
+  return Spot.create({
+    name: req.body.name,
+    content: req.body.content,
+    creatorId: id,
+    pictures: req.files
+      ? req.files.map((file) =>
+          `${process.env.CLOUDINARY_SECURE}/`.concat(file.filename)
+        )
+      : '',
+    url: req.body.url,
+    category: req.body.categories,
+    address: req.body.address,
+    city: req.body.city,
+    zipCode: req.body.zipcode,
+    open: req.body.open,
+    close: req.body.close
+  })
+    .then(() => {
+      res.redirect(`/`)
     })
-      .then(() => {
-        res.redirect(`/`)
-      })
-      .catch((error) => next(error))
+    .catch((error) => next(error))
 }
-
