@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const { Schema, model } = require('mongoose')
+const Pet = require('../models/pet.model')
 
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
@@ -77,13 +78,20 @@ const userSchema = new Schema(
   }
 )
 
+userSchema.virtual('pets', {
+  ref: 'Pet',
+  localField: '_id',
+  foreignField: 'creatorId',
+  justOne: false
+})
+
 userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password)
 }
 
 userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
-    bcrypt.hash(this.password, 10).then(hash => {
+    bcrypt.hash(this.password, 10).then((hash) => {
       this.password = hash
       next()
     })

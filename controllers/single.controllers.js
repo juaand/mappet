@@ -6,13 +6,19 @@ module.exports.getSpot = (req, res, next) => {
   const id = req.params.id
 
   Spot.findById(id)
-    .populate('creatorId')
+    // .populate('creatorId')
     .populate('comments')
     .populate({
       path: 'comments',
       populate: {
         path: 'authorId',
         model: 'User'
+      }
+    })
+    .populate({
+      path: 'creatorId',
+      populate: {
+        path: 'pets'
       }
     })
     .then((spot) => {

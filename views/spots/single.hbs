@@ -1,4 +1,5 @@
-<section class="container-fluid banner single">
+<section class="container-fluid banner single"
+  style="background: url({{spot.pictures.[0]}}) no-repeat center center / cover;">
   <div class="redes">
     <a href="/"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-instagram fa-w-14 fa-3x">
@@ -26,17 +27,17 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-10">
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit vitae leo, platea consequat odio curabitur senectus
-          cursus potenti molestie inceptos, natoque magna sapien pretium mi semper dictum faucibus. Pretium enim
-          habitant aenean varius est fermentum posuere urna fusce sociosqu erat semper inceptos conubia a, vehicula in
-          tortor eros lacinia dapibus ante phasellus curae quam maecenas suscipit curabitur. Facilisis penatibus
-          habitant auctor maecenas donec aptent varius rhoncus, egestas montes feugiat cum mattis nascetur.</p>
-        <p>Sodales ac sed tincidunt vehicula sapien nam eleifend hendrerit conubia viverra vulputate, tristique suscipit
-          diam sociis id sagittis accumsan interdum mattis erat. Lacus ridiculus odio tempor lacinia erat egestas
-          aenean, aliquam luctus imperdiet semper maecenas posuere magnis, tristique scelerisque proin tellus eros
-          ornare. Praesent cras eleifend curabitur sodales sociosqu et, senectus libero aliquam rutrum ad lacus
-          pellentesque, duis dis ut neque phasellus. Lectus mi volutpat cum taciti nulla dapibus, mattis mus
-          pellentesque rhoncus quam congue, interdum a lobortis purus pulvinar.</p>
+        <h1 class="title">{{spot.name}}</h1>
+        <h2>Description</h2>
+        <p>{{spot.content}}</p>
+        <span class="avatar"
+          style="display: block; width:6rem; height:6rem; background: url({{spot.creatorId.avatar}})"></span>
+        <p>posted by @{{spot.creatorId.username}}</p>
+
+        {{#each spot.comment}}
+        <p>{{spot.comment.content}}</p>
+        {{/each}}
+
       </div>
     </div>
   </div>
