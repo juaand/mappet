@@ -132,7 +132,8 @@ form {
     }
   }
 
-  .form-control {
+  .form-control,
+  .custom-file-label {
     font-size: 1.6rem;
     border-radius: 2.4rem;
     height: 4.5rem;
@@ -584,7 +585,8 @@ form {
       color: $dark-purple;
     }
 
-    .form-control {
+    .form-control,
+    .custom-file-label {
       color: $dark-purple;
       border-color: $dark-purple;
 

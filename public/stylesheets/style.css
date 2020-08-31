@@ -212,7 +212,8 @@ form #avatar:before {
   content: 'Select avatar';
 }
 
-form .form-control {
+form .form-control,
+form .custom-file-label {
   font-size: 1.6rem;
   border-radius: 2.4rem;
   height: 4.5rem;
@@ -222,23 +223,28 @@ form .form-control {
   color: #fff;
 }
 
-form .form-control::-webkit-input-placeholder {
+form .form-control::-webkit-input-placeholder,
+form .custom-file-label::-webkit-input-placeholder {
   color: #fff;
 }
 
-form .form-control:-ms-input-placeholder {
+form .form-control:-ms-input-placeholder,
+form .custom-file-label:-ms-input-placeholder {
   color: #fff;
 }
 
-form .form-control::-ms-input-placeholder {
+form .form-control::-ms-input-placeholder,
+form .custom-file-label::-ms-input-placeholder {
   color: #fff;
 }
 
-form .form-control::placeholder {
+form .form-control::placeholder,
+form .custom-file-label::placeholder {
   color: #fff;
 }
 
-form .form-control.textarea {
+form .form-control.textarea,
+form .custom-file-label.textarea {
   height: auto;
 }
 
@@ -739,28 +745,38 @@ form .range-slider__value {
 }
 
 .attributtes form .form-control,
-.results form .form-control {
+.attributtes form .custom-file-label,
+.results form .form-control,
+.results form .custom-file-label {
   color: #35396e;
   border-color: #35396e;
 }
 
 .attributtes form .form-control::-webkit-input-placeholder,
-.results form .form-control::-webkit-input-placeholder {
+.attributtes form .custom-file-label::-webkit-input-placeholder,
+.results form .form-control::-webkit-input-placeholder,
+.results form .custom-file-label::-webkit-input-placeholder {
   color: rgba(53, 57, 110, 0.8);
 }
 
 .attributtes form .form-control:-ms-input-placeholder,
-.results form .form-control:-ms-input-placeholder {
+.attributtes form .custom-file-label:-ms-input-placeholder,
+.results form .form-control:-ms-input-placeholder,
+.results form .custom-file-label:-ms-input-placeholder {
   color: rgba(53, 57, 110, 0.8);
 }
 
 .attributtes form .form-control::-ms-input-placeholder,
-.results form .form-control::-ms-input-placeholder {
+.attributtes form .custom-file-label::-ms-input-placeholder,
+.results form .form-control::-ms-input-placeholder,
+.results form .custom-file-label::-ms-input-placeholder {
   color: rgba(53, 57, 110, 0.8);
 }
 
 .attributtes form .form-control::placeholder,
-.results form .form-control::placeholder {
+.attributtes form .custom-file-label::placeholder,
+.results form .form-control::placeholder,
+.results form .custom-file-label::placeholder {
   color: rgba(53, 57, 110, 0.8);
 }
 
