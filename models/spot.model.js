@@ -2,6 +2,8 @@
 const { Schema, model, ObjectId } = require('mongoose')
 const categories = require('../data/categories')
 
+const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+
 const spotSchema = new Schema(
   {
     name: {
@@ -49,6 +51,20 @@ const spotSchema = new Schema(
     days: {
       type: [String],
       enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    email: {
+      type: String,
+      required: [true, 'Email is required'],
+      unique: true,
+      trim: true,
+      lowercase: true,
+      match: [EMAIL_PATTERN, 'Email is invalid']
+    },
+    instagram: {
+      type: String
+    },
+    facebook: {
+      type: String
     },
     open: {
       type: String

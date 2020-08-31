@@ -111,8 +111,8 @@ module.exports.saveSpot = (req, res, next) => {
     content: req.body.content,
     creatorId: id,
     pictures: req.files
-      ? req.files.map((file) =>
-          `${process.env.CLOUDINARY_SECURE}/`.concat(file.filename)
+      ? req.files.map(
+          (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
         )
       : '',
     url: req.body.url,
@@ -121,7 +121,11 @@ module.exports.saveSpot = (req, res, next) => {
     city: req.body.city,
     zipCode: req.body.zipcode,
     open: req.body.open,
-    close: req.body.close
+    close: req.body.close,
+    instagram: req.body.instagram,
+    facebook: req.body.facebook,
+    email: req.body.email,
+    phone: req.body.phone
   })
     .then(() => {
       res.redirect(`/`)

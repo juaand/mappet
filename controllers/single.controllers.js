@@ -6,7 +6,6 @@ module.exports.getSpot = (req, res, next) => {
   const id = req.params.id
 
   Spot.findById(id)
-    // .populate('creatorId')
     .populate('comments')
     .populate({
       path: 'comments',
@@ -22,7 +21,8 @@ module.exports.getSpot = (req, res, next) => {
       }
     })
     .then((spot) => {
-      // res.json(spot)
+      // res.json(spot.comments)
+      // res.json(spot.creatorId.pets)
       res.render('spots/single', { spot, title: spot.name })
     })
     .catch((error) => next(error))

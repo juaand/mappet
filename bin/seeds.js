@@ -67,8 +67,10 @@ Promise.all([
             'Sun'
           ]),
           open: '10:00-14:00',
-          snap: '14:00-16:00',
           close: '16:00-20:30',
+          email: faker.internet.email(),
+          instagram: faker.name.firstName(),
+          facebook: faker.intener.url(),
           createdAt: faker.date.past()
         })
         spot.save().then((p) => {
