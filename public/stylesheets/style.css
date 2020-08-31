@@ -679,7 +679,7 @@ form .range-slider__value {
   opacity: 0.5;
 }
 
-.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot {
   height: 66rem;
 }
 
@@ -703,15 +703,12 @@ form .range-slider__value {
   background: url(../images/register-bg.jpg) no-repeat center center/cover;
 }
 
-.banner.register .color-bg {
-  background: rgba(53, 57, 110, 0.8);
-  padding: 4rem;
-  border-top: solid 0.3rem #ea7676;
-  border-radius: 0 0 2.4rem 2.4rem;
-}
-
 .banner.login {
   background: url(../images/login-bg.jpg) no-repeat center center/cover;
+}
+
+.banner.new-spot {
+  background: url(../images/new-spot-bg.jpg) no-repeat center top/cover;
 }
 
 .attributtes,
@@ -1407,7 +1404,7 @@ footer .copy {
   .banner .redes {
     display: none;
   }
-  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single {
+  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot {
     height: 40rem;
   }
   .navbar {
