@@ -265,6 +265,13 @@ form {
       position: relative;
       margin-right: 0;
 
+      .plus {
+        width: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .dropdown-menu {
         left: -18rem;
         font-size: 1.4rem;
