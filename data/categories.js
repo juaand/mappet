@@ -15,10 +15,6 @@ module.exports = [
     master_cat: 'Activities'
   },
   {
-    id: 'bone',
-    name: 'Bone'
-  },
-  {
     id: 'events',
     name: 'Events',
     master_cat: 'Events'

@@ -4,13 +4,13 @@ const saltRounds = 10
 const User = require('../models/user.model')
 const mongoose = require('mongoose')
 const nodemailer = require('../config/mailer.config')
+const { session } = require('passport')
 
 module.exports.getLogin = (req, res, next) => {
   if (req.session.currentUser) {
     res.redirect('/')
   } else {
     res.render('auth/login', {
-      message: 'Please check your mail to activate your account',
       category: 'login'
     })
   }
@@ -34,7 +34,8 @@ module.exports.postLogin = (req, res, next) => {
                   validation: {
                     message: 'Your account is not active, check your email!'
                   }
-                }
+                },
+                message: 'Please check your mail to activate your account'
               })
             }
           } else {
@@ -61,7 +62,15 @@ module.exports.postLogin = (req, res, next) => {
 }
 
 module.exports.getRegister = (req, res, next) => {
-  res.render('auth/register', { title: 'Register here', category: 'register' })
+  const user = req.session.currentUser
+  if (user) {
+    res.redirect('/')
+  } else {
+    res.render('auth/register', {
+      title: 'Register here',
+      category: 'register'
+    })
+  }
 }
 
 module.exports.postRegister = (req, res, next) => {
@@ -69,7 +78,8 @@ module.exports.postRegister = (req, res, next) => {
   if (!username || !email || !password) {
     res.render('auth/register', {
       errorMessage:
-        'All fields are mandatory. Please provide your username, email, avatar and password.'
+        'All fields are mandatory. Please provide your username, email, avatar and password.',
+      category: 'register'
     })
     return
   }
@@ -78,7 +88,8 @@ module.exports.postRegister = (req, res, next) => {
   if (!regex.test(password)) {
     res.status(500).render('auth/register', {
       errorMessage:
-        'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'
+        'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.',
+      category: 'register'
     })
     return
   }
@@ -114,16 +125,22 @@ module.exports.postRegister = (req, res, next) => {
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render('auth/register', { errorMessage: error.message })
+        res.render('auth/register', { error: error.errors, user })
       } else if (error.code === 11000) {
-        res.status(500).render('auth/register', {
-          errorMessage:
-            'Username and email need to be unique. Either username or email is already used.'
+        // error when duplicated user
+        res.render('auth/register', {
+          user,
+          error: {
+            email: {
+              message: 'user already exists'
+            }
+          }
         })
       } else {
         next(error)
       }
     })
+    .catch(next)
 }
 
 module.exports.getToken = (req, res, next) => {
@@ -158,4 +175,3 @@ module.exports.doLogout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
-

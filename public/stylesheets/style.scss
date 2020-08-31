@@ -13,6 +13,7 @@ $pink: #ea7676;
 $text: #333;
 $white: #fff;
 $black: #000;
+$custom-range-track-bg: $pink;
 
 html {
   font-size: 10px;
@@ -72,36 +73,63 @@ form {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
 
+  h2 {
+    color: $dark-purple;
+    margin-bottom: 3rem;
+    font-weight: 600;
+  }
+
+  .form-group {
+    margin-bottom: 3.2rem;
+  }
+
+  .error-message {
+    background: $purple;
+    color: $white;
+    padding: 2rem;
+    border-radius: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
   label {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    color: $white;
+    padding-left: 1.6rem;
   }
 
   #avatar {
     outline: none;
+
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    &:before {
+      display: contents;
+      background: transparent;
+      border: 0;
+      padding: 1rem;
+      outline: none;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: $pink;
+    }
+
+    &:hover:before {
+      border-color: $pink;
+      color: $pink;
+    }
+
+    &:active {
+      outline: none;
+    }
   }
 
-  #avatar::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  #avatar::before {
-    content: 'Select avatar';
-    display: inline-block;
-    background: transparent;
-    border: 0.1rem solid $white;
-    border-radius: 4rem;
-    padding: 1rem 2rem;
-    outline: none;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 1.4rem;
-    color: $white;
-  }
-  #avatar:hover::before {
-    border-color: $pink;
-    color: $pink;
-  }
-  #avatar:active {
-    outline: none;
+  #avatar {
+    &:before {
+      content: 'Select avatar';
+    }
   }
 
   .form-control {
@@ -109,7 +137,7 @@ form {
     border-radius: 2.4rem;
     height: 4.5rem;
     padding-left: 2rem;
-    border: solid 0.1rem #fff;
+    border: solid 0.2rem #fff;
     background: rgba(255, 255, 255, 0.3);
     color: #fff;
 
@@ -119,6 +147,51 @@ form {
 
     &.textarea {
       height: auto;
+    }
+  }
+
+  .categories-block {
+    margin-bottom: 4rem;
+  }
+
+  .form-check-label {
+    position: relative;
+    cursor: pointer;
+
+    & input[type='checkbox'] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    & :hover ~ .icon-box {
+      background: $dark-purple;
+      color: $white;
+    }
+
+    & :checked ~ .icon-box {
+      background: $dark-purple;
+      color: $white;
+    }
+
+    & .icon-box {
+      width: 10rem;
+      height: 10rem;
+      background: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 1.6rem;
+      border: solid 0.2rem $dark-purple;
+      text-align: center;
+      font-size: 1.4rem;
+      margin: 0.5rem;
+      padding: 1rem;
+
+      [class*='mappet-'] {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
     }
   }
 
@@ -146,6 +219,46 @@ form {
     a {
       color: $pink;
     }
+  }
+
+  .custom-range {
+    width: 90%;
+
+    &::-webkit-slider-thumb {
+      background: $pink;
+      &:active {
+        background: rgba($pink, 0.3);
+      }
+    }
+
+    &::-ms-slider-thumb {
+      background: $pink;
+      &:active {
+        background: rgba($pink, 0.3);
+      }
+    }
+
+    &::-moz-slider-thumb {
+      background: $pink;
+      &:active {
+        background: rgba($pink, 0.3);
+      }
+    }
+  }
+
+  .range-slider__value {
+    background: $dark-purple;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    right: 1rem;
+    bottom: 0rem;
   }
 }
 
@@ -434,7 +547,7 @@ form {
   }
 
   &.register {
-    background: url(../images/register-bg.jpg) no-repeat center bottom / cover;
+    background: url(../images/register-bg.jpg) no-repeat center center / cover;
     .color-bg {
       background: rgba($dark-purple, 0.8);
       padding: 4rem;
@@ -465,6 +578,30 @@ form {
     left: 0;
     border-radius: 0 15rem 0 15rem;
     transform: rotate(180deg);
+  }
+
+  form {
+    label {
+      color: $dark-purple;
+    }
+
+    .form-control {
+      color: $dark-purple;
+      border-color: $dark-purple;
+
+      &::placeholder {
+        color: rgba($dark-purple, 0.8);
+      }
+    }
+  }
+
+  .register-pets {
+    background: url(../images/register-pets.jpg) no-repeat center right / cover;
+    width: 40rem;
+    height: 30rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 
@@ -1008,9 +1145,25 @@ footer {
 }
 
 @media (max-width: 576px) {
+  h1 {
+    &.title {
+      font-size: 3rem;
+      margin-top: 5rem;
+    }
+  }
   .banner {
     .redes {
       display: none;
+    }
+
+    &.restaurants,
+    &.services,
+    &.activities,
+    &.events,
+    &.register,
+    &.login,
+    &.single {
+      height: 40rem;
     }
   }
 
@@ -1178,6 +1331,15 @@ footer {
         height: 9rem;
       }
     }
+  }
+
+  .results,
+  .attributtes {
+    border-radius: 0 7rem 0 0;
+  }
+
+  .register-pets {
+    display: none;
   }
 
   footer {
