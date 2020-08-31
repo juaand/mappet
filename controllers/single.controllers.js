@@ -4,6 +4,7 @@ require('../models/user.model')
 
 module.exports.getSpot = (req, res, next) => {
   const id = req.params.id
+  const user = req.session.currentUser
 
   Spot.findById(id)
     .populate('comments')
@@ -23,7 +24,16 @@ module.exports.getSpot = (req, res, next) => {
     .then((spot) => {
       // res.json(spot.comments)
       // res.json(spot.creatorId.pets)
-      res.render('spots/single', { spot, title: spot.name })
+      if (user) {
+        if (user._id == spot.creatorId._id) {
+          const owner = true
+          res.render('spots/single', { spot, title: spot.name, owner: owner })
+        } else {
+          res.render('spots/single', { spot, title: spot.name })
+        }
+      } else {
+        res.render('spots/single', { spot, title: spot.name })
+      }
     })
     .catch((error) => next(error))
 }
