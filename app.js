@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 app.use((req, res, next) => {
+  res.locals.session = req.user
   res.locals.allCategories = categories
   next()
 })

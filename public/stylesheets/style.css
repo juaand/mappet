@@ -155,8 +155,28 @@ form {
   font-weight: 400;
 }
 
+form h2 {
+  color: #35396e;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+form .form-group {
+  margin-bottom: 3.2rem;
+}
+
+form .error-message {
+  background: #714b9c;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1.6rem;
+  margin-bottom: 2rem;
+}
+
 form label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  color: #fff;
+  padding-left: 1.6rem;
 }
 
 form #avatar {
@@ -167,21 +187,19 @@ form #avatar::-webkit-file-upload-button {
   visibility: hidden;
 }
 
-form #avatar::before {
-  content: 'Select avatar';
-  display: inline-block;
+form #avatar:before {
+  display: contents;
   background: transparent;
-  border: 0.1rem solid #fff;
-  border-radius: 4rem;
-  padding: 1rem 2rem;
+  border: 0;
+  padding: 1rem;
   outline: none;
   white-space: nowrap;
   cursor: pointer;
   font-size: 1.4rem;
-  color: #fff;
+  color: #ea7676;
 }
 
-form #avatar:hover::before {
+form #avatar:hover:before {
   border-color: #ea7676;
   color: #ea7676;
 }
@@ -190,12 +208,16 @@ form #avatar:active {
   outline: none;
 }
 
+form #avatar:before {
+  content: 'Select avatar';
+}
+
 form .form-control {
   font-size: 1.6rem;
   border-radius: 2.4rem;
   height: 4.5rem;
   padding-left: 2rem;
-  border: solid 0.1rem #fff;
+  border: solid 0.2rem #fff;
   background: rgba(255, 255, 255, 0.3);
   color: #fff;
 }
@@ -220,6 +242,60 @@ form .form-control.textarea {
   height: auto;
 }
 
+form .categories-block {
+  margin-bottom: 4rem;
+}
+
+form .form-check-label {
+  position: relative;
+  cursor: pointer;
+}
+
+form .form-check-label input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+}
+
+form .form-check-label :hover ~ .icon-box {
+  background: #35396e;
+  color: #fff;
+}
+
+form .form-check-label :checked ~ .icon-box {
+  background: #35396e;
+  color: #fff;
+}
+
+form .form-check-label .icon-box {
+  width: 10rem;
+  height: 10rem;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 1.6rem;
+  border: solid 0.2rem #35396e;
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+form .form-check-label .icon-box [class*='mappet-'] {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
 form .form-btn {
   background: #ea7676;
   color: #fff;
@@ -242,6 +318,55 @@ form hr {
 
 form .no-user a {
   color: #ea7676;
+}
+
+form .custom-range {
+  width: 90%;
+}
+
+form .custom-range::-webkit-slider-thumb {
+  background: #ea7676;
+}
+
+form .custom-range::-webkit-slider-thumb:active {
+  background: rgba(234, 118, 118, 0.3);
+}
+
+form .custom-range::-ms-slider-thumb {
+  background: #ea7676;
+}
+
+form .custom-range::-ms-slider-thumb:active {
+  background: rgba(234, 118, 118, 0.3);
+}
+
+form .custom-range::-moz-slider-thumb {
+  background: #ea7676;
+}
+
+form .custom-range::-moz-slider-thumb:active {
+  background: rgba(234, 118, 118, 0.3);
+}
+
+form .range-slider__value {
+  background: #35396e;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-radius: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 0rem;
 }
 
 .navbar {
@@ -575,7 +700,7 @@ form .no-user a {
 }
 
 .banner.register {
-  background: url(../images/register-bg.jpg) no-repeat center bottom/cover;
+  background: url(../images/register-bg.jpg) no-repeat center center/cover;
 }
 
 .banner.register .color-bg {
@@ -609,6 +734,47 @@ form .no-user a {
   border-radius: 0 15rem 0 15rem;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.attributtes form label,
+.results form label {
+  color: #35396e;
+}
+
+.attributtes form .form-control,
+.results form .form-control {
+  color: #35396e;
+  border-color: #35396e;
+}
+
+.attributtes form .form-control::-webkit-input-placeholder,
+.results form .form-control::-webkit-input-placeholder {
+  color: rgba(53, 57, 110, 0.8);
+}
+
+.attributtes form .form-control:-ms-input-placeholder,
+.results form .form-control:-ms-input-placeholder {
+  color: rgba(53, 57, 110, 0.8);
+}
+
+.attributtes form .form-control::-ms-input-placeholder,
+.results form .form-control::-ms-input-placeholder {
+  color: rgba(53, 57, 110, 0.8);
+}
+
+.attributtes form .form-control::placeholder,
+.results form .form-control::placeholder {
+  color: rgba(53, 57, 110, 0.8);
+}
+
+.attributtes .register-pets,
+.results .register-pets {
+  background: url(../images/register-pets.jpg) no-repeat center right/cover;
+  width: 40rem;
+  height: 30rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .attributtes {
@@ -1234,8 +1400,15 @@ footer .copy {
 }
 
 @media (max-width: 576px) {
+  h1.title {
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
   .banner .redes {
     display: none;
+  }
+  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single {
+    height: 40rem;
   }
   .navbar {
     background: rgba(53, 57, 110, 0.8);
@@ -1368,6 +1541,13 @@ footer .copy {
   .categories .cat-items .cat-card {
     background-size: 2rem 2rem !important;
     height: 9rem;
+  }
+  .results,
+  .attributtes {
+    border-radius: 0 7rem 0 0;
+  }
+  .register-pets {
+    display: none;
   }
   footer .logo {
     -webkit-box-pack: start;
