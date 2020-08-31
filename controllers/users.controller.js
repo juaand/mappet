@@ -3,6 +3,7 @@ const User = require('../models/user.model')
 
 module.exports.getHome = (req, res, next) => {
   Spot.find()
+    .sort({ createdAt: -1 })
     .populate('creatorId')
     .then((values) => {
       // res.json(values)
