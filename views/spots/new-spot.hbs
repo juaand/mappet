@@ -38,7 +38,7 @@
                 <input type="text" class="form-control" id="name" name="name">
               </div>
 
-              <div class="form-group">
+              <div class="form-group custom-textarea">
                 <label for="content">Description</label>
                 <textarea type="text" class="form-control textarea" id="content" name="content" rows="6"></textarea>
               </div>
@@ -53,7 +53,12 @@
 
               <div class="form-group">
                 <label for="url">Spot Website</label>
-                <input type="text" class="form-control" id="url" placeholder="Url" name="url">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">http://</span>
+                  </div>
+                  <input type="text" class="form-control" id="url" placeholder="www.your-site.com" name="url">
+                </div>
               </div>
 
             </div>
@@ -90,13 +95,24 @@
                 <div class="form-group col-12 col-sm-6">
                   <div class="form-group">
                     <label for="instagram">Instagram nickname</label>
-                    <input type="text" class="form-control" id="instagram" placeholder="instagram" name="instagram">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                      </div>
+                      <input type="text" class="form-control" id="instagram" placeholder="your instagram nickname"
+                        name="instagram">
+                    </div>
                   </div>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                   <div class="form-group">
                     <label for="facebook">Facebook page</label>
-                    <input type="text" class="form-control" id="facebook" placeholder="your-pagename" name="facebook">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">facebook.com/</span>
+                      </div>
+                      <input type="text" class="form-control" id="facebook" placeholder="your-pagename" name="facebook">
+                    </div>
                   </div>
                 </div>
               </div>

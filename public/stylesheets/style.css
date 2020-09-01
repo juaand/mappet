@@ -165,6 +165,15 @@ form .form-group {
   margin-bottom: 3.2rem;
 }
 
+form .form-group .input-group .input-group-text {
+  border-radius: 2.4rem 0 0 2.4rem;
+  background: #35396e;
+  font-size: 1.6rem;
+  color: #fff;
+  padding: 0 1rem 0 2rem;
+  border: solid 0.2rem #35396e;
+}
+
 form .error-message {
   background: #714b9c;
   color: #fff;
@@ -221,6 +230,7 @@ form .custom-file-label {
   border: solid 0.2rem #fff;
   background: rgba(255, 255, 255, 0.3);
   color: #fff;
+  overflow: hidden;
 }
 
 form .form-control::-webkit-input-placeholder,
@@ -246,6 +256,47 @@ form .custom-file-label::placeholder {
 form .form-control.textarea,
 form .custom-file-label.textarea {
   height: auto;
+  padding: 1rem 2rem;
+}
+
+form .custom-textarea {
+  margin-bottom: 1.6rem;
+}
+
+form .custom-file {
+  height: 4.5rem;
+}
+
+form .custom-file .custom-file-input:hover {
+  cursor: pointer;
+}
+
+form .custom-file .custom-file-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 8rem;
+}
+
+form .custom-file .custom-file-label:after {
+  height: 4.1rem;
+  color: #fff;
+  background-color: rgba(53, 57, 110, 0.4);
+  border-radius: 0 2.4rem 2.4rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+}
+
+form .custom-file .custom-file-label:hover {
+  cursor: pointer;
 }
 
 form .categories-block {

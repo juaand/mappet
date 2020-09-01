@@ -81,6 +81,17 @@ form {
 
   .form-group {
     margin-bottom: 3.2rem;
+
+    .input-group {
+      .input-group-text {
+        border-radius: 2.4rem 0 0 2.4rem;
+        background: $dark-purple;
+        font-size: 1.6rem;
+        color: $white;
+        padding: 0 1rem 0 2rem;
+        border: solid 0.2rem $dark-purple;
+      }
+    }
   }
 
   .error-message {
@@ -141,6 +152,7 @@ form {
     border: solid 0.2rem #fff;
     background: rgba(255, 255, 255, 0.3);
     color: #fff;
+    overflow: hidden;
 
     &::placeholder {
       color: $white;
@@ -148,6 +160,41 @@ form {
 
     &.textarea {
       height: auto;
+      padding: 1rem 2rem;
+    }
+  }
+
+  .custom-textarea {
+    margin-bottom: 1.6rem;
+  }
+
+  .custom-file {
+    height: 4.5rem;
+
+    .custom-file-input {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .custom-file-label {
+      display: flex;
+      align-items: center;
+      padding-right: 8rem;
+
+      &:after {
+        height: 4.1rem;
+        color: #fff;
+        background-color: rgba($dark-purple, 0.4);
+        border-radius: 0 2.4rem 2.4rem 0;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
