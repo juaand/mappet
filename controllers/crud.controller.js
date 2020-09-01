@@ -121,6 +121,7 @@ module.exports.saveSpot = (req, res, next) => {
     address: req.body.address,
     city: req.body.city,
     zipCode: req.body.zipcode,
+    days: req.body.days,
     open: req.body.open,
     close: req.body.close,
     instagram: req.body.instagram,

@@ -293,6 +293,7 @@ form .custom-file .custom-file-label:after {
       -ms-flex-align: center;
           align-items: center;
   z-index: 10;
+  padding: 0 2rem;
 }
 
 form .custom-file .custom-file-label:hover {
@@ -351,6 +352,21 @@ form .form-check-label .icon-box {
 form .form-check-label .icon-box [class*='mappet-'] {
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+form .days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3rem;
+}
+
+form .days label {
+  padding-left: 0;
+  padding-right: 2rem;
 }
 
 form .form-btn {
