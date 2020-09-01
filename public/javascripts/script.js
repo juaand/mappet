@@ -28,3 +28,9 @@ const rangeSlider = function () {
 }
 
 rangeSlider()
+
+const copyToClipboard = function () {
+  new ClipboardJS('.copy-clipboard')
+
+  document.querySelector('.copy-clipboard').classList.add('show-tooltip')
+}
