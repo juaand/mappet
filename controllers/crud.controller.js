@@ -106,17 +106,18 @@ module.exports.createSpot = (req, res, next) => {
 
 module.exports.saveSpot = (req, res, next) => {
   const id = req.params.id
+
   return Spot.create({
     name: req.body.name,
     content: req.body.content,
     creatorId: id,
-    pictures: req.files
-      ? req.files.map(
+    pictures: req.files ? req.files.map(
           (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
         )
       : '',
     url: req.body.url,
-    category: [...new Set(req.body.categories)],
+    // category: [...new Set(req.body.categories)],
+    category: req.body.categories,
     address: req.body.address,
     city: req.body.city,
     zipCode: req.body.zipcode,
