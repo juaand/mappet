@@ -190,6 +190,7 @@ form {
         display: flex;
         align-items: center;
         z-index: 10;
+        padding: 0 2rem;
       }
 
       &:hover {
@@ -240,6 +241,17 @@ form {
         font-size: 3rem;
         margin-bottom: 1rem;
       }
+    }
+  }
+
+  .days {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+
+    label {
+      padding-left: 0;
+      padding-right: 2rem;
     }
   }
 

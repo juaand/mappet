@@ -50,7 +50,8 @@ const spotSchema = new Schema(
     },
     days: {
       type: [String],
-      enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      default: []
     },
     email: {
       type: String,

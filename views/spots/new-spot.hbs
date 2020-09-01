@@ -55,7 +55,7 @@
                 <label for="url">Spot Website</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">http://</span>
+                    <span class="input-group-text">http://www.</span>
                   </div>
                   <input type="text" class="form-control" id="url" placeholder="www.your-site.com" name="url">
                 </div>
@@ -119,8 +119,38 @@
             </div>
             <div class="col-12">
               <hr>
-              <h2>Working hours</h2>
+              <h2>Select working days & hours</h2>
               <div class="row">
+                <div class="col-12 days">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="mon" name="days" value="Mon">
+                    <label class="form-check-label" for="mon">Mon</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tue" name="days" value="Tue">
+                    <label class="form-check-label" for="tue">Tue</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="wed" name="days" value="Wed">
+                    <label class="form-check-label" for="wed">Wed</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="thu" name="days" value="Thu">
+                    <label class="form-check-label" for="thu">Thu</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="fri" name="days" value="Fri">
+                    <label class="form-check-label" for="fri">Fri</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="sat" name="days" value="Sat">
+                    <label class="form-check-label" for="sat">Sat</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="sun" name="days" value="Sun">
+                    <label class="form-check-label" for="sun">Sun</label>
+                  </div>
+                </div>
                 <div class="form-group col-12 col-sm-6">
                   <div class="range-slider">
                     <label for="open">Open hour</label>
