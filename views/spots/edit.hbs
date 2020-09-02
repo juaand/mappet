@@ -1,4 +1,20 @@
-<section class="container-fluid banner new-spot">
+<section class="container-fluid banner single">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      {{#each spot.pictures as |picture|}}
+      <div class="carousel-item" style="background: url({{picture}}) no-repeat center bottom / cover;">
+      </div>
+      {{/each}}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
   <div class="redes">
     <a href="/"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-instagram fa-w-14 fa-3x">
@@ -20,33 +36,37 @@
           class=""></path>
       </svg>
     </a>
+  </div>
 </section>
-<section class="container-fluid results">
+<section class="container-fluid results single-results">
   <div class="register-pets"></div>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-10">
-        <h1 class="title mt-0">Upload your Spot</h1>
-        <form action="/spot/{{user._id}}/new" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title mt-0">{{spot.name}}</h1>
+        <hr>
+        <form action="/{{spot.category.[0]}}/{{user._id}}/update" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-12">
-              <h2>Spot info</h2>
+              <h2>Edit info</h2>
             </div>
             <div class="col-12 col-sm-6">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value="{{spot.name}}">
               </div>
 
-              <div class="form-group custom-textarea">
+              <div class="form-group">
                 <label for="content">Description</label>
-                <textarea type="text" class="form-control textarea" id="content" name="content" rows="6"></textarea>
+                <textarea type="text" class="form-control textarea" id="content" name="content"
+                  rows="6">{{spot.content}}</textarea>
               </div>
 
               <div class="form-group">
                 <label>Pics</label>
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="pictures" name="pictures" multiple>
+                  <input type="file" class="custom-file-input" id="pictures" name="pictures" value="{{spot.pictures}}"
+                    multiple>
                   <label class="custom-file-label" for="pictures">Choose file</label>
                 </div>
               </div>
@@ -57,7 +77,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">http://www.</span>
                   </div>
-                  <input type="text" class="form-control" id="url" placeholder="www.your-site.com" name="url">
+                  <input type="text" class="form-control" id="url" placeholder="www.your-site.com" name="url"
+                    value="{{spot.url}}">
                 </div>
               </div>
 
@@ -66,26 +87,30 @@
 
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" placeholder="Address" name="address" autocomplete="off">
+                <input type="text" class="form-control" id="address" placeholder="Address" name="address"
+                  value="{{spot.address}}">
               </div>
 
               <div class="form-group">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                <input type="text" class="form-control" id="city" placeholder="City" name="city" value="{{spot.city}}">
               </div>
 
               <div class="form-group">
                 <label for="zipCode">Zip code</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Zip code" name="zipCode">
+                <input type="text" class="form-control" id="zipCode" placeholder="Zip code" name="zipCode"
+                  value="{{spot.zipCode}}">
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
+                <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone"
+                  value="{{spot.phone}}">
               </div>
 
               <div class="form-group">
                 <label for="email">Spot email</label>
-                <input type="text" class="form-control" id="email" placeholder="email" name="email">
+                <input type="text" class="form-control" id="email" placeholder="email" name="email"
+                  value="{{spot.email}}">
               </div>
             </div>
             <div class="col-12">
@@ -100,7 +125,7 @@
                         <span class="input-group-text">@</span>
                       </div>
                       <input type="text" class="form-control" id="instagram" placeholder="your instagram nickname"
-                        name="instagram">
+                        name="instagram" value="{{spot.instagram}}">
                     </div>
                   </div>
                 </div>
@@ -111,7 +136,8 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">facebook.com/</span>
                       </div>
-                      <input type="text" class="form-control" id="facebook" placeholder="your-pagename" name="facebook">
+                      <input type="text" class="form-control" id="facebook" placeholder="your-pagename" name="facebook"
+                        value="{{spot.facebook}}">
                     </div>
                   </div>
                 </div>
@@ -119,51 +145,21 @@
             </div>
             <div class="col-12">
               <hr>
-              <h2>Select working days & hours</h2>
+              <h2>Working hours</h2>
               <div class="row">
-                <div class="col-12 days">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="mon" name="days" value="Mon">
-                    <label class="form-check-label" for="mon">Mon</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="tue" name="days" value="Tue">
-                    <label class="form-check-label" for="tue">Tue</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="wed" name="days" value="Wed">
-                    <label class="form-check-label" for="wed">Wed</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="thu" name="days" value="Thu">
-                    <label class="form-check-label" for="thu">Thu</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="fri" name="days" value="Fri">
-                    <label class="form-check-label" for="fri">Fri</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="sat" name="days" value="Sat">
-                    <label class="form-check-label" for="sat">Sat</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="sun" name="days" value="Sun">
-                    <label class="form-check-label" for="sun">Sun</label>
-                  </div>
-                </div>
                 <div class="form-group col-12 col-sm-6">
                   <div class="range-slider">
                     <label for="open">Open hour</label>
-                    <input class="custom-range range-slider__range" type="range" value="6" min="0" max="12" step="1"
-                      name="open">
+                    <input class="custom-range range-slider__range" type="range" value="{{spot.open}}" min="0" max="12"
+                      step="1" name="open">
                     <span class="range-slider__value">0</span>
                   </div>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                   <div class="range-slider">
                     <label for="close">Close hour</label>
-                    <input class="custom-range range-slider__range" type="range" value="18" min="12" max="24" step="1"
-                      name="close">
+                    <input class="custom-range range-slider__range" type="range" value="{{spot.close}}" min="12"
+                      max="24" step="1" name="close">
                     <span class="range-slider__value">0</span>
                   </div>
                 </div>
@@ -185,8 +181,7 @@
               </label>
               {{/each}}
             </div>
-            <button type="submit" class="btn form-btn">Create a spot
-            </button>
+            <button type="submit" class="btn form-btn">Edit spot</button>
           </div>
         </form>
       </div>

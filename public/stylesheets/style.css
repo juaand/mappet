@@ -375,8 +375,11 @@ form .form-btn {
   padding: 1rem 4rem;
   border-radius: 4rem;
   font-size: 1.6rem;
-  margin-top: 2rem;
-  width: 100%;
+  margin: 2rem auto auto auto;
+  width: 30%;
+  border: 0;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
 }
 
 form .form-btn:hover {
@@ -898,6 +901,18 @@ form .range-slider__value {
           box-shadow: 0 -15rem 0 #35396e;
 }
 
+.results .big-avatar {
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  display: block;
+  left: 50%;
+  margin-left: -8rem;
+  top: -8rem;
+  border-radius: 50%;
+  border: solid 0.4rem #fff;
+}
+
 .results,
 .slider {
   background: #fff;
@@ -1128,6 +1143,40 @@ form .range-slider__value {
           justify-content: center;
 }
 
+.single-results .spot-info .make-comment {
+  position: relative;
+}
+
+.single-results .spot-info .make-comment .btn {
+  background: #ea7676;
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  right: 3rem;
+  bottom: -2rem;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.single-results .spot-info .make-comment .btn:hover {
+  background: #35396e;
+}
+
+.single-results .spot-info .make-comment .btn svg {
+  width: 1.6rem;
+}
+
 .single-results .rating {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -1283,11 +1332,17 @@ form .range-slider__value {
   display: block;
 }
 
+.single-results .comments .date {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .single-results .comments .avatar {
   border-radius: 6rem;
   display: block;
   width: 8rem;
   height: 8rem;
+  border: solid 0.3rem #ea7676;
 }
 
 .single-results .comments .content {
@@ -1339,6 +1394,98 @@ form .range-slider__value {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.single-results .user-info {
+  padding-top: 4rem;
+}
+
+.single-results .user-info .spot-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.single-results .user-info p {
+  margin-bottom: 0;
+}
+
+.single-results .user-info a {
+  color: #ea7676;
+  font-weight: 600;
+}
+
+.single-results .user-info .avatar {
+  width: 10rem;
+  height: 10rem;
+  display: block;
+  border: solid 0.4rem #ea7676;
+  border-radius: 5rem;
+}
+
+.single-results .user-info .edit-spot {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ea7676;
+  color: #fff;
+  margin: 6rem auto auto auto;
+  padding: 1rem;
+  border-radius: 4rem;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.single-results .user-info .edit-spot:hover {
+  background: #35396e;
+  text-decoration: none;
+}
+
+.delete-spot {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  color: #ea7676;
+  margin: 2rem auto auto auto;
+  padding: 1rem;
+  border-radius: 4rem;
+  border: solid 0.1rem #ea7676;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.delete-spot:hover {
+  background: #35396e;
+  text-decoration: none;
+  color: #fff;
+  border-color: #35396e;
 }
 
 #mapModal .modal-dialog,
@@ -1758,6 +1905,10 @@ footer .copy {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.pac-container:after {
+  display: none;
 }
 
 /* Slider */

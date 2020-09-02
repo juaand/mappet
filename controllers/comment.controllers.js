@@ -1,10 +1,21 @@
-const Spot = require('../models/spot.model')
-require('../models/comment.model')
-require('../models/user.model')
+// controllers/comment.controllers.js
 
-module.exports.getSpot = (req, res, next) => {
-  const id = req.params.id
+const User = require('../models/user.model')
+const Comment = require('../models/comment.model')
+const Spot = require('../models/spot.model')
+const Pet = require('../models/pet.model')
+
+module.exports.saveComment = (req, res, next) => {
   const user = req.session.currentUser
+  const id = req.params.id
+
+  Comment.create({
+    content: req.body.content,
+    authorId: user._id,
+    SpotId: id
+  })
+
+  console.log(`ESTE ES EL ID DEL SPOT ${id}`)
 
   Spot.findById(id)
     .populate('comments')
@@ -22,8 +33,6 @@ module.exports.getSpot = (req, res, next) => {
       }
     })
     .then((spot) => {
-      // res.json(spot.comments)
-      // res.json(spot.creatorId.pets)
       if (user) {
         if (user._id == spot.creatorId._id) {
           const owner = true

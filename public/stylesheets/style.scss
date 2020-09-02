@@ -261,8 +261,10 @@ form {
     padding: 1rem 4rem;
     border-radius: 4rem;
     font-size: 1.6rem;
-    margin-top: 2rem;
-    width: 100%;
+    margin: 2rem auto auto auto;
+    width: 30%;
+    border: 0;
+    transition: all 200ms ease;
 
     &:hover {
       color: $white;
@@ -706,6 +708,20 @@ form {
   }
 }
 
+.results {
+  .big-avatar {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    display: block;
+    left: 50%;
+    margin-left: -8rem;
+    top: -8rem;
+    border-radius: 50%;
+    border: solid 0.4rem $white;
+  }
+}
+
 .results,
 .slider {
   background: $white;
@@ -887,6 +903,32 @@ form {
       align-items: center;
       justify-content: center;
     }
+
+    .make-comment {
+      position: relative;
+      .btn {
+        background: $pink;
+        color: $white;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: absolute;
+        right: 3rem;
+        bottom: -2rem;
+        transition: all 200ms ease;
+
+        &:hover {
+          background: $dark-purple;
+        }
+
+        svg {
+          width: 1.6rem;
+        }
+      }
+    }
   }
 
   .rating {
@@ -1009,11 +1051,17 @@ form {
       display: block;
     }
 
+    .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
     .avatar {
       border-radius: 6rem;
       display: block;
       width: 8rem;
       height: 8rem;
+      border: solid 0.3rem $pink;
     }
 
     .content {
@@ -1054,6 +1102,75 @@ form {
       display: flex;
       justify-content: center;
     }
+  }
+
+  .user-info {
+    padding-top: 4rem;
+
+    .spot-info {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $pink;
+      font-weight: 600;
+    }
+
+    .avatar {
+      width: 10rem;
+      height: 10rem;
+      display: block;
+      border: solid 0.4rem $pink;
+      border-radius: 5rem;
+    }
+
+    .edit-spot {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $pink;
+      color: $white;
+      margin: 6rem auto auto auto;
+      padding: 1rem;
+      border-radius: 4rem;
+      transition: all 200ms ease;
+
+      &:hover {
+        background: $dark-purple;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.delete-spot {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $white;
+  color: $pink;
+  margin: 2rem auto auto auto;
+  padding: 1rem;
+  border-radius: 4rem;
+  border: solid 0.1rem $pink;
+  transition: all 200ms ease;
+
+  &:hover {
+    background: $dark-purple;
+    text-decoration: none;
+    color: $white;
+    border-color: $dark-purple;
   }
 }
 
@@ -1431,6 +1548,12 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  }
+}
+
+.pac-container {
+  &:after {
+    display: none;
   }
 }
 
