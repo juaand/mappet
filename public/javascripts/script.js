@@ -34,3 +34,19 @@ const copyToClipboard = function () {
 
   document.querySelector('.copy-clipboard').classList.add('show-tooltip')
 }
+
+function like(e) {
+  const button = e.currentTarget
+
+  const like = `${button.id}/like`
+  // const user = session.currentUser
+  axios
+    .post(like)
+    .then((res) => {
+      console.log(res)
+      const add = res.data.like
+      button.querySelector('.likes-count').innerText =
+        Number(button.querySelector('.likes-count').innerText) + add
+    })
+    .catch(console.error)
+}
