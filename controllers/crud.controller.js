@@ -52,7 +52,6 @@ module.exports.saveEditedUser = (req, res, next) => {
       console.log(req.body)
       if (req.body.avatar) {
         return User.findByIdAndUpdate(id, {
-          // username: username
           name: req.body.name,
           avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
           password: hashedPassword,
@@ -64,7 +63,6 @@ module.exports.saveEditedUser = (req, res, next) => {
           .catch((error) => next(error))
       } else {
         return User.findByIdAndUpdate(id, {
-          // username: username
           name: req.body.name,
           password: hashedPassword,
           bio: req.body.bio
@@ -111,7 +109,8 @@ module.exports.saveSpot = (req, res, next) => {
     name: req.body.name,
     content: req.body.content,
     creatorId: id,
-    pictures: req.files ? req.files.map(
+    pictures: req.files
+      ? req.files.map(
           (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
         )
       : '',
@@ -131,6 +130,87 @@ module.exports.saveSpot = (req, res, next) => {
   })
     .then(() => {
       res.redirect(`/`)
+    })
+    .catch((error) => next(error))
+}
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////// EDIT SPOTS ////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+module.exports.editSpot = (req, res, next) => {
+  const id = req.params.id
+  Spot.findById(id).then((spot) => {
+    res.render('spots/edit', { spot, title: 'Edit ' })
+  })
+}
+
+module.exports.updateSpot = (req, res, next) => {
+  const id = req.params.id
+  const category = req.params.category
+
+  if (req.body.pictures) {
+    Spot.findByIdAndUpdate(id, {
+      name: req.body.name,
+      content: req.body.content,
+      creatorId: id,
+      pictures: req.files
+        ? req.files.map(
+            (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
+          )
+        : '',
+      url: req.body.url,
+      category: req.body.categories,
+      address: req.body.address,
+      city: req.body.city,
+      zipCode: req.body.zipcode,
+      days: req.body.days,
+      open: req.body.open,
+      close: req.body.close,
+      instagram: req.body.instagram,
+      facebook: req.body.facebook,
+      email: req.body.email,
+      phone: req.body.phone
+    })
+      .then(() => {
+        console.log(id)
+        res.redirect(`/${category}/${id}/update`)
+      })
+      .catch((error) => next(error))
+  } else {
+    Spot.findByIdAndUpdate(id, {
+      name: req.body.name,
+      content: req.body.content,
+      creatorId: id,
+      url: req.body.url,
+      category: req.body.categories,
+      address: req.body.address,
+      city: req.body.city,
+      zipCode: req.body.zipcode,
+      days: req.body.days,
+      open: req.body.open,
+      close: req.body.close,
+      instagram: req.body.instagram,
+      facebook: req.body.facebook,
+      email: req.body.email,
+      phone: req.body.phone
+    })
+      .then(() => {
+        res.redirect(`/${category}/${id}/update`)
+      })
+      .catch((error) => next(error))
+  }
+}
+
+module.exports.deleteSpot = (req, res, next) => {
+  const id = req.params.id
+  Spot.findByIdAndDelete(id)
+    .then(() => {
+      if (req.session.currentUser.role === 'ADMIN') {
+        res.redirect('/admin')
+      } else {
+        res.redirect('/')
+      }
     })
     .catch((error) => next(error))
 }

@@ -1,4 +1,4 @@
-// routes/auth.routes.js
+// controllers/auth.controllers.js
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 const User = require('../models/user.model')

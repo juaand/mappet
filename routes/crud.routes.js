@@ -6,7 +6,6 @@ const uploads = require('../config/multer.config')
 const routeGuard = require('../middlewares/session.middleware')
 const crudController = require('../controllers/crud.controller')
 
-
 router.get(
   '/user-profile/:id',
   routeGuard.isAuthenticated,
@@ -23,7 +22,8 @@ router.post(
 router.get(
   '/user-profile/:id/delete',
   routeGuard.isAuthenticated,
-  crudController.deleteUser)
+  crudController.deleteUser
+)
 
 router.get(
   '/spot/:id/new',
@@ -38,10 +38,23 @@ router.post(
   crudController.saveSpot
 )
 
+router.get(
+  '/:category/:id/update',
+  routeGuard.isAuthenticated,
+  crudController.editSpot
+)
+
+router.post(
+  '/:category/:id/update',
+  routeGuard.isAuthenticated,
+  uploads.array('pictures'),
+  crudController.updateSpot
+)
+
+router.get(
+  '/:category/:id/delete',
+  routeGuard.isAuthenticated,
+  crudController.deleteSpot
+)
+
 module.exports = router
-
-
-
-
-
-
