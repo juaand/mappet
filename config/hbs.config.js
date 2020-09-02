@@ -18,3 +18,7 @@ hbs.registerHelper('ifvalue', function (conditional, options) {
     return options.inverse(this)
   }
 })
+
+hbs.registerHelper('small', (cat) => {
+  return cat.toLowerCase()
+})

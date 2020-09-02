@@ -304,27 +304,7 @@ form .categories-block {
   margin-bottom: 4rem;
 }
 
-form .form-check-label {
-  position: relative;
-  cursor: pointer;
-}
-
-form .form-check-label input[type='checkbox'] {
-  position: absolute;
-  opacity: 0;
-}
-
-form .form-check-label :hover ~ .icon-box {
-  background: #35396e;
-  color: #fff;
-}
-
-form .form-check-label :checked ~ .icon-box {
-  background: #35396e;
-  color: #fff;
-}
-
-form .form-check-label .icon-box {
+form .icon-box {
   width: 10rem;
   height: 10rem;
   background: #fff;
@@ -347,11 +327,50 @@ form .form-check-label .icon-box {
   font-size: 1.4rem;
   margin: 0.5rem;
   padding: 1rem;
+  color: #fff;
 }
 
-form .form-check-label .icon-box [class*='mappet-'] {
+form .icon-box [class*='mappet-'] {
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+form .icon-box span {
+  color: #35396e;
+}
+
+form .icon-box:hover {
+  background: #35396e;
+  color: #fff;
+  cursor: pointer;
+}
+
+form .icon-box:hover > span {
+  color: #fff;
+}
+
+form .form-check-label {
+  position: relative;
+  cursor: pointer;
+}
+
+form .form-check-label input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+}
+
+form .form-check-label :hover ~ .icon-box {
+  background: #35396e;
+  color: #fff;
+}
+
+form .form-check-label :checked ~ .icon-box {
+  background: #35396e;
+  color: #fff;
+}
+
+form .form-check-label :checked ~ .icon-box span {
+  color: #fff;
 }
 
 form .days {

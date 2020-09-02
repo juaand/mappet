@@ -203,6 +203,42 @@ form {
     margin-bottom: 4rem;
   }
 
+  .icon-box {
+    width: 10rem;
+    height: 10rem;
+    background: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1.6rem;
+    border: solid 0.2rem $dark-purple;
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    color: $white;
+
+    [class*='mappet-'] {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    span {
+      color: $dark-purple;
+    }
+
+    &:hover {
+      background: $dark-purple;
+      color: $white;
+      cursor: pointer;
+
+      > span {
+        color: $white;
+      }
+    }
+  }
+
   .form-check-label {
     position: relative;
     cursor: pointer;
@@ -220,26 +256,9 @@ form {
     & :checked ~ .icon-box {
       background: $dark-purple;
       color: $white;
-    }
 
-    & .icon-box {
-      width: 10rem;
-      height: 10rem;
-      background: $white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 1.6rem;
-      border: solid 0.2rem $dark-purple;
-      text-align: center;
-      font-size: 1.4rem;
-      margin: 0.5rem;
-      padding: 1rem;
-
-      [class*='mappet-'] {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+      span {
+        color: $white;
       }
     }
   }
