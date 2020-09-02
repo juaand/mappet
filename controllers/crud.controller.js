@@ -153,7 +153,7 @@ module.exports.updateSpot = (req, res, next) => {
     Spot.findByIdAndUpdate(id, {
       name: req.body.name,
       content: req.body.content,
-      creatorId: id,
+      creatorId: req.session.currentUser._id,
       pictures: req.files
         ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
@@ -174,14 +174,14 @@ module.exports.updateSpot = (req, res, next) => {
     })
       .then(() => {
         console.log(id)
-        res.redirect(`/${category}/${id}/update`)
+        res.redirect(`/${category}/${id}`)
       })
       .catch((error) => next(error))
   } else {
     Spot.findByIdAndUpdate(id, {
       name: req.body.name,
       content: req.body.content,
-      creatorId: id,
+      creatorId: req.session.currentUser._id,
       url: req.body.url,
       category: req.body.categories,
       address: req.body.address,
@@ -196,7 +196,7 @@ module.exports.updateSpot = (req, res, next) => {
       phone: req.body.phone
     })
       .then(() => {
-        res.redirect(`/${category}/${id}/update`)
+        res.redirect(`/${category}/${id}`)
       })
       .catch((error) => next(error))
   }

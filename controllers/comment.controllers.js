@@ -12,7 +12,7 @@ module.exports.saveComment = (req, res, next) => {
   Comment.create({
     content: req.body.content,
     authorId: user._id,
-    SpotId: id
+    spotId: id
   })
 
   console.log(`ESTE ES EL ID DEL SPOT ${id}`)
