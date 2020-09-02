@@ -45,7 +45,7 @@
       <div class="col-12">
         <h1 class="title mt-0">{{spot.name}}</h1>
         <hr>
-        <form action="/{{spot.category.[0]}}/{{user._id}}/update" method="POST" enctype="multipart/form-data">
+        <form action="/{{spot.category.[0]}}/{{spot._id}}/update" method="POST" enctype="multipart/form-data">
           <div class="row">
             <div class="col-12">
               <h2>Edit info</h2>
@@ -170,7 +170,18 @@
               <h2>Choose categories</h2>
             </div>
             <div class="col-12 d-flex flex-wrap justify-content-center categories-block">
-              {{#each allCategories as |category|}}
+              {{#each spot.category as |category|}}
+              <label class="form-check-label" for="{{category}}">
+                <input class="form-check-input" type="checkbox" id="{{category}}" value="{{category}}" name="categories"
+                  checked>
+                <div class="icon-box">
+                  <span class="mappet-{{small category}}"></span>
+                  {{category}}
+                </div>
+              </label>
+              {{/each}}
+
+              {{!-- {{#each allCategories as |category|}}
               <label class="form-check-label" for="{{category.id}}">
                 <input class="form-check-input" type="checkbox" id="{{category.id}}" value="{{category.master_cat}}"
                   name="categories">
@@ -179,7 +190,7 @@
                   {{category.name}}
                 </div>
               </label>
-              {{/each}}
+              {{/each}} --}}
             </div>
             <button type="submit" class="btn form-btn">Edit spot</button>
           </div>
