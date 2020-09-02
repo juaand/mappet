@@ -1,6 +1,8 @@
 const Spot = require('../models/spot.model')
-require('../models/comment.model')
-require('../models/user.model')
+const Comments = require('../models/comment.model')
+const User = require('../models/user.model')
+const Like = require('../models/like.model')
+
 
 module.exports.getSpot = (req, res, next) => {
   const id = req.params.id
@@ -21,6 +23,7 @@ module.exports.getSpot = (req, res, next) => {
         path: 'pets'
       }
     })
+    .populate('likes')
     .then((spot) => {
       // res.json(spot.comments)
       // res.json(spot.creatorId.pets)
@@ -41,4 +44,28 @@ module.exports.getSpot = (req, res, next) => {
       }
     })
     .catch((error) => next(error))
+}
+
+module.exports.newLike = (req, res, next) => {
+  const params = { spot: req.params.id, user: req.session.currentUser._id }
+console.log(params)
+Like.findOne(params)
+  .then((like) => {
+    if (like) {
+      Like.findByIdAndRemove(like._id)
+        .then(() => {
+          res.json({ like: -1 })
+        })
+        .catch(next)
+    } else {
+      const newLike = new Like(params)
+      newLike
+        .save()
+        .then(() => {
+          res.json({ like: 1 })
+        })
+        .catch(next)
+    }
+  })
+  .catch(next)
 }
