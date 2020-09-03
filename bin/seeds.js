@@ -28,18 +28,18 @@ Promise.all([
 
     user.save().then((user) => {
       userIds.push(user._id)
-      for (let j = 0; j < 2; j++) {
+      for (let j = 0; j < 3; j++) {
         const pet = new Pet({
           creatorId: user._id,
           animal: 'dog',
           name: faker.name.firstName(),
           age: faker.random.number(),
           breed: faker.lorem.word(),
-          picPath: faker.image.animals()
+          picPath: faker.random.image('animal')
         })
         pet.save()
       }
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < 4; j++) {
         const spot = new Spot({
           creatorId: user._id,
           name: faker.name.title(),
@@ -70,7 +70,7 @@ Promise.all([
           close: '16:00-20:30',
           email: faker.internet.email(),
           instagram: faker.name.firstName(),
-          facebook: faker.intener.url(),
+          facebook: faker.internet.url(),
           createdAt: faker.date.past()
         })
         spot.save().then((p) => {
@@ -81,7 +81,6 @@ Promise.all([
               content: faker.lorem.paragraph(),
               createdAt: faker.date.past()
             })
-
             comment.save()
           }
         })

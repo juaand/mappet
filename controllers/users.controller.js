@@ -1,6 +1,7 @@
 const Spot = require('../models/spot.model')
 const User = require('../models/user.model')
 const Pet = require('../models/pet.model')
+const Like = require('../models/like.model')
 
 module.exports.getHome = (req, res, next) => {
   Spot.find()
@@ -21,6 +22,15 @@ module.exports.getUserSpots = (req, res, next) => {
   const user = User.findById(id)
   const pets = Pet.find({ creatorId: id })
   const spots = Spot.find({ creatorId: id })
+    .populate('comments')
+    .populate({
+      path: 'comments',
+      populate: {
+        path: 'authorId',
+        model: 'User'
+      }
+    })
+    .populate('likes')
 
   Promise.all([user, pets, spots])
     .then((values) => {
