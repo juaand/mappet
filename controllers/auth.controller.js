@@ -75,6 +75,9 @@ module.exports.getRegister = (req, res, next) => {
 
 module.exports.postRegister = (req, res, next) => {
   const { username, email, avatar, password } = req.body
+
+  res.json(req.body)
+
   if (!username || !email || !password) {
     res.render('auth/register', {
       errorMessage:

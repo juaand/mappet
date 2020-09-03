@@ -21,7 +21,7 @@ const petSchema = new Schema(
     breed: {
       type: String
     },
-    picPath: {
+    avatar: {
       type: String
     }
   },

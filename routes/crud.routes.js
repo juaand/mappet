@@ -57,4 +57,13 @@ router.get(
   crudController.deleteSpot
 )
 
+router.get('/pets/:id', routeGuard.isAuthenticated, crudController.addPet)
+
+router.post(
+  '/pets/:id',
+  routeGuard.isAuthenticated,
+  uploads.single('avatar'),
+  crudController.createPet
+)
+
 module.exports = router

@@ -22,50 +22,40 @@
     </a>
 </section>
 <section class="container-fluid results">
-  <div class="big-avatar" style="background: url({{user.avatar}}) no-repeat center center / cover;"></div>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-6">
-        <h1>{{user.name}}'s profile</h1>
-        <form action="/user-profile/{{user._id}}/edit" method="POST" enctype="multipart/form-data">
+        <h1>{{user.name}} | add new pet</h1>
+        {{#if message}}
+        <p>{{message}}</p>
+        {{/if}}
+        <form action="/pets/{{user._id}}" method="POST" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Pet name</label>
             <input name="name" type="text" class="form-control {{#if error.name }}is-invalid{{/if}}" id="name"
-              placeholder="Enter name" value="{{ user.name }}">
+              placeholder="Enter name">
             {{#if error.name}}
             <div class="invalid-feedback">
               {{error.name.message}}
             </div>
             {{/if}}
           </div>
-          <fieldset disabled>
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input name="username" type="text" class="form-control {{#if error.username }}is-invalid{{/if}}"
-                id="username" placeholder="Enter username" value="{{ user.username }}">
-              {{#if error.username}}
-              <div class="invalid-feedback">
-                {{error.username.message}}
-              </div>
-              {{/if}}
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input name="email" type="email" class="form-control {{#if error.email }}is-invalid{{/if}}" id="email"
-                placeholder="Enter email" value="{{ user.email }}">
-              {{#if error.email}}
-              <div class="invalid-feedback">
-                {{error.email.message}}
-              </div>
-              {{/if}}
-            </div>
-          </fieldset>
           <div class="form-group">
-            <label>Avatar</label>
+            <label for="animal">Pet kind</label>
+            <input name="animal" type="text" class="form-control {{#if error.animal }}is-invalid{{/if}}" id="animal"
+              placeholder="Enter animal kind">
+            {{#if error.animal}}
+            <div class="invalid-feedback">
+              {{error.animal.message}}
+            </div>
+            {{/if}}
+          </div>
+          <div class="form-group">
+            <label>Pet pic</label>
             <div class="custom-file">
               <input type="file" class="custom-file-input  {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
-                name="avatar" value="{{ user.avatar }}">
-              <label class="custom-file-label" for="avatar">Choose avatar</label>
+                name="avatar">
+              <label class="custom-file-label" for="avatar">Choose pic</label>
               {{#if error.avatar}}
               <div class="invalid-feedback">
                 {{error.avatar.message}}
@@ -74,34 +64,29 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="password">password</label>
-            <input name="password" type="password" class="form-control {{#if error.password }}is-invalid{{/if}}"
-              id="password" placeholder="Enter password" value="{{ user.password }}">
-            {{#if error.password}}
+            <label for="age">Pet age</label>
+            <input name="age" type="number" class="form-control {{#if error.age }}is-invalid{{/if}}" id="age"
+              placeholder="Enter age">
+            {{#if error.age}}
             <div class="invalid-feedback">
-              {{error.password.message}}
+              {{error.age.message}}
             </div>
             {{/if}}
           </div>
           <div class="form-group">
-            <label for="bio">Bio</label>
-            <textarea name="bio" type="text" class="form-control {{#if error.bio }}is-invalid{{/if}} textarea" id="bio"
-              placeholder="Enter bio" value="{{ user.bio }}" rows="4"></textarea>
-            {{#if error.bio}}
+            <label for="breed">Pet breed</label>
+            <input name="breed" type="text" class="form-control {{#if error.breed }}is-invalid{{/if}}" id="breed"
+              placeholder="Enter breed">
+            {{#if error.breed}}
             <div class="invalid-feedback">
-              {{error.bio.message}}
+              {{error.breed.message}}
             </div>
             {{/if}}
           </div>
           <div class="row">
             <div class="col-12 col-sm-6">
               <button type="submit" class="form-btn w-100">
-                Update profile
-              </button>
-            </div>
-            <div class="col-12 col-sm-6">
-              <button type="button" class="delete-spot" data-toggle="modal" data-target="#delete">
-                Delete profile
+                Add pet
               </button>
             </div>
           </div>
@@ -110,22 +95,3 @@
     </div>
   </div>
 </section>
-
-
-<!-- Modal -->
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="title" id="deleteLabel">Delete profile</h1>
-      </div>
-      <div class="modal-body">
-        We are sorry you'll leave mappet. Are you sure?
-      </div>
-      <div class="modal-footer">
-        <a type="button" class="close-btn" data-dismiss="modal">Close</button>
-          <a href="/user-profile/{{user._id}}/delete" class="btn">Delete profile</a>
-      </div>
-    </div>
-  </div>
-</div>

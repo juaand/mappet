@@ -35,7 +35,7 @@ Promise.all([
           name: faker.name.firstName(),
           age: faker.random.number(),
           breed: faker.lorem.word(),
-          picPath: faker.random.image('animal')
+          avatar: faker.random.image('animal')
         })
         pet.save()
       }

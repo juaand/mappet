@@ -2,6 +2,7 @@
 
 const User = require('../models/user.model')
 const Spot = require('../models/spot.model')
+const Pet = require('../models/pet.model')
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 
@@ -109,7 +110,8 @@ module.exports.saveSpot = (req, res, next) => {
     name: req.body.name,
     content: req.body.content,
     creatorId: id,
-    pictures: req.files ? req.files.map(
+    pictures: req.files
+      ? req.files.map(
           (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
         )
       : '',
@@ -153,7 +155,8 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files ? req.files.map(
+      pictures: req.files
+        ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : '',
@@ -211,4 +214,31 @@ module.exports.deleteSpot = (req, res, next) => {
       }
     })
     .catch((error) => next(error))
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////// ADD PET /////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+module.exports.addPet = (req, res, next) => {
+  res.render('pets/add-pet', { title: 'add your pet' })
+}
+
+module.exports.createPet = (req, res, next) => {
+  const id = req.params.id
+  req.body.avatar = req.file ? req.file.filename : undefined
+
+  Pet.create({
+    creatorId: id,
+    animal: req.body.animal,
+    name: req.body.name,
+    avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
+    age: req.body.age,
+    breed: req.body.breed
+  }).then((pet) => {
+    res.render('pets/add-pet', {
+      title: 'add your pet',
+      message: 'Pet added sucefully'
+    })
+  })
 }
