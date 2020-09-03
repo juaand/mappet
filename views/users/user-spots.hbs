@@ -1,4 +1,4 @@
-<section class="container-fluid banner register">
+<section class="container-fluid banner user-single">
   <div class="redes">
     <a href="/"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -22,55 +22,99 @@
     </a>
 </section>
 <section class="container-fluid results">
-  <div class="big-avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;"></div>
+  <div class="big-avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;">
+    <span class="cat-label">
+      <div class="label-dark" tabindex="0">{{profile.level}}</div>
+    </span>
+  </div>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-6">
-        <h1>{{profile.name}} spots</h1>
-
-        {{#each spots as |spot|}}
-        <div class="card">
-          <div class="card-header"
-            style="background: url(http://lorempixel.com/640/480/nature) no-repeat center center / cover;">
+      <div class="col-12 col-sm-5 user-single-profile">
+        <p>Hi guys! I'm <strong>{{profile.name}}</strong></p>
+        <p>better known as <strong>@{{profile.username}}</strong></p>
+        {{#if profile.bio}}
+        <strong>my bio</strong>
+        <p>{{profile.bio}}</p>
+        {{else}}
+        <p>Nothing to say about me...</p>
+        {{/if}}
+        <hr>
+      </div>
+      <div class="col-12">
+        {{#if spots}}
+        <h1 class="title">{{profile.name}} <strong>spots</strong></h1>
+        <div class="slider lastest-spots-slider">
+          {{#each spots as |spot|}}
+          <div class="card col-12">
+            <picture>
+              <img class="card-img-top" src="{{spot.pictures.[0]}}" alt="Card image cap">
+              <h3 class="card-title">
+                <span class="cat-label">
+                  {{#each spot.category as |label|}}
+                  <a href="/{{label}}" class="label-pill">{{label}}</a>
+                  {{/each}}
+                </span>
+                {{spot.name}}
+              </h3>
+            </picture>
+            <div class="card-body">
+              <a href="/{{category.[0]}}/{{spot._id}}" class="go-single">
+                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+                  <path fill="#fff"
+                    d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+                    class=""></path>
+                </svg></a>
+              <div class="info">
+                <div class="rating col-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.15 55.1" fill="#ea7676">
+                    <path
+                      d="M28.58,12.7C18,12.7,10.32,21.27,10.32,31.83c0,7.31,8.28,16.59,13.92,21.62a6.52,6.52,0,0,0,8.67,0c5.64-5,13.93-14.31,13.93-21.62C46.84,21.27,39.14,12.7,28.58,12.7Z" />
+                    <circle cx="52.4" cy="16.26" r="4.75" />
+                    <circle cx="4.75" cy="16.26" r="4.75" />
+                    <circle cx="18.64" cy="4.75" r="4.75" />
+                    <circle cx="39.46" cy="4.75" r="4.75" />
+                  </svg>
+                  <span class="value-rate">{{spot.rate}}</span> / 5</div>
+                <div class="city col-7 text-right">{{spot.city}}
+                  <span class="added"><strong>added</strong> {{date spot.createdAt}}</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-subtitle mb-2 text-muted date">03/10/2019</p>
-            <a href="/project/5f35021011c716483eec24c0" class="project-name">Corporate Marketing Manager</a>
-            <p class="author">project by <strong><a href="/user-projects/5f35021011c716483eec24b9">@chaya33</a></strong>
-            </p>
-            <p class="card-text">Sit atque consequatur veritatis officiis. Accusantium mollitia voluptatem voluptate. Ut
-              quibusdam temporibus blanditiis et. Nihil veritatis quis eos eum in et. Corporis consectetur ratione. Et
-              cum nesciunt earum assumenda vitae et.</p>
-          </div>
-          <div class="card-footer">
-            <a class="post-comment" href="/project/5f35021011c716483eec24c0"><strong>2
-                Comments</strong> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z">
-                </path>
-                <path fill-rule="evenodd"
-                  d="M6 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H6.5A.5.5 0 0 1 6 8zm-2.5 6a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 1 0v11a.5.5 0 0 1-.5.5z">
-                </path>
-              </svg></a>
-            <button class="likes" id="5f35021011c716483eec24c0" onclick="like(event)">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z">
-                </path>
-              </svg>
-              <span class="likes-count">NaN</span> likes
-            </button>
-          </div>
+          {{/each}}
         </div>
-        {{/each}}
-
-        <h1>{{profile.name}} pets</h1>
-
-        {{#each pets as |pet|}}
-        <p>{{pet.name}}</p>
-        {{/each}}
+        {{else}}
+        <p>Don´t have any spot published yet</p>
+        {{/if}}
+        <hr>
+        {{#if pets}}
+        <h1 class="title">{{profile.name}} <strong>pets</strong></h1>
+        <div class="slider lastest-spots-slider">
+          {{#each pets as |pet|}}
+          <div class="col-12 pets">
+            <div class="row">
+              <div class="col-6">
+                <picture>
+                  <div class="pets-img-top" style="background: url({{pet.picPath}}) no-repeat center center / cover;">
+                    <span class="cat-label">
+                      <div class="label-dark">{{pet.name}}</div>
+                    </span>
+                  </div>
+                </picture>
+              </div>
+              <div class="col-6 pets-body">
+                <p><strong>I´m a </strong>{{pet.animal}}</p>
+                <p><strong>breed </strong>{{pet.breed}}</p>
+                <p><strong>age </strong>{{pet.age}}</p>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        {{else}}
+        <p>Don´t have any pet yet</p>
+        {{/if}}
       </div>
     </div>
   </div>

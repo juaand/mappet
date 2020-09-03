@@ -9,13 +9,13 @@ module.exports.saveComment = (req, res, next) => {
   const user = req.session.currentUser
   const id = req.params.id
 
-  Comment.create({
-    content: req.body.content,
-    authorId: user._id,
-    spotId: id
-  })
-
-  console.log(`ESTE ES EL ID DEL SPOT ${id}`)
+  if (req.body.content) {
+    Comment.create({
+      content: req.body.content,
+      authorId: user._id,
+      spotId: id
+    })
+  }
 
   Spot.findById(id)
     .populate('comments')
