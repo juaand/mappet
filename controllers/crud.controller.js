@@ -34,47 +34,31 @@ module.exports.editUser = (req, res, next) => {
 
 module.exports.saveEditedUser = (req, res, next) => {
   const { username, email, avatar, password, bio, name } = req.body
-  // make sure passwords are strong:
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
-  if (!regex.test(password)) {
-    res.status(500).render('users/update-profile', {
-      errorMessage:
-        'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'
-    })
-    return
-  }
   const id = req.params.id
-  bcryptjs
-    .genSalt(saltRounds)
-    .then((salt) => bcryptjs.hash(password, salt))
-    .then((hashedPassword) => {
-      req.body.avatar = req.file ? req.file.filename : undefined
-      const id = req.params.id
-      console.log(req.body)
-      if (req.body.avatar) {
-        return User.findByIdAndUpdate(id, {
-          name: req.body.name,
-          avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
-          password: hashedPassword,
-          bio: req.body.bio
-        })
-          .then(() => {
-            res.redirect(`/user-profile/${id}`)
-          })
-          .catch((error) => next(error))
-      } else {
-        return User.findByIdAndUpdate(id, {
-          name: req.body.name,
-          password: hashedPassword,
-          bio: req.body.bio
-        })
-      }
+  req.body.avatar = req.file ? req.file.filename : undefined
+
+  if (req.body.avatar) {
+    User.findByIdAndUpdate(id, {
+      name: req.body.name,
+      avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
+      // password: hashedPassword,
+      bio: req.body.bio
     })
-    .then(() => {
-      res.redirect(`/user-profile/${id}`)
+      .then(() => {
+        res.redirect(`/user-profile/${id}`)
+      })
+      .catch((error) => next(error))
+  } else {
+    User.findByIdAndUpdate(id, {
+      name: req.body.name,
+      // password: hashedPassword,
+      bio: req.body.bio
     })
-    .catch((error) => next(error))
-  // close .catch()
+      .then(() => {
+        res.redirect(`/user-profile/${id}`)
+      })
+      .catch((error) => next(error))
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -293,6 +277,51 @@ module.exports.deletePet = (req, res, next) => {
     .then(() => {
       const user = req.session.currentUser
       res.redirect(`/user/${user._id}`)
+    })
+    .catch((error) => next(error))
+}
+
+module.exports.changePassword = (req, res, next) => {
+  const id = req.params.id
+  const userPass = req.session.currentUser.password
+
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+  if (!regex.test(password)) {
+    res.status(500).render('users/update-profile', {
+      errorMessage:
+        'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'
+    })
+    return
+  }
+
+  bcryptjs
+    .genSalt(saltRounds)
+    .then((salt) => bcryptjs.hash(password, salt))
+    .then((hashedPassword) => {
+      if (req.body.password === userPass) {
+        if (req.body.newpassword) {
+          bcryptjs
+            .genSalt(saltRounds)
+            .then((salt) => bcryptjs.hash(newpassword, salt))
+            .then((newHashedPassword) => {
+              User.findByIdAndUpdate(id, {
+                password: newHashedPassword
+              })
+            })
+            .then(() => {
+              res.redirect(`/user-profile/${id}`)
+            })
+            .catch((error) => next(error))
+        } else {
+          res.redirect(`user-profile/${id}`, {
+            message: 'Insert a new password'
+          })
+        }
+      } else {
+        res.redirect(`user-profile/${id}`, {
+          message: 'Current password is invalid'
+        })
+      }
     })
     .catch((error) => next(error))
 }

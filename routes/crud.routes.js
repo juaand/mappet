@@ -77,4 +77,10 @@ router.post(
 
 router.get('/delete/:id', routeGuard.isAuthenticated, crudController.deletePet)
 
+router.post(
+  '/change-password/:id',
+  routeGuard.isAuthenticated,
+  crudController.changePassword
+)
+
 module.exports = router

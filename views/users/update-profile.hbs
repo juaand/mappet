@@ -27,6 +27,9 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-6">
         <h1>{{user.name}}'s profile</h1>
+        {{#if message}}
+        <h2>{{message}}</h2>
+        {{/if}}
         <form action="/user-profile/{{user._id}}/edit" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">Name</label>
@@ -74,15 +77,11 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="password">password</label>
-            <input name="password" type="password" class="form-control {{#if error.password }}is-invalid{{/if}}"
-              id="password" placeholder="Enter password" value="{{ user.password }}">
-            {{#if error.password}}
-            <div class="invalid-feedback">
-              {{error.password.message}}
-            </div>
-            {{/if}}
+            <button type="button" class="delete-spot" data-toggle="modal" data-target="#changePassword">
+              Change password
+            </button>
           </div>
+
           <div class="form-group">
             <label for="bio">Bio</label>
             <textarea name="bio" type="text" class="form-control {{#if error.bio }}is-invalid{{/if}} textarea" id="bio"
@@ -125,6 +124,48 @@
       <div class="modal-footer">
         <a type="button" class="close-btn" data-dismiss="modal">Close</button>
           <a href="/user-profile/{{user._id}}/delete" class="btn">Delete profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="title" id="deleteLabel">Change password</h1>
+      </div>
+      <div class="modal-body">
+        <form action="/change-password/{{user._id}}" method="POST">
+          <div class="form-group">
+            <label for="password">Current password</label>
+            <input name="password" type="password" class="form-control {{#if error.password }}is-invalid{{/if}}"
+              id="password" placeholder="Enter current password">
+            {{#if error.password}}
+            <div class="invalid-feedback">
+              {{error.password.message}}
+            </div>
+            {{/if}}
+          </div>
+          <div class="form-group">
+            <label for="newpassword">New password</label>
+            <input name="newpassword" type="password" class="form-control {{#if error.password }}is-invalid{{/if}}"
+              id="newpassword" placeholder="Enter new password">
+            {{#if error.password}}
+            <div class="invalid-feedback">
+              {{error.password.message}}
+            </div>
+            {{/if}}
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" class="form-btn w-100">
+                Change password
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
