@@ -608,7 +608,8 @@ form {
   &.register,
   &.login,
   &.new-spot,
-  &.user-single {
+  &.user-single,
+  &.user-profile {
     height: 66rem;
   }
 
@@ -675,6 +676,11 @@ form {
 
   &.user-single {
     background: url(../images/user-single-bg.jpg) no-repeat center center /
+      cover;
+  }
+
+  &.user-profile {
+    background: url(../images/user-profile-bg.jpg) no-repeat center center /
       cover;
   }
 }
@@ -1266,6 +1272,55 @@ form {
   }
 }
 
+#delete {
+  &.show {
+    display: flex !important;
+    align-items: center;
+
+    .modal-dialog {
+      width: 50%;
+      color: $white;
+
+      .btn,
+      .close-btn {
+        border: solid 0.2rem;
+        padding: 0.8rem 3.2rem;
+        color: $white;
+        font-size: 1.4rem;
+        border-radius: 4rem;
+      }
+
+      .close-btn {
+        background: transparent;
+        border-color: $white;
+        margin-right: 2rem;
+        text-decoration: none;
+
+        &:hover {
+          border-color: $pink;
+          color: $pink;
+          text-decoration: none;
+        }
+      }
+
+      .btn {
+        background: $pink;
+        border-color: $pink;
+
+        &:hover {
+          border-color: $white;
+          background: transparent;
+        }
+      }
+
+      .modal-header,
+      .modal-footer {
+        border: 0;
+      }
+    }
+  }
+}
+
 .delete-spot {
   width: 80%;
   display: flex;
@@ -1769,7 +1824,8 @@ footer {
     &.login,
     &.single,
     &.new-spot,
-    &.user-single {
+    &.user-single,
+    &.user-profile {
       height: 40rem;
     }
   }
