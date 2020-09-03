@@ -3,7 +3,6 @@ const Comments = require('../models/comment.model')
 const User = require('../models/user.model')
 const Like = require('../models/like.model')
 
-
 module.exports.getSpot = (req, res, next) => {
   const id = req.params.id
   const user = req.session.currentUser
@@ -48,24 +47,24 @@ module.exports.getSpot = (req, res, next) => {
 
 module.exports.newLike = (req, res, next) => {
   const params = { spot: req.params.id, user: req.session.currentUser._id }
-console.log(params)
-Like.findOne(params)
-  .then((like) => {
-    if (like) {
-      Like.findByIdAndRemove(like._id)
-        .then(() => {
-          res.json({ like: -1 })
-        })
-        .catch(next)
-    } else {
-      const newLike = new Like(params)
-      newLike
-        .save()
-        .then(() => {
-          res.json({ like: 1 })
-        })
-        .catch(next)
-    }
-  })
-  .catch(next)
+  console.log(params)
+  Like.findOne(params)
+    .then((like) => {
+      if (like) {
+        Like.findByIdAndRemove(like._id)
+          .then(() => {
+            res.json({ like: -1 })
+          })
+          .catch(next)
+      } else {
+        const newLike = new Like(params)
+        newLike
+          .save()
+          .then(() => {
+            res.json({ like: 1 })
+          })
+          .catch(next)
+      }
+    })
+    .catch(next)
 }

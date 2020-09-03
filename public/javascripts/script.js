@@ -37,9 +37,8 @@ const copyToClipboard = function () {
 
 function like(e) {
   const button = e.currentTarget
-
   const like = `${button.id}/like`
-  // const user = session.currentUser
+
   axios
     .post(like)
     .then((res) => {

@@ -1133,6 +1133,7 @@ form {
       flex-direction: column;
       margin-bottom: 1rem;
       margin-left: 1rem;
+      position: relative;
     }
 
     p {
@@ -1167,6 +1168,50 @@ form {
       &:hover {
         background: $dark-purple;
         text-decoration: none;
+      }
+    }
+
+    .aside-iframe {
+      position: relative;
+
+      iframe {
+        width: 100%;
+        height: 32rem;
+        margin-top: 3rem;
+      }
+
+      .expand {
+        position: absolute;
+        top: 4.6rem;
+        left: 2rem;
+        background: $pink;
+        color: $white;
+        z-index: 5;
+        padding: 0.8rem 2.4rem;
+        border-radius: 2rem;
+        border: 0;
+        transition: all 200ms ease;
+
+        &:hover {
+          background: $dark-purple;
+        }
+      }
+    }
+
+    .pet-avatar {
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 4rem;
+      border: solid 0.3rem $white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      @for $i from 0 through 5 {
+        &:nth-child(#{$i}) {
+          left: 2rem * $i;
+        }
       }
     }
   }

@@ -56,7 +56,8 @@
         </span>
         {{/each}}
         <h1 class="title">{{spot.name}}</h1>
-        <div class="map-social"><button type="button" class="map-link" data-toggle="modal" data-target="#mapModal">
+        <div class="map-social">
+          <button type="button" class="map-link" data-toggle="modal" data-target="#mapModal">
             {{spot.address}}, {{spot.city}} - {{spot.zipCode}}
           </button>
           <span class="follow-us">
@@ -272,21 +273,25 @@
               <a href="/user/{{spot.creatorId._id}}">@{{spot.creatorId.username}}</a>
             </p>
             <p>{{date spot.createdAt}}</p>
+            <hr>
+            {{#each spot.creatorId.pets as |pet|}}
+            <span class="pet-avatar" style="background: url({{pet.picPath}}) no-repeat center center / cover"></span>
+            {{/each}}
           </span>
         </div>
-
-        {{#each spot.creatorId.pets as |pet|}}
-        <span class="avatar"
-          style="display: block; width:6rem; height:6rem; background: url({{pet.picPath}}) no-repeat center center / cover"></span>
-        {{/each}}
 
         {{#if owner}}
         <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
         <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot">delete spot</a>
         {{/if}}
-
-        <iframe class="aside-iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"
-          src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q={{spot.address}}&amp;iwloc=near&amp;z=15&amp;output=embed"></iframe>
+        <div class="col-12 aside-iframe">
+          <hr>
+          <button type="button" class="expand" data-toggle="modal" data-target="#mapModal">
+            Expand map
+          </button>
+          <iframe scrolling="no" frameborder="0" marginheight="0" marginwidth="0"
+            src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q={{spot.address}}&amp;iwloc=near&amp;z=15&amp;output=embed"></iframe>
+        </div>
       </div>
     </div>
   </div>

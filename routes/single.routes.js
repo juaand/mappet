@@ -10,6 +10,10 @@ router.get(
   singleController.getSpot
 )
 
-router.post('/:category/:id/like', routeGuard.isAuthenticated, singleController.newLike)
+router.post(
+  '/:category/:id/like',
+  routeGuard.isAuthenticated,
+  singleController.newLike
+)
 
 module.exports = router
