@@ -774,7 +774,7 @@ form .range-slider__value {
   opacity: 0.5;
 }
 
-.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single, .banner.user-profile {
   height: 66rem;
 }
 
@@ -838,6 +838,10 @@ form .range-slider__value {
 
 .banner.user-single {
   background: url(../images/user-single-bg.jpg) no-repeat center center/cover;
+}
+
+.banner.user-profile {
+  background: url(../images/user-profile-bg.jpg) no-repeat center center/cover;
 }
 
 .attributtes,
@@ -1589,6 +1593,57 @@ form .range-slider__value {
   height: 0.3rem;
 }
 
+#delete.show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#delete.show .modal-dialog {
+  width: 50%;
+  color: #fff;
+}
+
+#delete.show .modal-dialog .btn,
+#delete.show .modal-dialog .close-btn {
+  border: solid 0.2rem;
+  padding: 0.8rem 3.2rem;
+  color: #fff;
+  font-size: 1.4rem;
+  border-radius: 4rem;
+}
+
+#delete.show .modal-dialog .close-btn {
+  background: transparent;
+  border-color: #fff;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+#delete.show .modal-dialog .close-btn:hover {
+  border-color: #ea7676;
+  color: #ea7676;
+  text-decoration: none;
+}
+
+#delete.show .modal-dialog .btn {
+  background: #ea7676;
+  border-color: #ea7676;
+}
+
+#delete.show .modal-dialog .btn:hover {
+  border-color: #fff;
+  background: transparent;
+}
+
+#delete.show .modal-dialog .modal-header,
+#delete.show .modal-dialog .modal-footer {
+  border: 0;
+}
+
 .delete-spot {
   width: 80%;
   display: -webkit-box;
@@ -2129,7 +2184,7 @@ footer .copy {
   .banner .redes {
     display: none;
   }
-  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single {
+  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single, .banner.user-profile {
     height: 40rem;
   }
   .navbar {
