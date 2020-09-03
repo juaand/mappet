@@ -88,7 +88,41 @@
         <p>Don´t have any spot published yet</p>
         {{/if}}
         <hr>
+        {{#if owner}}
         {{#if pets}}
+        <h1 class="title">{{profile.name}} <strong>pets</strong></h1>
+        <div class="slider lastest-spots-slider">
+          {{#each pets as |pet|}}
+          <div class="col-12 pets">
+            <div class="row">
+              <div class="col-6">
+                <picture>
+                  <div class="pets-img-top" style="background: url({{pet.avatar}}) no-repeat center center / cover;">
+                    <span class="cat-label">
+                      <div class="label-dark">{{pet.name}}</div>
+                    </span>
+                  </div>
+                </picture>
+              </div>
+              <div class="col-6 pets-body">
+                <p><strong>I´m a </strong>{{pet.animal}}</p>
+                <p><strong>breed </strong>{{pet.breed}}</p>
+                <p><strong>age </strong>{{pet.age}}</p>
+                <a href="/edit-pet/{{pet._id}}" class="delete-spot">
+                  Edit pet
+                </a>
+                <a href="/delete/{{pet._id}}" class="delete-spot">
+                  Delete pet
+                </a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        {{else}}
+        <p class="no-pet">Don´t have any pet yet, <a href="/pets/{{profile._id}}">add a new one here</a></p>
+        {{/if}}
+        {{else}}
         <h1 class="title">{{profile.name}} <strong>pets</strong></h1>
         <div class="slider lastest-spots-slider">
           {{#each pets as |pet|}}
@@ -112,8 +146,6 @@
           </div>
           {{/each}}
         </div>
-        {{else}}
-        <p>Don´t have any pet yet</p>
         {{/if}}
       </div>
     </div>

@@ -17,7 +17,7 @@ module.exports.editUser = (req, res, next) => {
       // res.json(user)
       const userId = req.session.currentUser._id
       if (userId === id) {
-        res.render('users/user-profile', { user })
+        res.render('users/update-profile', { user })
       } else {
         req.session.destroy()
         res.render('auth/login', {
@@ -37,7 +37,7 @@ module.exports.saveEditedUser = (req, res, next) => {
   // make sure passwords are strong:
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
   if (!regex.test(password)) {
-    res.status(500).render('users/user-profile', {
+    res.status(500).render('users/update-profile', {
       errorMessage:
         'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'
     })
@@ -241,4 +241,58 @@ module.exports.createPet = (req, res, next) => {
       message: 'Pet added sucefully'
     })
   })
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////// CRUD PET ////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+module.exports.editPet = (req, res, next) => {
+  const petId = req.params.id
+  Pet.findById(petId)
+    .then((pet) => {
+      res.render('pets/edit-pet', { pet, title: 'Edit pet' })
+    })
+    .catch((error) => next(error))
+}
+
+module.exports.updatePet = (req, res, next) => {
+  const petId = req.params.id
+  req.body.avatar = req.file ? req.file.filename : undefined
+
+  if (req.body.avatar) {
+    Pet.findByIdAndUpdate(petId, {
+      name: req.body.name,
+      animal: req.body.animal,
+      avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
+      age: req.body.age,
+      breed: req.body.breed
+    })
+      .then((pet) => {
+        res.redirect(`/user/${pet.creatorId._id}`)
+      })
+      .catch((error) => next(error))
+  } else {
+    Pet.findByIdAndUpdate(petId, {
+      name: req.body.name,
+      animal: req.body.animal,
+      age: req.body.age,
+      breed: req.body.breed
+    })
+      .then((pet) => {
+        res.redirect(`/user/${pet.creatorId._id}`)
+      })
+      .catch((error) => next(error))
+  }
+}
+
+module.exports.deletePet = (req, res, next) => {
+  const petId = req.params.id
+
+  Pet.findByIdAndDelete(petId)
+    .then(() => {
+      const user = req.session.currentUser
+      res.redirect(`/user/${user._id}`)
+    })
+    .catch((error) => next(error))
 }

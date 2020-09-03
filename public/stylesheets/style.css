@@ -1768,6 +1768,16 @@ form .range-slider__value {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0;
+  position: relative;
+}
+
+.no-pet {
+  font-size: 1.6rem;
+}
+
+.no-pet a {
+  color: #ea7676;
+  font-weight: 600;
 }
 
 .lastest-spots {

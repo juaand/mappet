@@ -1428,6 +1428,16 @@ form {
     align-items: flex-start;
     flex-direction: column;
     padding: 0;
+    position: relative;
+  }
+}
+
+.no-pet {
+  font-size: 1.6rem;
+
+  a {
+    color: $pink;
+    font-weight: 600;
   }
 }
 

@@ -34,13 +34,32 @@ module.exports.getUserSpots = (req, res, next) => {
 
   Promise.all([user, pets, spots])
     .then((values) => {
-      // res.json(values)
-      res.render('users/user-spots', {
-        profile: values[0],
-        pets: values[1],
-        spots: values[2],
-        title: `@${values[0].username} spots`
-      })
+      if (req.session.currentUser) {
+        if (id == req.session.currentUser._id) {
+          const owner = true
+          res.render('users/show-profile', {
+            profile: values[0],
+            pets: values[1],
+            spots: values[2],
+            title: `@${values[0].username} spots`,
+            owner: owner
+          })
+        } else {
+          res.render('users/show-profile', {
+            profile: values[0],
+            pets: values[1],
+            spots: values[2],
+            title: `@${values[0].username} spots`
+          })
+        }
+      } else {
+        res.render('users/show-profile', {
+          profile: values[0],
+          pets: values[1],
+          spots: values[2],
+          title: `@${values[0].username} spots`
+        })
+      }
     })
     .catch((error) => next(error))
 }
