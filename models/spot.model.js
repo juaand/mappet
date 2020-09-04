@@ -55,8 +55,6 @@ const spotSchema = new Schema(
     },
     email: {
       type: String,
-      required: [true, 'Email is required'],
-      unique: true,
       trim: true,
       lowercase: true,
       match: [EMAIL_PATTERN, 'Email is invalid']
