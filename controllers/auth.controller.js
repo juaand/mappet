@@ -104,6 +104,7 @@ module.exports.postLogin = (req, res, next) => {
     })
     .catch(next)
 }
+
 module.exports.getRegister = (req, res, next) => {
   const user = req.session.currentUser
   if (user) {
@@ -115,6 +116,7 @@ module.exports.getRegister = (req, res, next) => {
     })
   }
 }
+
 module.exports.postRegister = (req, res, next) => {
   const { username, email, avatar, password } = req.body
   // res.json(req.body)
