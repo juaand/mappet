@@ -34,8 +34,7 @@ module.exports.postLogin = (req, res, next) => {
                   validation: {
                     message: 'Your account is not active, check your email!'
                   }
-                },
-                message: 'Please check your mail to activate your account'
+                }
               })
             }
           } else {
@@ -76,7 +75,7 @@ module.exports.getRegister = (req, res, next) => {
 module.exports.postRegister = (req, res, next) => {
   const { username, email, avatar, password } = req.body
 
-  res.json(req.body)
+  // res.json(req.body)
 
   if (!username || !email || !password) {
     res.render('auth/register', {
