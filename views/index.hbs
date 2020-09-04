@@ -117,7 +117,9 @@
           {{#each values as |value|}}
           <div class="card col-12 col-sm-4">
             <picture>
-              <img class="card-img-top" src="{{value.pictures.[0]}}" alt="Card image cap">
+              <img class="card-img-top"
+                src="{{#if value.pictures.[0]}}{{value.pictures.[0]}}{{else}}https://res.cloudinary.com/dutvbml2i/image/upload/v1599250707/mappet/nofile_eabd8z.jpg{{/if}}"
+                alt="Card image cap">
               <h3 class="card-title">
                 <span class="cat-label">
                   {{#each value.category as |label|}}
