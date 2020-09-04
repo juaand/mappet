@@ -98,19 +98,20 @@ userSchema.virtual('pets', {
 
 // userSchema.pre('save', function (next) {
 //   if (this.isModified('password')) {
-//     bcrypt.genSalt(10)
-//       .then(salt => {
+//     bcrypt
+//       .genSalt(10)
+//       .then((salt) => {
 //         return bcrypt.hash(this.password, salt)
 //       })
-//       .then(hash => {
-//         this.password = hash;
-//         next();
+//       .then((hash) => {
+//         this.password = hash
+//         next()
 //       })
-//       .catch(error => next(error));
+//       .catch((error) => next(error))
 //   } else {
-//     next();
+//     next()
 //   }
-// });
+// })
 
 userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password)
