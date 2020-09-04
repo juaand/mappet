@@ -61,14 +61,17 @@
             {{/if}}
           </div>
           <div class="form-group">
-            <label for="avatar">Avatar</label>
-            <input name="avatar" type="file" class="form-control-file {{#if error.avatar }}is-invalid{{/if}}"
-              id="avatar" placeholder="Enter avatar" value="{{ user.avatar }}">
-            {{#if error.avatar}}
-            <div class="invalid-feedback">
-              {{error.avatar.message}}
+            <label>Avatar</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input  {{#if error.avatar }}is-invalid{{/if}}" id="avatar"
+                name="avatar" value="{{ user.avatar }}">
+              <label class="custom-file-label" for="avatar">Choose avatar</label>
+              {{#if error.avatar}}
+              <div class="invalid-feedback">
+                {{error.avatar.message}}
+              </div>
+              {{/if}}
             </div>
-            {{/if}}
           </div>
           <div class="form-group">
             <label for="password">Password</label>
