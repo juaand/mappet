@@ -22,38 +22,38 @@ module.exports.getLogin = (req, res, next) => {
 module.exports.postLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
-      // res.json(user)
       if (user) {
-        // res.json(user)
-        user.checkPassword(req.body.password)
-        // res.json(user)
-        .then((match) => {
-          if (match) {
-            if (user.activation.active && user.role === 'ADMIN') {
-              req.session.currentUser = user
-              res.redirect('/admin')
-            } else if (user.activation.active) {
-              req.session.currentUser = user
-              res.redirect('/')
+        // user.checkPassword(req.body.password)
+        bcryptjs
+          .compare(req.body.password, user.password)
+          .then(console.log(`${req.body.password} / ${user.password}`))
+          .then((match) => {
+            if (match) {
+              if (user.activation.active && user.role === 'ADMIN') {
+                req.session.currentUser = user
+                res.redirect('/admin')
+              } else if (user.activation.active) {
+                req.session.currentUser = user
+                res.redirect('/')
+              } else {
+                res.render('auth/login', {
+                  error: {
+                    validation: {
+                      message: 'Your account is not active, check your email!'
+                    }
+                  }
+                })
+              }
             } else {
               res.render('auth/login', {
                 error: {
-                  validation: {
-                    message: 'Your account is not active, check your email!'
+                  email: {
+                    message: 'user not found'
                   }
                 }
               })
             }
-          } else {
-            res.render('auth/login', {
-              error: {
-                email: {
-                  message: 'user not found'
-                }
-              }
-            })
-          }
-        })
+          })
       } else {
         res.render('auth/login', {
           error: {
