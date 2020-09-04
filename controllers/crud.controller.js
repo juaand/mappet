@@ -89,6 +89,23 @@ module.exports.createSpot = (req, res, next) => {
 
 module.exports.saveSpot = (req, res, next) => {
   const id = req.params.id
+  const { name, categories, pictures } = req.body
+
+  if (!categories) {
+    res.render('spots/new-spot', {
+      title: 'Mappet your spot!',
+      message: 'Please select at least one category'
+    })
+    return
+  }
+
+  if (!name) {
+    res.render('spots/new-spot', {
+      message: 'Please provide a name.',
+      title: 'Mappet your spot!'
+    })
+    return
+  }
 
   return Spot.create({
     name: req.body.name,
