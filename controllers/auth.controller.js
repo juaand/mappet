@@ -17,50 +17,7 @@ module.exports.getLogin = (req, res, next) => {
     })
   }
 }
-// module.exports.postLogin = (req, res, next) => {
-//   User.findOne({ email: req.body.email })
-//     .then((user) => {
-//       if (user) {
-//         user.checkPassword(req.body.password)
-//         .then((match) => {
-//           if (match) {
-//             if (user.activation.active && user.role === 'ADMIN') {
-//               req.session.currentUser = user
-//               res.redirect('/admin')
-//             } else if (user.activation.active) {
-//               req.session.currentUser = user
-//               res.redirect('/')
-//             } else {
-//               res.render('auth/login', {
-//                 error: {
-//                   validation: {
-//                     message: 'Your account is not active, check your email!'
-//                   }
-//                 }
-//               })
-//             }
-//           } else {
-//             res.render('auth/login', {
-//               error: {
-//                 email: {
-//                   message: 'user not found'
-//                 }
-//               }
-//             })
-//           }
-//         })
-//       } else {
-//         res.render('auth/login', {
-//           error: {
-//             email: {
-//               message: 'user not found'
-//             }
-//           }
-//         })
-//       }
-//     })
-//     .catch(next)
-// }
+
 module.exports.postLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
@@ -104,6 +61,7 @@ module.exports.postLogin = (req, res, next) => {
     })
     .catch(next)
 }
+
 module.exports.getRegister = (req, res, next) => {
   const user = req.session.currentUser
   if (user) {
@@ -115,6 +73,7 @@ module.exports.getRegister = (req, res, next) => {
     })
   }
 }
+
 module.exports.postRegister = (req, res, next) => {
   const { username, email, avatar, password } = req.body
   // res.json(req.body)
@@ -157,13 +116,12 @@ module.exports.postRegister = (req, res, next) => {
         user.activation.token,
         user.name
       )
-      res.render('auth/login', {
-        message: 'Check your email for activation'
-      })
     })
     .then((userFromDB) => {
       console.log('Newly created user is: ', userFromDB)
-      res.redirect('/login')
+      res.render('auth/login', {
+        message: 'Check your email for activation'
+      })
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -184,6 +142,7 @@ module.exports.postRegister = (req, res, next) => {
     })
     .catch(next)
 }
+
 module.exports.getToken = (req, res, next) => {
   User.findOne({ 'activation.token': req.params.token })
     .then((user) => {
@@ -211,6 +170,7 @@ module.exports.getToken = (req, res, next) => {
     })
     .catch((e) => next)
 }
+
 module.exports.doLogout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')

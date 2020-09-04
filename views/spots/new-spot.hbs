@@ -31,6 +31,11 @@
           <div class="row">
             <div class="col-12">
               <h2>Spot info</h2>
+              {{#if message}}
+              <div class="alert alert-info" role="alert">
+                {{message}}
+              </div>
+              {{/if}}
             </div>
             <div class="col-12 col-sm-6">
               <div class="form-group">
