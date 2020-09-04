@@ -85,16 +85,16 @@ userSchema.virtual('pets', {
   justOne: false
 })
 
-// userSchema.pre('save', function (next) {
-//   if (this.isModified('password')) {
-//     bcrypt.hash(this.password, 10).then((hash) => {
-//       this.password = hash
-//       next()
-//     })
-//   } else {
-//     next()
-//   }
-// })
+ userSchema.pre('save', function (next) {
+   if (this.isModified('password')) {
+     bcrypt.hash(this.password, 10).then((hash) => {
+       this.password = hash
+       next()
+     })
+   } else {
+     next()
+   }
+ })
 
 // userSchema.pre('save', function (next) {
 //   if (this.isModified('password')) {
