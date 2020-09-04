@@ -1,9 +1,12 @@
 // controllers/auth.controllers.js
+const { Router } = require('express')
+const router = new Router()
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 const User = require('../models/user.model')
 const mongoose = require('mongoose')
 const nodemailer = require('../config/mailer.config')
+const routeGuard = require('../middlewares/session.middleware')
 const { session } = require('passport')
 
 module.exports.getLogin = (req, res, next) => {
@@ -19,8 +22,12 @@ module.exports.getLogin = (req, res, next) => {
 module.exports.postLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
+      // res.json(user)
       if (user) {
-        user.checkPassword(req.body.password).then((match) => {
+        // res.json(user)
+        user.checkPassword(req.body.password)
+        // res.json(user)
+        .then((match) => {
           if (match) {
             if (user.activation.active && user.role === 'ADMIN') {
               req.session.currentUser = user
@@ -76,7 +83,7 @@ module.exports.getRegister = (req, res, next) => {
 module.exports.postRegister = (req, res, next) => {
   const { username, email, avatar, password } = req.body
 
-  res.json(req.body)
+  // res.json(req.body)
 
   if (!username || !email || !password) {
     res.render('auth/register', {
