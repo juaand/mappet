@@ -1,29 +1,29 @@
-require('dotenv').config()
-const nodemailer = require('nodemailer')
-const { getMaxListeners } = require('process')
+require("dotenv").config();
+const nodemailer = require("nodemailer");
+const { getMaxListeners } = require("process");
 
-const host = process.env.HOST || 'http://localhost:3005'
-const user = process.env.NM_USER
+const host = process.env.HOST || "http://localhost:3005";
+const user = process.env.NM_USER;
 
 const transport = nodemailer.createTransport({
-  service: 'Gmail',
+  service: "Gmail",
   auth: {
     user: user,
-    pass: process.env.NM_PASS
-  }
-})
+    pass: process.env.NM_PASS,
+  },
+});
 
 module.exports.sendValidationEmail = (email, activationToken, name) => {
   transport.sendMail({
     to: email,
     from: `Mappet team <${user}>`,
-    subject: 'Activate your mappet user here!',
+    subject: "Activate your mappet user here!",
     html: `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>mappet activation mail</title>
+        <title>mappet activation email</title>
         <style
           type="text/css"
           style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"
@@ -59,7 +59,7 @@ module.exports.sendValidationEmail = (email, activationToken, name) => {
           mso-table-lspace: 0pt !important;
           mso-table-rspace: 0pt !important;
           height: 50vh;
-          background: url('https://res.cloudinary.com/dutvbml2i/image/upload/v1598613317/mappet/mail-bg_x87jqi.jpg')
+          background: url('https://res.cloudinary.com/dutvbml2i/image/upload/v1598613317/mappet/email-bg_x87jqi.jpg')
             no-repeat top center/cover;
         "
       >
@@ -102,6 +102,6 @@ module.exports.sendValidationEmail = (email, activationToken, name) => {
       </body>
     </html>
     
-		`
-  })
-}
+		`,
+  });
+};
