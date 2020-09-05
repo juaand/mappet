@@ -9,4 +9,4 @@ const options = {
 
 const input = document.getElementById('address')
 
-// const autocomplete = new google.maps.places.Autocomplete(input, options);
+const autocomplete = new google.maps.places.Autocomplete(input, options)
