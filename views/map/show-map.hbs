@@ -1,4 +1,4 @@
-<section class="container-fluid banner {{category}}">
+<section class="container-fluid banner user-single">
   <div class="redes">
     <a href="/"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -20,65 +20,55 @@
           class=""></path>
       </svg>
     </a>
-  </div>
 </section>
 <section class="container-fluid results">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-sm-9">
-        <h1 class="title">pet friendly {{category}}</h1>
-        <div class="row">
-          {{#each values as |value|}}
-          <div class="card col-12 col-sm-6">
-            <picture>
-              <img class="card-img-top"
-                src="{{#if value.pictures.[0]}}{{value.pictures.[0]}}{{else}}https://res.cloudinary.com/dutvbml2i/image/upload/v1599250707/mappet/nofile_eabd8z.jpg{{/if}}"
-                alt="Card image cap">
-              <h3 class="card-title">
-                <span class="cat-label">
-                  {{#each value.category as |label|}}
-                  <a href="/{{label}}" class="label-pill">{{label}}</a>
-                  {{/each}}
-                </span>
-                {{value.name}}
-              </h3>
-            </picture>
-            <div class="card-body">
-              <a href="/{{category.[0]}}/{{value._id}}" class="go-single">
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
-                  <path fill="#fff"
-                    d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
-                    class=""></path>
-                </svg></a>
-              <div class="info">
-                <div class="rating col-5">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.15 55.1" fill="#ea7676">
-                    <path
-                      d="M28.58,12.7C18,12.7,10.32,21.27,10.32,31.83c0,7.31,8.28,16.59,13.92,21.62a6.52,6.52,0,0,0,8.67,0c5.64-5,13.93-14.31,13.93-21.62C46.84,21.27,39.14,12.7,28.58,12.7Z" />
-                    <circle cx="52.4" cy="16.26" r="4.75" />
-                    <circle cx="4.75" cy="16.26" r="4.75" />
-                    <circle cx="18.64" cy="4.75" r="4.75" />
-                    <circle cx="39.46" cy="4.75" r="4.75" />
-                  </svg>
-                  <span class="value-rate">{{value.rate}}</span> / 5</div>
-                <div class="city col-7 text-right">{{value.city}}
-                  <span class="added"><strong>added</strong> {{date value.createdAt}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
-        </div>
+      <div class="col-12 map">
+        <h1 class="title">view {{cat}} spots in map</h1>
 
+        <div id="map"></div>
       </div>
-      <aside class="col-12 col-sm-3">
-        <div class="row">
-          <div class="col-12 mapa">
-            <a href="/map-show/map/cat/{{category}}" class="view-cats-map">View {{category}} in map</a>
-          </div>
-        </div>
-      </aside>
     </div>
   </div>
 </section>
+
+<script>
+  const spots = {{{spots}}}
+  function initMap() {
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 2,
+      center: {lat: 40.416906, lng: -3.7056721}
+    });
+    setMarkers(map);
+  }
+
+  const {{{cat}}} = []
+
+  spots.forEach(el => {
+    let i = 1
+    {{{cat}}}.push([el.name, el.lat, el.lng, i++])
+  })
+
+  function setMarkers(map) {
+    const image = {
+      url:
+        "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+      size: new google.maps.Size(20, 32),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 32)
+    };
+
+    for (let i = 0; i < {{{cat}}}.length; i++) {
+      const restaurant = {{{cat}}}[i];
+      new google.maps.Marker({
+        position: {lat: restaurant[1], lng: restaurant[2]},
+        map,
+        icon: image,
+        title: restaurant[0],
+        zIndex: restaurant[3]
+      });
+    }
+  }
+</script>

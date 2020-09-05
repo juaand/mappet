@@ -39,7 +39,7 @@ Promise.all([
         })
         pet.save()
       }
-      for (let j = 0; j < 4; j++) {
+      for (let j = 0; j < 30; j++) {
         const spot = new Spot({
           creatorId: user._id,
           name: faker.name.title(),
@@ -52,6 +52,8 @@ Promise.all([
             'Activities',
             'Events'
           ]),
+          lat: faker.address.latitude(),
+          lng: faker.address.longitude(),
           rate: faker.random.float({ min: 0, max: 5 }).toFixed(1),
           phone: faker.phone.phoneNumber(),
           city: faker.address.city(),

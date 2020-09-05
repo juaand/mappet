@@ -1787,6 +1787,12 @@ form .range-slider__value {
   color: #35396e;
 }
 
+#map {
+  width: 100%;
+  height: 50rem;
+  border: solid 0.1rem #714b9c;
+}
+
 .blog {
   background: #fff;
   margin-top: 0rem;
@@ -1800,6 +1806,23 @@ form .range-slider__value {
 
 .blog p {
   margin-bottom: 4rem;
+}
+
+aside .mapa {
+  width: 100%;
+  height: 20rem;
+  background: url(../images/view-map-bg.jpg) no-repeat center center/cover;
+  position: relative;
+}
+
+aside .mapa .view-cats-map {
+  position: absolute;
+  background: #ea7676;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 3.2rem;
+  top: 1rem;
+  left: 1rem;
 }
 
 .card {

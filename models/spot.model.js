@@ -1,80 +1,83 @@
 // models/spot.model.js
-const { Schema, model, ObjectId } = require("mongoose");
-const categories = require("../data/categories");
+const { Schema, model, ObjectId } = require('mongoose')
+const categories = require('../data/categories')
 
-const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
 const spotSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     content: {
-      type: String,
+      type: String
     },
     creatorId: {
       type: ObjectId,
-      ref: "User",
-      required: true,
+      ref: 'User',
+      required: true
     },
     pictures: {
       type: [String],
-      default: [],
+      default: []
     },
     url: {
-      type: String,
+      type: String
     },
     category: {
       type: [String],
       enum: categories.map((c) => c.name),
-      default: [],
+      default: []
     },
-    coordenate: {
-      type: [Number],
+    lat: {
+      type: Number
+    },
+    lng: {
+      type: Number
     },
     rate: {
-      type: Number,
+      type: Number
     },
     phone: {
-      type: String,
+      type: String
     },
     city: {
-      type: String,
+      type: String
     },
     address: {
-      type: String,
+      type: String
     },
     zipCode: {
-      type: String,
+      type: String
     },
     days: {
       type: [String],
-      enum: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      default: [],
+      enum: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      default: []
     },
     email: {
       type: String,
       trim: true,
-      lowercase: true,
+      lowercase: true
     },
     instagram: {
-      type: String,
+      type: String
     },
     facebook: {
-      type: String,
+      type: String
     },
     open: {
-      type: String,
+      type: String
     },
     close: {
-      type: String,
-    },
+      type: String
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
-);
+)
 
 spotSchema.virtual('comments', {
   ref: 'Comment', // The model to use
@@ -94,4 +97,4 @@ spotSchema.virtual('likes', {
   options: { sort: { createdAt: -1 } }
 })
 
-module.exports = model("Spot", spotSchema);
+module.exports = model('Spot', spotSchema)

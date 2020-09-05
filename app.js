@@ -23,6 +23,7 @@ const socialRouter = require('./routes/social.routes')
 const crudRouter = require('./routes/crud.routes')
 const singleRouter = require('./routes/single.routes')
 const commentRouter = require('./routes/comment.routes')
+const mapRouter = require('./routes/map.routes')
 
 const app = express()
 
@@ -54,5 +55,6 @@ app.use('/', socialRouter)
 app.use('/', crudRouter)
 app.use('/', singleRouter)
 app.use('/', commentRouter)
+app.use('/', mapRouter)
 
 module.exports = app
