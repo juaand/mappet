@@ -24,6 +24,7 @@ const crudRouter = require('./routes/crud.routes')
 const singleRouter = require('./routes/single.routes')
 const commentRouter = require('./routes/comment.routes')
 const mapRouter = require('./routes/map.routes')
+const adminRouter = require('./routes/admin.routes')
 
 const app = express()
 
@@ -56,5 +57,6 @@ app.use('/', crudRouter)
 app.use('/', singleRouter)
 app.use('/', commentRouter)
 app.use('/', mapRouter)
+app.use('/', adminRouter)
 
 module.exports = app

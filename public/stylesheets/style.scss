@@ -923,6 +923,23 @@ form {
   }
 }
 
+[class*='-filter'] {
+  position: absolute;
+  right: 1.5rem;
+  background-color: $pink;
+  color: white;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  border-radius: 0.3rem;
+  display: inline-block;
+
+  &:hover {
+    cursor: pointer;
+    background: $dark-purple;
+  }
+}
+
 .single-results {
   h1 {
     &.title {

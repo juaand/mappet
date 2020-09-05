@@ -1,0 +1,33 @@
+{{>adminnav}}
+<section class="container-fluid banner user-single"></section>
+<section class="container-fluid results">
+  <div class="big-avatar" style="background: url({{user.avatar}}) no-repeat center center / cover;">
+    <span class="cat-label">
+      <div class="label-dark" tabindex="0">{{user.role}}</div>
+    </span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <a href="/admin/stats/spots" class="col-4">
+        <h1 class="title">spots</h1>
+        <p>There are {{spots.length}} spots added</p>
+      </a>
+      <a href="/admin/stats/users" class="col-4">
+        <h1 class="title">users</h1>
+        <p>There are {{profiles.length}} users added</p>
+      </a>
+      <a href="/admin/stats/pets" class="col-4">
+        <h1 class="title">pets</h1>
+        <p>There are {{pets.length}} pets added</p>
+      </a>
+      <a href="/admin/stats/comments" class="col-4">
+        <h1 class="title">comments</h1>
+        <p>There are {{comments.length}} comments posted</p>
+      </a>
+      <a href="/admin/stats/statistics" class="col-4">
+        <h1 class="title">statistics</h1>
+        <p>Check out mappet statistics</p>
+      </a>
+    </div>
+  </div>
+</section>
