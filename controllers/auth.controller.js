@@ -100,7 +100,7 @@ module.exports.postRegister = (req, res, next) => {
   bcryptjs
     .genSalt(saltRounds)
     .then((salt) => bcryptjs.hash(password, salt))
-    .then((hashedPassword) => {
+    .then(() => {
       const userParams = req.body
       userParams.avatar = req.file ? req.file.filename : undefined
       return User.create({

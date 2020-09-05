@@ -76,21 +76,6 @@ const spotSchema = new Schema(
   }
 );
 
-<<<<<<< HEAD
-spotSchema.virtual("comments", {
-  ref: "Comment",
-  localField: "_id",
-  foreignField: "spotId",
-  justOne: false,
-});
-
-spotSchema.virtual("likes", {
-  ref: "Like",
-  localField: "_id",
-  foreignField: "spot",
-  justOne: false,
-});
-=======
 spotSchema.virtual('comments', {
   ref: 'Comment', // The model to use
   localField: '_id', // Find people where `localField`
@@ -108,6 +93,5 @@ spotSchema.virtual('likes', {
   justOne: false,
   options: { sort: { createdAt: -1 } }
 })
->>>>>>> 07f85632f63ab9c6b3270dae49c9d96d6150f275
 
 module.exports = model("Spot", spotSchema);
