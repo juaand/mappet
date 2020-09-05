@@ -23,8 +23,7 @@ module.exports.postLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (user) {
-        user.checkPassword(req.body.password)
-        .then((match) => {
+        user.checkPassword(req.body.password).then((match) => {
           if (match) {
             if (user.activation.active && user.role === 'ADMIN') {
               req.session.currentUser = user

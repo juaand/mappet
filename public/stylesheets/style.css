@@ -1154,6 +1154,23 @@ form .range-slider__value {
   margin-right: 1rem;
 }
 
+[class*='-filter'] {
+  position: absolute;
+  right: 1.5rem;
+  background-color: #ea7676;
+  color: white;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  border-radius: 0.3rem;
+  display: inline-block;
+}
+
+[class*='-filter']:hover {
+  cursor: pointer;
+  background: #35396e;
+}
+
 .single-results h1.title {
   margin-top: 0;
 }
