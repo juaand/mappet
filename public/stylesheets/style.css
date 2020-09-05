@@ -1948,6 +1948,25 @@ h1 {
   margin-left: 2rem;
 }
 
+.likes-btn {
+  color: #ea7676;
+  border: 0;
+  border-left: solid 0.1rem #ea7676;
+  margin-left: 1rem;
+  padding-left: 4rem;
+  background: url(../images/hearth.svg) no-repeat 1rem center/contain;
+  outline: none;
+}
+
+.likes-btn:hover {
+  text-decoration: none;
+  color: #ea7676;
+}
+
+.likes-btn:active, .likes-btn:focus {
+  outline: none;
+}
+
 .details {
   background: #fff;
   padding: 1rem 2rem;
