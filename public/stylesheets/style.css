@@ -1488,6 +1488,17 @@ form .range-slider__value {
   border-radius: 5rem;
 }
 
+.single-results .user-info .avatar.pet {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-color: #fff;
+  margin-left: -1.6rem;
+}
+
+.single-results .user-info .avatar.pet:first-child {
+  margin-left: -3rem;
+}
+
 .single-results .user-info .edit-spot {
   width: 80%;
   display: -webkit-box;
