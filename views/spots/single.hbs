@@ -274,6 +274,11 @@
               <a href="/user/{{spot.creatorId._id}}">@{{spot.creatorId.username}}</a>
             </p>
             <p>{{date spot.createdAt}}</p>
+            <span class="d-flex justify-content-center mt-3">
+            {{#each spot.creatorId.pets as |pet|}}
+            <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
+            {{/each}}
+            </span>
           </span>
         </div>
 

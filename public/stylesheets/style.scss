@@ -1189,6 +1189,17 @@ form {
       display: block;
       border: solid 0.4rem $pink;
       border-radius: 5rem;
+
+      &.pet {
+        width: 4.8rem;
+        height: 4.8rem;
+        border-color: $white;
+        margin-left: -1.6rem;
+
+        &:first-child {
+          margin-left: -3rem;
+        }
+      }
     }
 
     .edit-spot {
