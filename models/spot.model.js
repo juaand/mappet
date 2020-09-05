@@ -76,6 +76,7 @@ const spotSchema = new Schema(
   }
 );
 
+<<<<<<< HEAD
 spotSchema.virtual("comments", {
   ref: "Comment",
   localField: "_id",
@@ -89,5 +90,24 @@ spotSchema.virtual("likes", {
   foreignField: "spot",
   justOne: false,
 });
+=======
+spotSchema.virtual('comments', {
+  ref: 'Comment', // The model to use
+  localField: '_id', // Find people where `localField`
+  foreignField: 'spotId', // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: false,
+  options: { sort: { createdAt: -1 } } // Query options, see http://bit.ly/mongoose-query-options
+})
+
+spotSchema.virtual('likes', {
+  ref: 'Like',
+  localField: '_id',
+  foreignField: 'spot',
+  justOne: false,
+  options: { sort: { createdAt: -1 } }
+})
+>>>>>>> 07f85632f63ab9c6b3270dae49c9d96d6150f275
 
 module.exports = model("Spot", spotSchema);

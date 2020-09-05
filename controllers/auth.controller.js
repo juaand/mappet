@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const nodemailer = require('../config/mailer.config')
 const routeGuard = require('../middlewares/session.middleware')
 const { session } = require('passport')
+
 module.exports.getLogin = (req, res, next) => {
   if (req.session.currentUser) {
     res.redirect('/')

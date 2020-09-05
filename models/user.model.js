@@ -82,36 +82,20 @@ userSchema.virtual('pets', {
   ref: 'Pet',
   localField: '_id',
   foreignField: 'creatorId',
-  justOne: false
+  justOne: false,
+  options: { sort: { createdAt: -1 } }
 })
 
- userSchema.pre('save', function (next) {
-   if (this.isModified('password')) {
-     bcrypt.hash(this.password, 10).then((hash) => {
-       this.password = hash
-       next()
-     })
-   } else {
-     next()
-   }
- })
-
-// userSchema.pre('save', function (next) {
-//   if (this.isModified('password')) {
-//     bcrypt
-//       .genSalt(10)
-//       .then((salt) => {
-//         return bcrypt.hash(this.password, salt)
-//       })
-//       .then((hash) => {
-//         this.password = hash
-//         next()
-//       })
-//       .catch((error) => next(error))
-//   } else {
-//     next()
-//   }
-// })
+userSchema.pre('save', function (next) {
+  if (this.isModified('password')) {
+    bcrypt.hash(this.password, 10).then((hash) => {
+      this.password = hash
+      next()
+    })
+  } else {
+    next()
+  }
+})
 
 userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password)

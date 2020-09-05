@@ -88,8 +88,13 @@ module.exports.createSpot = (req, res, next) => {
 };
 
 module.exports.saveSpot = (req, res, next) => {
+<<<<<<< HEAD
   const id = req.params.id;
   const { name, categories, pictures } = req.body;
+=======
+  const id = req.params.id
+  const { name, categories } = req.body
+>>>>>>> 07f85632f63ab9c6b3270dae49c9d96d6150f275
 
   if (!categories) {
     res.render("spots/new-spot", {
@@ -107,6 +112,7 @@ module.exports.saveSpot = (req, res, next) => {
     return;
   }
 
+<<<<<<< HEAD
   return Spot.create({
     name: req.body.name,
     content: req.body.content,
@@ -135,6 +141,79 @@ module.exports.saveSpot = (req, res, next) => {
     })
     .catch((error) => next(error));
 };
+=======
+  if (req.body.email) {
+    return Spot.findOne({ email: req.body.email })
+      .then((spot) => {
+        if (spot) {
+          res.render('spots/new-spot', {
+            message:
+              'There is an spot with the provided email, please check it again.',
+            title: 'Mappet your spot!'
+          })
+          return
+        } else {
+          return Spot.create({
+            name: req.body.name,
+            content: req.body.content,
+            creatorId: id,
+            pictures: req.files
+              ? req.files.map(
+                  (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
+                )
+              : '',
+            url: req.body.url,
+            // category: [...new Set(req.body.categories)],
+            category: req.body.categories,
+            address: req.body.address,
+            city: req.body.city,
+            zipCode: req.body.zipcode,
+            days: req.body.days,
+            open: req.body.open,
+            close: req.body.close,
+            instagram: req.body.instagram,
+            facebook: req.body.facebook,
+            email: req.body.email,
+            phone: req.body.phone
+          })
+            .then(() => {
+              res.redirect(`/`)
+            })
+            .catch((error) => next(error))
+        }
+      })
+      .catch((error) => next(error))
+  } else {
+    return Spot.create({
+      name: req.body.name,
+      content: req.body.content,
+      creatorId: id,
+      pictures: req.files
+        ? req.files.map(
+            (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
+          )
+        : '',
+      url: req.body.url,
+      // category: [...new Set(req.body.categories)],
+      category: req.body.categories,
+      address: req.body.address,
+      city: req.body.city,
+      zipCode: req.body.zipcode,
+      days: req.body.days,
+      open: req.body.open,
+      close: req.body.close,
+      instagram: req.body.instagram,
+      facebook: req.body.facebook,
+      email: req.body.email,
+      phone: req.body.phone
+    })
+      .then(() => {
+        res.redirect(`/`)
+      })
+      .catch((error) => next(error))
+  }
+}
+>>>>>>> 07f85632f63ab9c6b3270dae49c9d96d6150f275
 
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////// EDIT SPOTS ////////////////////////////////
