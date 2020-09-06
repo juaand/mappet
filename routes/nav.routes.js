@@ -96,9 +96,9 @@ router.get(
 )
 
 router.get(
-  '/activities',
+  '/walk',
   routeGuard.isNotAuthenticated,
-  navController.getActivities
+  navController.getWalk
 )
 
 module.exports = router

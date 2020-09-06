@@ -137,10 +137,10 @@ module.exports.getVeterinary = (req, res, next) => {
     })
 }
 
-module.exports.getActivities = (req, res, next) => {
-  Spot.find({ category: 'Activities' })
+module.exports.getWalk = (req, res, next) => {
+  Spot.find({ category: 'Walk' })
     .populate('creatorId')
     .then((values) => {
-      res.render('spots/generate', { values, category: 'activities' })
+      res.render('spots/generate', { values, category: 'walk' })
     })
 }
