@@ -173,7 +173,7 @@
         <div class="row cat-items justify-content-center">
           {{#each allCategories as |category|}}
           <div class="col-sm-2 col-4">
-            <a href="/" class="col-12 cat-card">
+            <a href="/{{category.id}}" class="col-12 cat-card">
               <span class="mappet-{{category.id}}"></span>
               <p>{{category.name}}</p>
             </a>

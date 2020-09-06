@@ -88,7 +88,11 @@ module.exports.createSpot = (req, res, next) => {
 };
 module.exports.saveSpot = (req, res, next) => {
   const id = req.params.id;
-  const { name, categories } = req.body;
+  const name = req.body.name;
+  const categories = typeof (req.body.categories) === 'string' ? [req.body.categories] : req.body.categories;
+  const subcategories = typeof (req.body.subcategories) === 'string' ? [req.body.subcategories] : req.body.subcategories;
+
+
   if (!categories) {
     res.render("spots/new-spot", {
       title: "Mappet your spot!",
@@ -123,7 +127,8 @@ module.exports.saveSpot = (req, res, next) => {
         : "",
       url: req.body.url,
       // category: [...new Set(req.body.categories)],
-      category: req.body.categories,
+      category: req.body.categories, 
+      subCategory: req.body.subcategories,
       address: req.body.address,
       city: req.body.city,
       zipCode: req.body.zipcode,

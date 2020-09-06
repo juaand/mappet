@@ -18,6 +18,87 @@ router.get(
   routeGuard.isNotAuthenticated,
   navController.getActivities
 )
-router.get('/events', routeGuard.isNotAuthenticated, navController.getEvents)
+router.get('/events', 
+routeGuard.isNotAuthenticated, 
+navController.getEvents
+)
+
+router.get(
+  '/animal-shelter',
+  routeGuard.isNotAuthenticated,
+  navController.getAnimalShelter
+)
+
+router.get(
+  '/beach',
+  routeGuard.isNotAuthenticated,
+  navController.getBeach
+)
+
+router.get(
+  '/grooming',
+  routeGuard.isNotAuthenticated,
+  navController.getGrooming
+)
+
+router.get(
+  '/hiking',
+  routeGuard.isNotAuthenticated,
+  navController.getHiking
+)
+
+router.get(
+  '/hotel',
+  routeGuard.isNotAuthenticated,
+  navController.getHotel
+)
+
+router.get(
+  '/park',
+  routeGuard.isNotAuthenticated,
+  navController.getPark
+)
+
+router.get(
+  '/pipican',
+  routeGuard.isNotAuthenticated,
+  navController.getPipican
+)
+
+router.get(
+  '/restaurants',
+  routeGuard.isNotAuthenticated,
+  navController.getRestaurants
+)
+
+router.get(
+  '/store',
+  routeGuard.isNotAuthenticated,
+  navController.getStore
+)
+
+router.get(
+  '/tour',
+  routeGuard.isNotAuthenticated,
+  navController.getTour
+)
+
+router.get(
+  '/training',
+  routeGuard.isNotAuthenticated,
+  navController.getTraining
+)
+
+router.get(
+  '/veterinary',
+  routeGuard.isNotAuthenticated,
+  navController.getVeterinary
+)
+
+router.get(
+  '/activities',
+  routeGuard.isNotAuthenticated,
+  navController.getActivities
+)
 
 module.exports = router
