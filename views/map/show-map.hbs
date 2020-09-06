@@ -38,7 +38,7 @@
   function initMap() {
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 2,
+      zoom: 12,
       center: {lat: 40.416906, lng: -3.7056721}
     });
     setMarkers(map);
@@ -48,7 +48,7 @@
 
   spots.forEach(el => {
     let i = 1
-    {{{cat}}}.push([el.name, el.lat, el.lng, i++])
+    {{{cat}}}.push([el.name, el.lat, el.lng, el.content, el.url, el.pictures[0], i++])
   })
 
   function setMarkers(map) {
@@ -60,15 +60,40 @@
       anchor: new google.maps.Point(0, 32)
     };
 
+
     for (let i = 0; i < {{{cat}}}.length; i++) {
       const restaurant = {{{cat}}}[i];
-      new google.maps.Marker({
+
+      const contentString = 
+    `<div id="content"> 
+    <div id="siteNotice"> 
+      <img src="${restaurant[5]}"
+    </div> 
+    <h1 id="firstHeading" class="firstHeading">${restaurant[0]}</h1> 
+    <div id="bodyContent"> 
+    <p>${restaurant[3]}</p> 
+    <a href="${restaurant[4]}"> 
+    Web site</a>  
+    </p> 
+    </div> 
+    </div>`;  
+
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString
+      })
+
+      const marker = new google.maps.Marker({
         position: {lat: restaurant[1], lng: restaurant[2]},
         map,
         icon: image,
         title: restaurant[0],
         zIndex: restaurant[3]
       });
+
+      marker.addListener('click', () => {
+        infowindow.open(map, marker)
+      })
     }
+
   }
 </script>
