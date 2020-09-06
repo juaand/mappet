@@ -30,6 +30,11 @@ const spotSchema = new Schema(
       enum: categories.map((c) => c.name),
       default: []
     },
+    subCategory: {
+      type: [String],
+      enum: categories.map((c) => c.id),
+      default: []
+    },
     lat: {
       type: Number
     },
