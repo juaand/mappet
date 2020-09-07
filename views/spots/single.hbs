@@ -58,9 +58,11 @@
         {{/if}}
         <h1 class="title">{{spot.name}}</h1>
         <div class="map-social">
+          {{#if spot.address}}
           <button type="button" class="map-link" data-toggle="modal" data-target="#mapModal">
             {{spot.address}}, {{spot.city}} - {{spot.zipCode}}
           </button>
+          {{/if}}
           <span class="follow-us">
             <a href="https://www.instagram.com/{{spot.instagram}}" target="_new">
               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" role="img"
@@ -154,6 +156,7 @@
                 </svg>
               </a>
             </div>
+            {{#if spot.address}}
             <div class="col-6 col-sm-2 website">
               <p>directions</p>
               <a href="https://www.google.com/maps/search/{{spot.address}},+{{spot.zipCode}}+{{spot.city}}/"
@@ -166,6 +169,7 @@
                 </svg>
               </a>
             </div>
+            {{/if}}
             <div class="col-6 col-sm-2 website">
               <p>call us</p>
               <a href="tel:{{spot.phone}}">
@@ -275,9 +279,9 @@
             </p>
             <p>{{date spot.createdAt}}</p>
             <span class="d-flex justify-content-center mt-3">
-            {{#each spot.creatorId.pets as |pet|}}
-            <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
-            {{/each}}
+              {{#each spot.creatorId.pets as |pet|}}
+              <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
+              {{/each}}
             </span>
           </span>
         </div>
@@ -288,11 +292,13 @@
         {{/if}}
         <div class="col-12 aside-iframe">
           <hr>
+          {{#if spot.address}}
           <button type="button" class="expand" data-toggle="modal" data-target="#mapModal">
             Expand map
           </button>
           <iframe scrolling="no" frameborder="0" marginheight="0" marginwidth="0"
             src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q={{spot.address}}&amp;iwloc=near&amp;z=15&amp;output=embed"></iframe>
+          {{/if}}
         </div>
       </div>
     </div>

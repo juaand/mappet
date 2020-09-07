@@ -1576,6 +1576,7 @@ form .range-slider__value {
   width: 100%;
   height: 32rem;
   margin-top: 3rem;
+  border-radius: 2.4rem;
 }
 
 .single-results .user-info .aside-iframe .expand {
