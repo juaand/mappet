@@ -252,8 +252,18 @@
             {{/if}}
             <div class="col-10">
               <form action="/{{spot.category}}/{{spot._id}}/comment" class="make-comment" method="POST">
+                <div class="form-group col-12 col-sm-5 ranger">
+                  <div class="range-slider">
+                    <label for="open">Rate this spot</label>
+                    <input class="custom-range range-slider__range" type="range" value="5" min="1" max="5" step="1"
+                      name="rate">
+                    <span class="range-slider__value">5</span>
+                  </div>
+                </div>
                 <div class="form-group">
-                  <textarea type="text" class="form-control textarea" id="content" name="content" rows="5"></textarea>
+                  <span class="textarea">
+                    <textarea type="text" class="form-control" id="content" name="content" rows="5"></textarea>
+                  </span>
                 </div>
                 <button type="submit" class="btn">
                   <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="arrow-from-bottom" role="img"
