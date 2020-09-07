@@ -54,14 +54,11 @@
   function setMarkers(map) {
     const image = {
       url:
-        `/images/{{{cat}}}.png`,
+        `/images/{{{name}}}.png`,
       size: new google.maps.Size(28, 32),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 32)
     };
-
-    console.log(`ESTA ES LA IMAGEN QUE SE TIENE QUE CARGAR ${image.url}`)
-
 
     for (let i = 0; i < {{{cat}}}.length; i++) {
     const restaurant = {{{cat}}}[i];

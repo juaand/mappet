@@ -8,7 +8,7 @@ module.exports.getMap = (req, res, next) => {
 
   Spot.find({ category: cat })
     .then((spots) => {
-      res.render('map/show-map', { title: `Mappet map`, cat, spots: JSON.stringify(spots) })
+      res.render('map/show-map', { title: `Mappet map`, cat, name, spots: JSON.stringify(spots) })
     })
     .catch((error) => next(error))
 }
