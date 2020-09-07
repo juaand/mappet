@@ -8,10 +8,13 @@ module.exports.facebookCallback = (req, res, next) => {
         next(error)
       } else {
         req.session.currentUser = user
-        res.redirect('/')
+        if (req.session.currentUser.role === "ADMIN") {
+          res.redirect('/admin')
+        } else {
+          res.redirect('/')
+        }
       }
-    }
-  )
+    })
   passportController(req, res, next)
 }
 
@@ -21,7 +24,11 @@ module.exports.googleCallback = (req, res, next) => {
       next(error)
     } else {
       req.session.currentUser = user
-      res.redirect('/')
+      if (req.session.currentUser.role === "ADMIN") {
+        res.redirect('/admin')
+      } else {
+        res.redirect('/')
+      }
     }
   })
 

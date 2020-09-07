@@ -18,7 +18,8 @@ module.exports.editUser = (req, res, next) => {
     .then((user) => {
       // res.json(user)
       const userId = req.session.currentUser._id
-      if (userId === id) {
+      const userRole = req.session.currentUser.role
+      if (userId === id || userRole === 'ADMIN') {
         res.render('users/update-profile', { user })
       } else {
         req.session.destroy()
@@ -46,7 +47,12 @@ module.exports.saveEditedUser = (req, res, next) => {
       bio: req.body.bio
     })
       .then(() => {
-        res.redirect(`/user-profile/${id}`)
+        const userRole = req.session.currentUser.role
+        if (userRole === "ADMIN") {
+          res.redirect('/admin/stats/users')
+        } else {
+          res.redirect(`/user-profile/${id}`)
+        }
       })
       .catch((error) => next(error))
   } else {
@@ -56,7 +62,12 @@ module.exports.saveEditedUser = (req, res, next) => {
       bio: req.body.bio
     })
       .then(() => {
-        res.redirect(`/user-profile/${id}`)
+        const userRole = req.session.currentUser.role
+        if (userRole === "ADMIN") {
+          res.redirect('/admin/stats/users')
+        } else {
+          res.redirect(`/user-profile/${id}`)
+        }
       })
       .catch((error) => next(error))
   }
@@ -154,8 +165,18 @@ module.exports.saveSpot = (req, res, next) => {
 module.exports.editSpot = (req, res, next) => {
   const id = req.params.id
   Spot.findById(id).then((spot) => {
-    res.render('spots/edit', { spot, title: 'Edit ' })
+    const userRole = req.session.currentUser.role
+    const userId = req.session.currentUser._id
+    if (userId === id || userRole === 'ADMIN') {
+      res.render('spots/edit', { spot, title: 'Edit ' })
+    } else {
+      req.session.destroy()
+        res.render('auth/login', {
+          message: 'Something is wrong with your user, please login again.'
+        })
+    }
   })
+  .catch((error) => next(error))
 }
 
 module.exports.updateSpot = (req, res, next) => {
@@ -183,11 +204,15 @@ module.exports.updateSpot = (req, res, next) => {
       email: req.body.email,
       phone: req.body.phone
     })
-      .then(() => {
-        console.log(id)
+    .then(() => {
+      const userRole = req.session.currentUser.role
+      if (userRole === "ADMIN") {
+        res.redirect('/admin/stats/spots')
+      } else {
         res.redirect(`/${category}/${id}`)
-      })
-      .catch((error) => next(error))
+      }
+    })
+    .catch((error) => next(error))
   } else {
     Spot.findByIdAndUpdate(id, {
       name: req.body.name,
@@ -206,10 +231,15 @@ module.exports.updateSpot = (req, res, next) => {
       email: req.body.email,
       phone: req.body.phone
     })
-      .then(() => {
+    .then(() => {
+      const userRole = req.session.currentUser.role
+      if (userRole === "ADMIN") {
+        res.redirect('/admin/stats/spots')
+      } else {
         res.redirect(`/${category}/${id}`)
-      })
-      .catch((error) => next(error))
+      }
+    })
+    .catch((error) => next(error))
   }
 }
 
