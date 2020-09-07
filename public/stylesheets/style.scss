@@ -1008,6 +1008,7 @@ form {
 
     .make-comment {
       position: relative;
+
       .btn {
         background: $pink;
         color: $white;
@@ -1028,6 +1029,32 @@ form {
 
         svg {
           width: 1.6rem;
+        }
+      }
+
+      .textarea {
+        padding-bottom: 4.5rem;
+        height: 16rem;
+        display: block;
+        border: solid 0.2rem $dark-purple;
+        border-radius: 2.4rem;
+        outline: none;
+
+        textarea {
+          height: 12rem;
+          border: 0;
+          resize: none;
+        }
+      }
+
+      .ranger {
+        position: absolute;
+        bottom: -1.2rem;
+        margin: 0;
+        left: 2rem;
+
+        .range-slider__value {
+          right: 0.5rem;
         }
       }
     }

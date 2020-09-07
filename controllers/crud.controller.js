@@ -101,10 +101,8 @@ module.exports.createSpot = (req, res, next) => {
 module.exports.saveSpot = (req, res, next) => {
   const id = req.params.id
   const name = req.body.name
-  const categories =
-    typeof req.body.categories === 'string' ? [req.body.categories] : req.body.categories
-  const subcategories =
-    typeof req.body.subcategories === 'string' ? [req.body.subcategories] : req.body.subcategories
+  const address = req.body.address
+  const categories = req.body.categories
 
   if (!categories) {
     res.render('spots/new-spot', {
@@ -113,9 +111,18 @@ module.exports.saveSpot = (req, res, next) => {
     })
     return
   }
+
   if (!name) {
     res.render('spots/new-spot', {
       message: 'Please provide a name.',
+      title: 'Mappet your spot!'
+    })
+    return
+  }
+
+  if (!address) {
+    res.render('spots/new-spot', {
+      message: 'Please provide an address.',
       title: 'Mappet your spot!'
     })
     return

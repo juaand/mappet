@@ -1269,6 +1269,32 @@ form .range-slider__value {
   width: 1.6rem;
 }
 
+.single-results .spot-info .make-comment .textarea {
+  padding-bottom: 4.5rem;
+  height: 16rem;
+  display: block;
+  border: solid 0.2rem #35396e;
+  border-radius: 2.4rem;
+  outline: none;
+}
+
+.single-results .spot-info .make-comment .textarea textarea {
+  height: 12rem;
+  border: 0;
+  resize: none;
+}
+
+.single-results .spot-info .make-comment .ranger {
+  position: absolute;
+  bottom: -1.2rem;
+  margin: 0;
+  left: 2rem;
+}
+
+.single-results .spot-info .make-comment .ranger .range-slider__value {
+  right: 0.5rem;
+}
+
 .single-results .rating {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

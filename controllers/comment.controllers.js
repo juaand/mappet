@@ -15,6 +15,10 @@ module.exports.saveComment = (req, res, next) => {
       authorId: user._id,
       spotId: id
     })
+      .then(() => {
+        return Spot.findByIdAndUpdate(id, { $push: { rate: req.body.rate } })
+      })
+      .catch((error) => next(error))
   }
 
   Spot.findById(id)
