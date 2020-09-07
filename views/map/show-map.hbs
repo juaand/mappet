@@ -44,7 +44,7 @@
     setMarkers(map);
   }
 
-  const {{{cat}}} = []
+  const {{{cat}}} =[]
 
   spots.forEach(el => {
     let i = 1
@@ -54,17 +54,19 @@
   function setMarkers(map) {
     const image = {
       url:
-        "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+        `/images/{{{cat}}}.png`,
       size: new google.maps.Size(20, 32),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 32)
     };
 
+    console.log(`ESTA ES LA IMAGEN QUE SE TIENE QUE CARGAR ${image.url}`)
+
 
     for (let i = 0; i < {{{cat}}}.length; i++) {
-      const restaurant = {{{cat}}}[i];
+    const restaurant = {{{cat}}}[i];
 
-      const contentString = 
+  const contentString =
     `<div id="content"> 
     <div id="siteNotice"> 
       <img src="${restaurant[5]}"
@@ -76,23 +78,23 @@
     Web site</a>  
     </p> 
     </div> 
-    </div>`;  
+    </div>`;
 
-      const infowindow = new google.maps.InfoWindow({
-        content: contentString
-      })
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString
+  })
 
-      const marker = new google.maps.Marker({
-        position: {lat: restaurant[1], lng: restaurant[2]},
-        map,
-        icon: image,
-        title: restaurant[0],
-        zIndex: restaurant[3]
-      });
+  const marker = new google.maps.Marker({
+    position: {lat: restaurant[1], lng: restaurant[2]},
+    map,
+    icon: image,
+    title: restaurant[0],
+    zIndex: restaurant[3]
+  });
 
-      marker.addListener('click', () => {
-        infowindow.open(map, marker)
-      })
+  marker.addListener('click', () => {
+    infowindow.open(map, marker)
+  })
     }
 
   }
