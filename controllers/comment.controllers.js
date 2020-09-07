@@ -51,3 +51,15 @@ module.exports.saveComment = (req, res, next) => {
     })
     .catch((error) => next(error))
 }
+
+module.exports.deleteComment = (req, res, next) => {
+  const id = req.params.id
+  const user = req.session.currentUser
+  Comment.findByIdAndDelete(id)
+    .then(() => {
+      if (user.role === 'ADMIN') {
+        res.redirect('/admin/stats/comments')
+      }
+    })
+    .catch((error) => next(error))
+}

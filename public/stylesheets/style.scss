@@ -401,6 +401,15 @@ form {
 
         &.logged {
           padding: 0 3rem;
+
+          .user-link {
+            color: $white;
+
+            &:hover {
+              text-decoration: none;
+              opacity: 0.5;
+            }
+          }
         }
 
         button {
@@ -417,6 +426,10 @@ form {
           background: rgba($pink, 0.9);
           padding: 0 4rem;
           margin-right: 5rem;
+
+          &.admin-logout {
+            background: $pink;
+          }
         }
 
         .user-info {
@@ -483,6 +496,16 @@ form {
             background: transparent;
             opacity: 0.7;
           }
+        }
+      }
+    }
+
+    &.admin-links {
+      a {
+        margin: 0 1.6rem;
+
+        &:hover {
+          color: $pink;
         }
       }
     }
@@ -608,7 +631,8 @@ form {
   &.login,
   &.new-spot,
   &.user-single,
-  &.user-profile {
+  &.user-profile,
+  &.user-admin {
     height: 66rem;
   }
 
@@ -681,6 +705,10 @@ form {
   &.user-profile {
     background: url(../images/user-profile-bg.jpg) no-repeat center center /
       cover;
+  }
+
+  &.user-admin {
+    background: url(../images/user-profile-bg.jpg) no-repeat center -20rem / cover;
   }
 }
 
@@ -812,26 +840,6 @@ form {
 
     .card-body {
       position: relative;
-
-      .go-single {
-        position: absolute;
-        background: $pink;
-        width: 4rem;
-        height: 4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3rem;
-        top: -2rem;
-        right: 2rem;
-        border: solid 0.3rem $white;
-        transition: all 200ms ease-in;
-        z-index: 1;
-
-        svg {
-          width: 1rem;
-        }
-      }
     }
 
     .card-title,
@@ -869,6 +877,26 @@ form {
         transform: scale(1);
       }
     }
+  }
+}
+
+.go-single {
+  position: absolute;
+  background: $pink;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  top: -2rem;
+  right: 2rem;
+  border: solid 0.3rem $white;
+  transition: all 200ms ease-in;
+  z-index: 1;
+
+  svg {
+    width: 1rem;
   }
 }
 
@@ -1886,6 +1914,190 @@ footer {
   }
 }
 
+.admin-card {
+  color: $white;
+  margin: 3rem 0;
+
+  .go-single {
+    top: 13rem;
+    right: 4rem;
+  }
+
+  .admin-tab {
+    border: solid 0.2rem $pink;
+    border-radius: 2.4rem;
+    padding: 4rem 2rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    background: $dark-purple;
+    font-weight: 400;
+    font-size: 1.4rem;
+    min-height: 15rem;
+
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: all 200ms ease;
+      transform: scale(1.3);
+      filter: blur(0);
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $pink;
+
+    h2 {
+      color: $white;
+    }
+
+    .bg {
+      transform: scale(1);
+      opacity: 0.2;
+      filter: blur(0.1rem);
+    }
+
+    .go-single {
+      right: 3rem;
+    }
+  }
+}
+
+[class*='-pages'] {
+  form {
+    label {
+      position: relative;
+      width: 100%;
+
+      input {
+        width: 100%;
+        border-radius: 4rem;
+        padding: 0.32rem 2rem;
+        border: solid 0.2rem $pink;
+        margin-top: 0.6rem;
+      }
+
+      a {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border-radius: 0 4rem 4rem 0;
+        transition: all 200ms ease;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+  .search-input {
+    margin-top: 8rem;
+  }
+
+  .not-allowed-result {
+    margin-top: 8rem;
+
+    h2 {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: solid 0.3rem $pink;
+    display: block;
+    margin-right: 3rem;
+    position: absolute;
+  }
+
+  .user {
+    display: flex;
+    justify-content: center;
+
+    &.roles {
+      justify-content: flex-start;
+      margin-left: 6rem;
+
+      .label {
+        text-transform: lowercase;
+        font-size: 1.2rem;
+
+        &.ADMIN,
+        &.EDITOR,
+        &.GUEST {
+          color: $white;
+          padding: 0.3rem 1rem;
+          border-radius: 1rem;
+        }
+
+        &.ADMIN {
+          background: $pink;
+        }
+
+        &.EDITOR {
+          background: $dark-purple;
+        }
+
+        &.GUEST {
+          background: $purple;
+        }
+      }
+    }
+
+    p {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
+
+    a {
+      color: $pink;
+      font-weight: 600;
+    }
+  }
+
+  a {
+    &.btn-edit,
+    &.btn-delete {
+      border-radius: 4rem;
+      margin: 0.8rem 0;
+      margin-right: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 4.5rem;
+      height: 4.5rem;
+      transition: all 200ms ease;
+
+      svg {
+        width: 2rem;
+      }
+
+      &:hover {
+        background: $dark-purple;
+        color: $pink;
+        text-decoration: none;
+      }
+    }
+
+    &.btn-delete {
+      border: solid 0.1rem $pink;
+      color: $pink;
+    }
+
+    &.btn-edit {
+      border: solid 0.1rem $pink;
+      background: $pink;
+      color: $white;
+    }
+  }
+}
+
 @media (max-width: 576px) {
   h1 {
     &.title {
@@ -1907,7 +2119,8 @@ footer {
     &.single,
     &.new-spot,
     &.user-single,
-    &.user-profile {
+    &.user-profile,
+    &.user-admin {
       height: 40rem;
     }
   }
@@ -1946,7 +2159,7 @@ footer {
             width: 100%;
             padding: 0 1.5rem;
 
-            &.logged {
+            .logged {
               background: rgba($white, 0.4);
               padding: 1rem;
               position: relative;

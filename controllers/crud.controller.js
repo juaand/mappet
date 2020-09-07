@@ -1,11 +1,12 @@
 // controller/crud.controller.js
 
-const User = require("../models/user.model");
-const Spot = require("../models/spot.model");
-const Pet = require("../models/pet.model");
+const User = require('../models/user.model')
+const Spot = require('../models/spot.model')
+const Pet = require('../models/pet.model')
+const Comment = require('../models/comment.model')
+const bcryptjs = require('bcryptjs')
+const saltRounds = 10
 const fetch = require("node-fetch");
-const bcryptjs = require("bcryptjs");
-const saltRounds = 10;
 
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////// RENDER USER ///////////////////////////////
@@ -69,8 +70,8 @@ module.exports.deleteUser = (req, res, next) => {
   const id = req.params.id;
   User.findByIdAndDelete(id)
     .then(() => {
-      if (req.session.currentUser.role === "ADMIN") {
-        res.redirect("/admin");
+      if (req.session.currentUser.role === 'ADMIN') {
+        res.redirect('/admin/stats/users')
       } else {
         req.session.destroy();
         res.redirect("/");
@@ -148,16 +149,20 @@ module.exports.saveSpot = (req, res, next) => {
 
   
 };
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////// EDIT SPOTS ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+
 module.exports.editSpot = (req, res, next) => {
   const id = req.params.id;
   Spot.findById(id).then((spot) => {
-    res.render("spots/edit", { spot, title: "Edit " });
-  });
-};
+    res.render('spots/edit', { spot, title: 'Edit ' })
+  })
+}
+
 module.exports.updateSpot = (req, res, next) => {
   const id = req.params.id;
   const category = req.params.category;
@@ -166,8 +171,7 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files
-        ? req.files.map(
+      pictures: req.files ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : "",
@@ -212,13 +216,14 @@ module.exports.updateSpot = (req, res, next) => {
       })
       .catch((error) => next(error));
   }
-};
+}
+
 module.exports.deleteSpot = (req, res, next) => {
   const id = req.params.id;
   Spot.findByIdAndDelete(id)
     .then(() => {
-      if (req.session.currentUser.role === "ADMIN") {
-        res.redirect("/admin");
+      if (req.session.currentUser.role === 'ADMIN') {
+        res.redirect('/admin/stats/spots')
       } else {
         res.redirect("/");
       }
@@ -229,8 +234,9 @@ module.exports.deleteSpot = (req, res, next) => {
 ////////////////////////////// ADD PET /////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 module.exports.addPet = (req, res, next) => {
-  res.render("pets/add-pet", { title: "add your pet" });
-};
+  res.render('pets/add-pet', { title: 'add your pet' })
+}
+
 module.exports.createPet = (req, res, next) => {
   const id = req.params.id;
   req.body.avatar = req.file ? req.file.filename : undefined;
@@ -242,23 +248,26 @@ module.exports.createPet = (req, res, next) => {
     age: req.body.age,
     breed: req.body.breed,
   }).then((pet) => {
-    res.render("pets/add-pet", {
-      title: "add your pet",
-      message: "Pet added sucefully",
-    });
-  });
-};
+    res.render('pets/add-pet', {
+      title: 'add your pet',
+      message: 'Pet added sucefully'
+    })
+  })
+}
+
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////// CRUD PET ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+
 module.exports.editPet = (req, res, next) => {
   const petId = req.params.id;
   Pet.findById(petId)
     .then((pet) => {
       res.render("pets/edit-pet", { pet, title: "Edit pet" });
     })
-    .catch((error) => next(error));
-};
+    .catch((error) => next(error))
+}
+
 module.exports.updatePet = (req, res, next) => {
   const petId = req.params.id;
   req.body.avatar = req.file ? req.file.filename : undefined;
@@ -286,16 +295,22 @@ module.exports.updatePet = (req, res, next) => {
       })
       .catch((error) => next(error));
   }
-};
+}
+
 module.exports.deletePet = (req, res, next) => {
   const petId = req.params.id;
   Pet.findByIdAndDelete(petId)
     .then(() => {
-      const user = req.session.currentUser;
-      res.redirect(`/user/${user._id}`);
+      const user = req.session.currentUser
+      if (user.role === 'ADMIN') {
+        res.redirect('/admin/stats/pets')
+      } else {
+        res.redirect(`/user/${user._id}`)
+      }
     })
-    .catch((error) => next(error));
-};
+    .catch((error) => next(error))
+}
+
 module.exports.changePassword = (req, res, next) => {
   const id = req.params.id;
   const userPass = req.session.currentUser.password;
@@ -332,5 +347,6 @@ module.exports.changePassword = (req, res, next) => {
         });
       }
     })
-    .catch((error) => next(error));
-};
+    .catch((error) => next(error))
+}
+

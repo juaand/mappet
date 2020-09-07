@@ -6,44 +6,61 @@
       <div class="label-dark" tabindex="0">{{user.role}}</div>
     </span>
   </div>
-  <div class="container">
+  <div class="container admin-pages">
     <div class="row">
-      <div class="col-12 mt-5 mb-5">
+      <div class="col-12 mt-5 mb-5 search-input">
         <form>
-          <label for="pets">Search Projects</label>
-          <input name="pets" id="pets" placeholder="filter by name">
-          <a class="pets-filter"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
-              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-              <path fill-rule="evenodd"
-                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-            </svg></a>
+          <label for="pets">search pets
+            <input name="pets" id="pets" placeholder="filter by pets">
+            <a class="pets-filter"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                <path fill-rule="evenodd"
+                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+              </svg>
+            </a>
+          </label>
         </form>
       </div>
     </div>
     <hr>
     <div class="pet-result">
+      <h1 class="title">all pets</h1>
       {{#each pets as |pet|}}
-      <div class="info">
-        <p>{{pet.name}}</p>
-        <form action="/pet/{{pet._id}}/edit" method="POST">
-          <button type="submit" class="btn-delete"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pen"
-              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
-              <path fill-rule="evenodd"
-                d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
-              <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-            </svg></button>
-          <a href="/pet/{{pet._id}}/delete" class="btn-delete"><svg width="1em" height="1em" viewBox="0 0 16 16"
-              class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-              <path fill-rule="evenodd"
-                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-            </svg></a>
-        </form>
+      <div class="info admin-page-users">
+        <div class="avatar" style="background: url({{pet.avatar}}) no-repeat center center / cover;">
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-7 d-flex justify-content-start">
+            <span class="col user roles">
+              <span>
+                <h2>{{pet.name}}</h2>
+                <strong>owner</strong> <a href="/user/{{pet.creatorId._id}}"> @{{pet.creatorId.username}}</a>
+              </span>
+            </span>
+            <span class="col align-self-center">
+              <p class="text-left">{{pet.name}} is a {{pet.breed}} breed {{pet.animal}} and is {{pet.age}} years old</p>
+            </span>
+          </div>
+          <div class="col-12 col-sm-5 d-flex justify-content-end">
+            <a href="/admin/user/{{pet._id}}/edit" class="btn-edit">
+              <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="edit" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="currentColor"
+                  d="M417.8 315.5l20-20c3.8-3.8 10.2-1.1 10.2 4.2V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h292.3c5.3 0 8 6.5 4.2 10.2l-20 20c-1.1 1.1-2.7 1.8-4.2 1.8H48c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V319.7c0-1.6.6-3.1 1.8-4.2zm145.9-191.2L251.2 436.8l-99.9 11.1c-13.4 1.5-24.7-9.8-23.2-23.2l11.1-99.9L451.7 12.3c16.4-16.4 43-16.4 59.4 0l52.6 52.6c16.4 16.4 16.4 43 0 59.4zm-93.6 48.4L403.4 106 169.8 339.5l-8.3 75.1 75.1-8.3 233.5-233.6zm71-85.2l-52.6-52.6c-3.8-3.8-10.2-4-14.1 0L426 83.3l66.7 66.7 48.4-48.4c3.9-3.8 3.9-10.2 0-14.1z"
+                  class=""></path>
+              </svg></a>
+            <a href="/delete/{{pet._id}}" class="btn-delete">
+              <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash fa-w-14 fa-2x">
+                <path fill="currentColor"
+                  d="M440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h18.9l33.2 372.3a48 48 0 0 0 47.8 43.7h232.2a48 48 0 0 0 47.8-43.7L421.1 96H440a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zm184.8 427a15.91 15.91 0 0 1-15.9 14.6H107.9A15.91 15.91 0 0 1 92 465.4L59 96h330z"
+                  class=""></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
       <hr>
       {{/each}}
@@ -54,6 +71,7 @@
 
 <script>
   //User filter
+  const usersJson = '/admin/data/users'
   const petsJson = '/admin/data/pets'
   const petFilter = document.querySelector('.pets-filter')
   const petsColumn = document.querySelector('.pet-result')
@@ -61,14 +79,18 @@
 
   petFilter.addEventListener('click', () => {
     axios
-      .get(petsJson)
-      .then((response) => {
+      .all([axios.get(petsJson), axios.get(usersJson)])
+      .then((responses) => {
+
+        const pets = responses[0]
+        const users = responses[1]
+
         petsColumn.innerHTML = ''
         let results = []
 
-        response.data.forEach((el) => {
+        pets.data.forEach((pet) => {
           if (
-            el.name
+            pet.name
               .toLowerCase()
               .normalize('NFD')
               .replace(/[\u0300-\u036f]/g, '')
@@ -79,8 +101,11 @@
                   .toLowerCase()
               )
           ) {
-            results.push(el)
-            console.log(results)
+            users.data.forEach(usuario => {
+              if (pet.creatorId === usuario._id) {
+                results.push([pet, usuario])
+              }
+            })
           }
         })
 
@@ -90,24 +115,38 @@
 
           info.setAttribute('class', 'info')
           info.innerHTML = `
-              <p>${el.name}</p>
-              <form action="/user-profile/${el._id}/edit" method="POST">
-                <button type="submit" class="btn-delete"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
-                    <path fill-rule="evenodd"
-                      d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
-                    <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-                  </svg></button>
-                <a href="/user-profile/${el._id}/delete" class="btn-delete"><svg width="1em" height="1em"
-                    viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                    <path fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                  </svg></a>
-              </form>
+              <div class="avatar" style="background: url(${el[0].avatar}) no-repeat center center / cover;">
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-7 d-flex justify-content-start">
+            <span class="col user roles">
+              <span>
+                <h2>${el[0].name}</h2>
+                <strong>owner</strong> <a href="/user/${el[1]._id}"> @${el[1].username}</a>
+              </span>
+            </span>
+            <span class="col align-self-center">
+              <p class="text-left">${el[0].name} is a ${el[0].breed} breed ${el[0].animal} and is ${el[0].age} years old</p>
+            </span>
+          </div>
+          <div class="col-12 col-sm-5 d-flex justify-content-end">
+            <a href="/admin/user/${el[0]._id}/edit" class="btn-edit">
+              <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="edit" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="currentColor"
+                  d="M417.8 315.5l20-20c3.8-3.8 10.2-1.1 10.2 4.2V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h292.3c5.3 0 8 6.5 4.2 10.2l-20 20c-1.1 1.1-2.7 1.8-4.2 1.8H48c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V319.7c0-1.6.6-3.1 1.8-4.2zm145.9-191.2L251.2 436.8l-99.9 11.1c-13.4 1.5-24.7-9.8-23.2-23.2l11.1-99.9L451.7 12.3c16.4-16.4 43-16.4 59.4 0l52.6 52.6c16.4 16.4 16.4 43 0 59.4zm-93.6 48.4L403.4 106 169.8 339.5l-8.3 75.1 75.1-8.3 233.5-233.6zm71-85.2l-52.6-52.6c-3.8-3.8-10.2-4-14.1 0L426 83.3l66.7 66.7 48.4-48.4c3.9-3.8 3.9-10.2 0-14.1z"
+                  class=""></path>
+              </svg></a>
+            <a href="/delete/${el[0]._id}" class="btn-delete">
+              <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash fa-w-14 fa-2x">
+                <path fill="currentColor"
+                  d="M440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h18.9l33.2 372.3a48 48 0 0 0 47.8 43.7h232.2a48 48 0 0 0 47.8-43.7L421.1 96H440a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zm184.8 427a15.91 15.91 0 0 1-15.9 14.6H107.9A15.91 15.91 0 0 1 92 465.4L59 96h330z"
+                  class=""></path>
+              </svg>
+            </a>
+          </div>
+        </div>
             `
           petsColumn.appendChild(info)
           petsColumn.appendChild(hr)

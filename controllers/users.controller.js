@@ -35,7 +35,15 @@ module.exports.getUserSpots = (req, res, next) => {
   Promise.all([user, pets, spots])
     .then((values) => {
       if (req.session.currentUser) {
-        if (id == req.session.currentUser._id) {
+        if (req.session.currentUser.role === 'ADMIN') {
+          res.render('users/show-profile', {
+            profile: values[0],
+            pets: values[1],
+            spots: values[2],
+            title: `@${values[0].username} spots`,
+            admin: true
+          })
+        } else if (id == req.session.currentUser._id) {
           const owner = true
           res.render('users/show-profile', {
             profile: values[0],

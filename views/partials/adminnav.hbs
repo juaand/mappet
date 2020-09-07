@@ -5,27 +5,34 @@
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-    <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="bars" role="img"
-      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bars" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-2x">
       <path fill="currentColor"
-        d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z"
+        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
         class=""></path>
     </svg>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarToggle">
-    <ul class="navbar-nav col-12 col-sm-6 p-0">
-      <li class="nav-item">
+    <ul class="navbar-nav col-12 col-sm-8 p-0">
+      <li class="nav-item mr-5">
         Welcome to admin page
       </li>
+      <li class="nav-item admin-links login">
+        <a href="/admin/stats/spots" class="nav-link {{#ifvalue category equals="spots"}}active{{/ifvalue}}">spots</a>
+        <a href="/admin/stats/users" class="nav-link {{#ifvalue category equals="users"}}active{{/ifvalue}}">users</a>
+        <a href="/admin/stats/pets" class="nav-link {{#ifvalue category equals="pets"}}active{{/ifvalue}}">pets</a>
+        <a href="/admin/stats/comments" class="nav-link {{#ifvalue category equals="comments"}}active{{/ifvalue}}">comments</a>
+        <a href="/admin/stats/statistics" class="nav-link {{#ifvalue category equals="statistics"}}active{{/ifvalue}}">statistics</a>
+      </li>
       <li class="nav-item login">
-        <ul {{#if user}}class="logged" {{/if}}>
+        <ul {{#if user}}class="logged pr-0" {{/if}}>
           {{#if user}}
           <li class="user-info">
             <div class="nav-avatar" style="background: #ea7676 url({{user.avatar}}) no-repeat center center / cover;">
             </div>
             <p>Hi <strong>@{{user.username}}</strong></p>
-          <li class="nav-item user-login">
+          <li class="nav-item user-login admin-logout m-0">
             <a href="/logout" type="button" class="nav-link">Logout</a>
           </li>
           {{/if}}

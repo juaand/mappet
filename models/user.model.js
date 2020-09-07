@@ -60,7 +60,7 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['GUEST', 'ADMIN'],
+      enum: ['GUEST', 'ADMIN', 'EDITOR'],
       default: 'GUEST'
     },
     level: {
