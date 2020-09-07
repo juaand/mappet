@@ -16,6 +16,9 @@
 </head>
 
 <body>
+  {{#if admin}}
+  {{>adminnav}}
+  {{/if}}
   {{>nav}}
   {{{body}}}
   {{>footer}}

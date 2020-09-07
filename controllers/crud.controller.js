@@ -3,6 +3,7 @@
 const User = require('../models/user.model')
 const Spot = require('../models/spot.model')
 const Pet = require('../models/pet.model')
+const Comment = require('../models/comment.model')
 const bcryptjs = require('bcryptjs')
 const saltRounds = 10
 
@@ -69,7 +70,7 @@ module.exports.deleteUser = (req, res, next) => {
   User.findByIdAndDelete(id)
     .then(() => {
       if (req.session.currentUser.role === 'ADMIN') {
-        res.redirect('/admin')
+        res.redirect('/admin/stats/users')
       } else {
         req.session.destroy()
         res.redirect('/')
@@ -106,8 +107,7 @@ module.exports.saveSpot = (req, res, next) => {
     name: req.body.name,
     content: req.body.content,
     creatorId: id,
-    pictures: req.files
-      ? req.files.map(
+    pictures: req.files ? req.files.map(
           (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
         )
       : '',
@@ -130,7 +130,7 @@ module.exports.saveSpot = (req, res, next) => {
     })
     .catch((error) => next(error))
 
-      // if (req.body.email) {
+  // if (req.body.email) {
   //   return Spot.findOne({ email: req.body.email })
   //     .then((spot) => {
   //       if (spot) {
@@ -204,12 +204,14 @@ module.exports.saveSpot = (req, res, next) => {
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////// EDIT SPOTS ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+
 module.exports.editSpot = (req, res, next) => {
   const id = req.params.id
   Spot.findById(id).then((spot) => {
     res.render('spots/edit', { spot, title: 'Edit ' })
   })
 }
+
 module.exports.updateSpot = (req, res, next) => {
   const id = req.params.id
   const category = req.params.category
@@ -218,8 +220,7 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files
-        ? req.files.map(
+      pictures: req.files ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : '',
@@ -265,12 +266,13 @@ module.exports.updateSpot = (req, res, next) => {
       .catch((error) => next(error))
   }
 }
+
 module.exports.deleteSpot = (req, res, next) => {
   const id = req.params.id
   Spot.findByIdAndDelete(id)
     .then(() => {
       if (req.session.currentUser.role === 'ADMIN') {
-        res.redirect('/admin')
+        res.redirect('/admin/stats/spots')
       } else {
         res.redirect('/')
       }
@@ -283,6 +285,7 @@ module.exports.deleteSpot = (req, res, next) => {
 module.exports.addPet = (req, res, next) => {
   res.render('pets/add-pet', { title: 'add your pet' })
 }
+
 module.exports.createPet = (req, res, next) => {
   const id = req.params.id
   req.body.avatar = req.file ? req.file.filename : undefined
@@ -300,9 +303,11 @@ module.exports.createPet = (req, res, next) => {
     })
   })
 }
+
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////// CRUD PET ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+
 module.exports.editPet = (req, res, next) => {
   const petId = req.params.id
   Pet.findById(petId)
@@ -311,6 +316,7 @@ module.exports.editPet = (req, res, next) => {
     })
     .catch((error) => next(error))
 }
+
 module.exports.updatePet = (req, res, next) => {
   const petId = req.params.id
   req.body.avatar = req.file ? req.file.filename : undefined
@@ -339,15 +345,21 @@ module.exports.updatePet = (req, res, next) => {
       .catch((error) => next(error))
   }
 }
+
 module.exports.deletePet = (req, res, next) => {
   const petId = req.params.id
   Pet.findByIdAndDelete(petId)
     .then(() => {
       const user = req.session.currentUser
-      res.redirect(`/user/${user._id}`)
+      if (user.role === 'ADMIN') {
+        res.redirect('/admin/stats/pets')
+      } else {
+        res.redirect(`/user/${user._id}`)
+      }
     })
     .catch((error) => next(error))
 }
+
 module.exports.changePassword = (req, res, next) => {
   const id = req.params.id
   const userPass = req.session.currentUser.password

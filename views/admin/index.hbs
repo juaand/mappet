@@ -1,32 +1,86 @@
 {{>adminnav}}
-<section class="container-fluid banner user-single"></section>
+<section class="container-fluid banner user-admin"></section>
 <section class="container-fluid results">
   <div class="big-avatar" style="background: url({{user.avatar}}) no-repeat center center / cover;">
     <span class="cat-label">
       <div class="label-dark" tabindex="0">{{user.role}}</div>
     </span>
   </div>
-  <div class="container">
+  <div class="container pt-5">
     <div class="row">
-      <a href="/admin/stats/spots" class="col-4">
-        <h1 class="title">spots</h1>
-        <p>There are {{spots.length}} spots added</p>
+      <a href="/admin/stats/spots" class="col-12 col-sm-3 admin-card">
+        <span class="go-single">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+            <path fill="#fff"
+              d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+              class=""></path>
+          </svg>
+        </span>
+        <div class="col-12 admin-tab">
+          <div class="bg" style="background: url({{spots.[0].pictures.[0]}}) no-repeat center center / cover;"></div>
+          <h2 class="title">spots</h2>
+          <p>There are {{spots.length}} spots added</p>
+        </div>
       </a>
-      <a href="/admin/stats/users" class="col-4">
-        <h1 class="title">users</h1>
-        <p>There are {{profiles.length}} users added</p>
+      <a href="/admin/stats/users" class="col-12 col-sm-3 admin-card">
+        <span class="go-single">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+            <path fill="#fff"
+              d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+              class=""></path>
+          </svg>
+        </span>
+        <div class="col-12 admin-tab">
+          <div class="bg" style="background: url({{profiles.[0].avatar}}) no-repeat center center / cover;"></div>
+          <h2 class="title">users</h2>
+          <p>There are {{profiles.length}} users added</p>
+        </div>
       </a>
-      <a href="/admin/stats/pets" class="col-4">
-        <h1 class="title">pets</h1>
-        <p>There are {{pets.length}} pets added</p>
+      <a href="/admin/stats/pets" class="col-12 col-sm-3 admin-card">
+        <span class="go-single">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+            <path fill="#fff"
+              d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+              class=""></path>
+          </svg>
+        </span>
+        <div class=" col-12 admin-tab">
+          <div class="bg" style="background: url({{pets.[0].avatar}}) no-repeat center center / cover;"></div>
+          <h2 class="title">pets</h2>
+          <p>There are {{pets.length}} pets added</p>
+        </div>
       </a>
-      <a href="/admin/stats/comments" class="col-4">
-        <h1 class="title">comments</h1>
-        <p>There are {{comments.length}} comments posted</p>
+      <a href="/admin/stats/comments" class="col-12 col-sm-3 admin-card">
+        <span class="go-single">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+            <path fill="#fff"
+              d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+              class=""></path>
+          </svg>
+        </span>
+        <div class="col-12 admin-tab">
+          <div class="bg" style="color: white;">{{comments.[0].content}}</div>
+          <h2 class="title">comments</h2>
+          <p>There are {{comments.length}} comments posted</p>
+        </div>
       </a>
-      <a href="/admin/stats/statistics" class="col-4">
-        <h1 class="title">statistics</h1>
-        <p>Check out mappet statistics</p>
+      <a href="/admin/stats/statistics" class=" col-12 col-sm-3 admin-card">
+        <span class="go-single">
+          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+            <path fill="#fff"
+              d="M187.8 264.5L41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3 0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3 0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3 0 17z"
+              class=""></path>
+          </svg>
+        </span>
+        <div class="col-12 admin-tab">
+          <h2 class="title">statistics</h2>
+          <p>Check out mappet statistics</p>
+        </div>
       </a>
     </div>
   </div>

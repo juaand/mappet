@@ -1,53 +1,163 @@
 {{>adminnav}}
 <section class="container-fluid banner user-single"></section>
-<section class="container-fluid results">
+<section class="container-fluid results d-flex justify-content-center">
   <div class="big-avatar" style="background: url({{user.avatar}}) no-repeat center center / cover;">
     <span class="cat-label">
       <div class="label-dark" tabindex="0">{{user.role}}</div>
     </span>
   </div>
-  <div class="container">
+  <div class="col-12 col-sm-10 admin-pages">
     <div class="row">
-      <div class="col-12 mt-5 mb-5">
+      <div class="col-12 mt-5 mb-5 search-input">
         <form>
-          <label for="name">Search Users</label>
-          <input name="name" id="name" placeholder="filter by name">
-          <a class="name-filter"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
-              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-              <path fill-rule="evenodd"
-                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-            </svg></a>
+          <label for="name">search users
+            <input name="name" id="name" placeholder="filter by user name">
+            <a class="name-filter"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                <path fill-rule="evenodd"
+                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+              </svg>
+            </a>
+          </label>
         </form>
       </div>
     </div>
     <hr>
-    {{info}}
     <div class="users-result">
-      {{#each profiles as |profile|}}
-      <div class="info">
-        <p>{{profile.name}}</p>
-        <form action="/profile-profile/{{profile._id}}/edit" method="POST">
-          <button type="submit" class="btn-delete"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pen"
-              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
-              <path fill-rule="evenodd"
-                d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
-              <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-            </svg></button>
-          <a href="/profile-profile/{{profile._id}}/delete" class="btn-delete"><svg width="1em" height="1em"
-              viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-              <path fill-rule="evenodd"
-                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-            </svg></a>
-        </form>
+      <div class="row">
+        <div class="col-12 col-sm-4">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-10">
+              <h1 class="title">all users</h1>
+              {{#each profiles as |profile|}}
+              <div class="info admin-page-users">
+                <div class="avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;">
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-7">
+                    <span class="user roles">
+                      <span>
+                        <span class="label {{profile.role}}">{{profile.role}}</span>
+                        <h2>{{profile.name}}</h2>
+                        <a href="/user/{{profile._id}}"> @{{profile.username}}</a>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="col-12 col-sm-5 d-flex justify-content-end">
+                    <a href="/admin/user/{{profile._id}}/edit" class="btn-edit">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="user-edit" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path fill="currentColor"
+                          d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm406.6 204.1l-34.7-34.7c-6.3-6.3-14.5-9.4-22.8-9.4-8.2 0-16.5 3.1-22.8 9.4L327.8 424l-7.6 68.2c-1.2 10.7 7.2 19.8 17.7 19.8.7 0 1.3 0 2-.1l68.2-7.6 222.5-222.5c12.5-12.7 12.5-33.1 0-45.7zM393.3 473.7l-39.4 4.5 4.4-39.5 156.9-156.9 35 35-156.9 156.9zm179.5-179.5l-35-35L573 224h.1l.2.1 34.7 35-35.2 35.1zM134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 20.7 0 39.9 6.3 56 16.9l22.8-22.8c-22.2-16.2-49.3-26-78.8-26-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h243.5c-2.8-7.4-4.1-15.4-3.2-23.4l1-8.6H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320z"
+                          class=""></path>
+                      </svg></a>
+                    <a href="/user-profile/{{profile._id}}/delete" class="btn-delete">
+                      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="user-times" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                        class="svg-inline--fa fa-user-times fa-w-20 fa-2x">
+                        <path fill="currentColor"
+                          d="M593.9 240l41.4-41.4c6.2-6.2 6.2-16.4 0-22.6L624 164.7c-6.2-6.2-16.4-6.2-22.6 0L560 206.1l-41.4-41.4c-6.2-6.2-16.4-6.2-22.6 0L484.7 176c-6.2 6.2-6.2 16.4 0 22.6l41.4 41.4-41.4 41.4c-6.2 6.2-6.2 16.4 0 22.6l11.3 11.3c6.2 6.2 16.4 6.2 22.6 0l41.4-41.4 41.4 41.4c6.2 6.2 16.4 6.2 22.6 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6L593.9 240zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm89.6 256c-28.8 0-42.4 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464z"
+                          class=""></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-4">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-10">
+              <h1 class="title">all editors</h1>
+              {{#each editorprofiles as |profile|}}
+              <div class="info admin-page-users">
+                <div class="avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;">
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-7">
+                    <span class="user roles">
+                      <span>
+                        <span class="label {{profile.role}}">{{profile.role}}</span>
+                        <h2>{{profile.name}}</h2>
+                        <a href="/user/{{profile._id}}"> @{{profile.username}}</a>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="col-12 col-sm-5 d-flex justify-content-end">
+                    <a href="/admin/user/{{profile._id}}/edit" class="btn-edit">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="user-edit" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path fill="currentColor"
+                          d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm406.6 204.1l-34.7-34.7c-6.3-6.3-14.5-9.4-22.8-9.4-8.2 0-16.5 3.1-22.8 9.4L327.8 424l-7.6 68.2c-1.2 10.7 7.2 19.8 17.7 19.8.7 0 1.3 0 2-.1l68.2-7.6 222.5-222.5c12.5-12.7 12.5-33.1 0-45.7zM393.3 473.7l-39.4 4.5 4.4-39.5 156.9-156.9 35 35-156.9 156.9zm179.5-179.5l-35-35L573 224h.1l.2.1 34.7 35-35.2 35.1zM134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 20.7 0 39.9 6.3 56 16.9l22.8-22.8c-22.2-16.2-49.3-26-78.8-26-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h243.5c-2.8-7.4-4.1-15.4-3.2-23.4l1-8.6H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320z"
+                          class=""></path>
+                      </svg></a>
+                    <a href="/user-profile/{{profile._id}}/delete" class="btn-delete">
+                      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="user-times" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                        class="svg-inline--fa fa-user-times fa-w-20 fa-2x">
+                        <path fill="currentColor"
+                          d="M593.9 240l41.4-41.4c6.2-6.2 6.2-16.4 0-22.6L624 164.7c-6.2-6.2-16.4-6.2-22.6 0L560 206.1l-41.4-41.4c-6.2-6.2-16.4-6.2-22.6 0L484.7 176c-6.2 6.2-6.2 16.4 0 22.6l41.4 41.4-41.4 41.4c-6.2 6.2-6.2 16.4 0 22.6l11.3 11.3c6.2 6.2 16.4 6.2 22.6 0l41.4-41.4 41.4 41.4c6.2 6.2 16.4 6.2 22.6 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6L593.9 240zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm89.6 256c-28.8 0-42.4 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464z"
+                          class=""></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-10">
+              <h1 class="title">all admins</h1>
+              {{#each adminprofiles as |profile|}}
+              <div class="info admin-page-users">
+                <div class="avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;">
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-7">
+                    <span class="user roles">
+                      <span>
+                        <span class="label {{profile.role}}">{{profile.role}}</span>
+                        <h2>{{profile.name}}</h2>
+                        <a href="/user/{{profile._id}}"> @{{profile.username}}</a>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="col-12 col-sm-5 d-flex justify-content-end">
+                    <a href="/admin/user/{{profile._id}}/edit" class="btn-edit">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="user-edit" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path fill="currentColor"
+                          d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0-224c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm406.6 204.1l-34.7-34.7c-6.3-6.3-14.5-9.4-22.8-9.4-8.2 0-16.5 3.1-22.8 9.4L327.8 424l-7.6 68.2c-1.2 10.7 7.2 19.8 17.7 19.8.7 0 1.3 0 2-.1l68.2-7.6 222.5-222.5c12.5-12.7 12.5-33.1 0-45.7zM393.3 473.7l-39.4 4.5 4.4-39.5 156.9-156.9 35 35-156.9 156.9zm179.5-179.5l-35-35L573 224h.1l.2.1 34.7 35-35.2 35.1zM134.4 320c19.6 0 39.1 16 89.6 16 50.4 0 70-16 89.6-16 20.7 0 39.9 6.3 56 16.9l22.8-22.8c-22.2-16.2-49.3-26-78.8-26-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h243.5c-2.8-7.4-4.1-15.4-3.2-23.4l1-8.6H48c-8.8 0-16-7.2-16-16v-41.6C32 365.9 77.9 320 134.4 320z"
+                          class=""></path>
+                      </svg></a>
+                    <a href="/user-profile/{{profile._id}}/delete" class="btn-delete">
+                      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="user-times" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                        class="svg-inline--fa fa-user-times fa-w-20 fa-2x">
+                        <path fill="currentColor"
+                          d="M593.9 240l41.4-41.4c6.2-6.2 6.2-16.4 0-22.6L624 164.7c-6.2-6.2-16.4-6.2-22.6 0L560 206.1l-41.4-41.4c-6.2-6.2-16.4-6.2-22.6 0L484.7 176c-6.2 6.2-6.2 16.4 0 22.6l41.4 41.4-41.4 41.4c-6.2 6.2-6.2 16.4 0 22.6l11.3 11.3c6.2 6.2 16.4 6.2 22.6 0l41.4-41.4 41.4 41.4c6.2 6.2 16.4 6.2 22.6 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6L593.9 240zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96zm89.6 256c-28.8 0-42.4 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464z"
+                          class=""></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              {{/each}}
+            </div>
+          </div>
+        </div>
       </div>
-      <hr>
-      {{/each}}
     </div>
   </div>
 </section>
@@ -92,24 +202,23 @@
 
           info.setAttribute('class', 'info')
           info.innerHTML = `
-              <p>${el.name}</p>
-              <form action="/user-profile/${el._id}/edit" method="POST">
-                <button type="submit" class="btn-delete"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-pen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M5.707 13.707a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391L10.086 2.5a2 2 0 0 1 2.828 0l.586.586a2 2 0 0 1 0 2.828l-7.793 7.793zM3 11l7.793-7.793a1 1 0 0 1 1.414 0l.586.586a1 1 0 0 1 0 1.414L5 13l-3 1 1-3z" />
-                    <path fill-rule="evenodd"
-                      d="M9.854 2.56a.5.5 0 0 0-.708 0L5.854 5.855a.5.5 0 0 1-.708-.708L8.44 1.854a1.5 1.5 0 0 1 2.122 0l.293.292a.5.5 0 0 1-.707.708l-.293-.293z" />
-                    <path d="M13.293 1.207a1 1 0 0 1 1.414 0l.03.03a1 1 0 0 1 .03 1.383L13.5 4 12 2.5l1.293-1.293z" />
-                  </svg></button>
-                <a href="/user-profile/${el._id}/delete" class="btn-delete"><svg width="1em" height="1em"
-                    viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                    <path fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                  </svg></a>
-              </form>
+          <div class="row">
+          <div class="col-4">
+            <span class="user">
+              <div class="avatar"
+                style="background: url(${el.avatar}) no-repeat center center / cover; width: 4rem; height: 4rem; display:block">
+              </div>
+              <h2>${el.name}</h2>
+              <p>
+                <a href="/user/${el._id}"> @${el.username}</a>
+              </p>
+            </span>
+          </div>
+          <div class="col-8">
+            <a href="/admin/user/${el._id}/edit" class="btn-delete">edit user</a>
+            <a href="/admin/user/${el._id}/delete" class="btn-delete">delete user</a>
+          </div>
+        </div>
             `
           usersColumn.appendChild(info)
           usersColumn.appendChild(hr)

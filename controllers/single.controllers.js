@@ -27,7 +27,14 @@ module.exports.getSpot = (req, res, next) => {
       // res.json(spot.comments)
       // res.json(spot.creatorId.pets)
       if (user) {
-        if (user._id == spot.creatorId._id) {
+        if (req.session.currentUser.role === 'ADMIN') {
+          res.render('spots/single', {
+            user,
+            spot,
+            title: spot.name,
+            admin: true
+          })
+        } else if (user._id == spot.creatorId._id) {
           const owner = true
           res.render('spots/single', {
             user,

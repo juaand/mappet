@@ -24,7 +24,7 @@ module.exports.getAdmin = (req, res, next) => {
           pets: values[2],
           comments: values[3],
           likes: values[4],
-          title: 'Admin page',
+          title: 'mappet | admin page',
           admin: true
         })
       })
@@ -37,40 +37,88 @@ module.exports.getAdmin = (req, res, next) => {
 module.exports.getAdminSpots = (req, res, next) => {
   const user = req.session.currentUser
   if (user.role === 'ADMIN') {
-    Spot.find().then((spots) => {
-      res.render('admin/spots', { spots, title: 'Admin page', admin: true })
-    })
+    Spot.find()
+      .populate('creatorId')
+      .then((spots) => {
+        res.render('admin/spots', {
+          spots,
+          title: 'mappet | admin page',
+          category: 'spots',
+          admin: true
+        })
+      })
+      .catch((error) => next(error))
   }
 }
 
 module.exports.getAdminUsers = (req, res, next) => {
   const user = req.session.currentUser
+
+  const profiles = User.find()
+  const adminProfiles = User.find({ role: 'ADMIN' })
+  const editorProfiles = User.find({ role: 'EDITOR' })
+
   if (user.role === 'ADMIN') {
-    User.find().then((profiles) => {
-      res.render('admin/users', { profiles, title: 'Admin page', admin: true })
-    })
+    Promise.all([profiles, adminProfiles, editorProfiles])
+      .then((users) => {
+        res.render('admin/users', {
+          profiles: users[0],
+          adminprofiles: users[1],
+          editorprofiles: users[2],
+          title: 'mappet | admin page',
+          category: 'users',
+          admin: true
+        })
+      })
+      .catch((error) => next(error))
   }
 }
 
 module.exports.getAdminPets = (req, res, next) => {
   const user = req.session.currentUser
   if (user.role === 'ADMIN') {
-    Pet.find().then((pets) => {
-      res.render('admin/pets', { pets, title: 'Admin page', admin: true })
-    })
+    Pet.find()
+      .populate('creatorId')
+      .then((pets) => {
+        res.render('admin/pets', {
+          pets,
+          title: 'mappet | admin page',
+          category: 'pets',
+          admin: true
+        })
+      })
+      .catch((error) => next(error))
   }
 }
 
 module.exports.getAdminComments = (req, res, next) => {
   const user = req.session.currentUser
   if (user.role === 'ADMIN') {
-    Comment.find().then((comments) => {
-      res.render('admin/comments', {
-        comments,
-        title: 'Admin page',
-        admin: true
+    Comment.find()
+      .populate('authorId')
+      .populate('spotId')
+      .then((comments) => {
+        const badwords = ['Expedita', 'Placeat']
+        let result = []
+
+        badwords.forEach((bw) => {
+          comments.forEach((com) => {
+            if (com.content.includes(bw)) {
+              // console.log(com)
+              result.push(com)
+            }
+          })
+        })
+
+        res.render('admin/comments', {
+          comments,
+          title: 'mappet | Admin page',
+          category: 'comments',
+          admin: true,
+          result
+        })
       })
-    })
+      .catch((error) => next(error))
   }
 }
 
@@ -78,7 +126,8 @@ module.exports.getAdminStatistics = (req, res, next) => {
   const user = req.session.currentUser
   if (user.role === 'ADMIN') {
     res.render('admin/statistics', {
-      title: 'Admin page',
+      title: 'mappet | Admin page',
+      category: 'statistics',
       admin: true
     })
   }
