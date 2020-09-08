@@ -45,7 +45,7 @@ module.exports = [
     master_cat: 'Activities'
   },
   {
-    id: 'restaurant',
+    id: 'restaurants',
     name: 'Restaurants',
     master_cat: 'Restaurants'
   },

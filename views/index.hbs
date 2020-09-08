@@ -31,7 +31,7 @@
         </p>
         <p>Start looking for what you most want to do today:</p>
         <form action="/" method="POST">
-          <select class="form-control form-control-lg">
+          <select class="form-control form-control-lg popup" onchange="getvalue(event)">
             <option value="null">Select one...</option>
             {{#each allCategories as |category|}}
             <option value="{{category.id}}">{{category.name}}</option>
