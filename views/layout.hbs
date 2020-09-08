@@ -18,8 +18,10 @@
 <body>
   {{#if admin}}
   {{>adminnav}}
-  {{/if}}
+  {{else}}
   {{>nav}}
+  {{/if}}
+
   {{{body}}}
   {{>footer}}
 
