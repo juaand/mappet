@@ -131,6 +131,91 @@ h1.title {
   margin-bottom: 3rem;
 }
 
+.cookies {
+  position: fixed;
+  bottom: 0;
+  background: #ea7676;
+  width: 100%;
+  color: #fff;
+  padding: 2rem 0;
+  -webkit-box-shadow: 0 0 2.4rem 0 rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0 2.4rem 0 rgba(0, 0, 0, 0.75);
+}
+
+.cookies.hide {
+  -webkit-animation: hiding 2s linear 200ms forwards;
+          animation: hiding 2s linear 200ms forwards;
+}
+
+.cookies .expand {
+  font-weight: 600;
+  color: #fff;
+  background: none;
+  border: 0;
+  outline: none;
+}
+
+.cookies .expand:hover {
+  text-decoration: underline;
+}
+
+.cookies .accept {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cookies .accept button {
+  background: transparent;
+  border: solid 0.2rem #fff;
+  padding: 0.8rem 3.2rem;
+  border-radius: 2rem;
+  color: #fff;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.cookies .accept button:hover {
+  background: #35396e;
+  border-color: #35396e;
+}
+
+#cookiesModal {
+  color: #fff;
+}
+
+#cookiesModal .modal-dialog {
+  max-width: 50%;
+}
+
+#cookiesModal .modal-dialog ul {
+  padding-left: 16rem;
+}
+
+#cookiesModal .text-right {
+  color: #ea7676;
+  margin: 0 2rem 2rem 0 0;
+  text-shadow: none;
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+#cookiesModal .doggie {
+  position: absolute;
+  bottom: -4rem;
+  left: -7rem;
+  width: 22rem;
+  height: 22rem;
+  background: url(../images/cookies-bg.png) no-repeat center bottom/contain;
+}
+
 .modal {
   background: rgba(53, 57, 110, 0.95);
 }
@@ -2661,6 +2746,15 @@ footer .copy {
   footer h3 {
     margin-top: 4rem;
   }
+  #cookiesModal .modal-dialog {
+    max-width: 90%;
+  }
+  #cookiesModal .modal-dialog ul {
+    padding-left: 0;
+  }
+  #cookiesModal .doggie {
+    display: none;
+  }
 }
 
 @-webkit-keyframes fading {
@@ -2684,6 +2778,24 @@ footer .copy {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes hiding {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -12rem;
+  }
+}
+
+@keyframes hiding {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -12rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -50,6 +50,82 @@ h1 {
   }
 }
 
+.cookies {
+  position: fixed;
+  bottom: 0;
+  background: rgba($pink, 1);
+  width: 100%;
+  color: $white;
+  padding: 2rem 0;
+  box-shadow: 0 0 2.4rem 0 rgba($black, 0.75);
+
+  &.hide {
+    animation: hiding 2s linear 200ms forwards;
+  }
+
+  .expand {
+    font-weight: 600;
+    color: $white;
+    background: none;
+    border: 0;
+    outline: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .accept {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      background: transparent;
+      border: solid 0.2rem $white;
+      padding: 0.8rem 3.2rem;
+      border-radius: 2rem;
+      color: $white;
+      transition: all 200ms ease;
+
+      &:hover {
+        background: $dark-purple;
+        border-color: $dark-purple;
+      }
+    }
+  }
+}
+
+#cookiesModal {
+  color: $white;
+
+  .modal-dialog {
+    max-width: 50%;
+
+    ul {
+      padding-left: 16rem;
+    }
+  }
+
+  .text-right {
+    color: $pink;
+    margin: 0 2rem 2rem 0 0;
+    text-shadow: none;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  .doggie {
+    position: absolute;
+    bottom: -4rem;
+    left: -7rem;
+    width: 22rem;
+    height: 22rem;
+    background: url(../images/cookies-bg.png) no-repeat center bottom / contain;
+  }
+}
+
 .modal {
   background: rgba($dark-purple, 0.95);
 
@@ -2340,6 +2416,20 @@ footer {
       margin-top: 4rem;
     }
   }
+
+  #cookiesModal {
+    .modal-dialog {
+      max-width: 90%;
+
+      ul {
+        padding-left: 0;
+      }
+    }
+
+    .doggie {
+      display: none;
+    }
+  }
 }
 
 @keyframes fading {
@@ -2353,5 +2443,15 @@ footer {
 
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes hiding {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: -12rem;
   }
 }
