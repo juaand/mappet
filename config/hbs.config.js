@@ -22,3 +22,7 @@ hbs.registerHelper('ifvalue', function (conditional, options) {
 hbs.registerHelper('small', (cat) => {
   return cat.toLowerCase()
 })
+
+hbs.registerHelper('average', (rate) => {
+  return rate.reduce((a, b) => a + b) / rate.length
+})

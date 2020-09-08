@@ -47,7 +47,9 @@
           {{#each spots as |spot|}}
           <div class="card col-12">
             <picture>
-              <img class="card-img-top" src="{{spot.pictures.[0]}}" alt="Card image cap">
+              <img class="card-img-top"
+                src="{{#if spot.pictures.[0]}}{{spot.pictures.[0]}}{{else}}https://res.cloudinary.com/dutvbml2i/image/upload/v1599250707/mappet/nofile_eabd8z.jpg{{/if}}"
+                alt="Card image cap">
               <h3 class="card-title">
                 <span class="cat-label">
                   {{#each spot.category as |label|}}
@@ -75,7 +77,7 @@
                     <circle cx="18.64" cy="4.75" r="4.75" />
                     <circle cx="39.46" cy="4.75" r="4.75" />
                   </svg>
-                  <span class="value-rate">{{spot.rate}}</span> / 5</div>
+                  <span class="value-rate">{{average spot.rate}}</span> / 5</div>
                 <div class="city col-7 text-right">{{spot.city}}
                   <span class="added"><strong>added</strong> {{date spot.createdAt}}</span>
                 </div>
