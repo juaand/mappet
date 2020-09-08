@@ -1,3 +1,5 @@
+const { pop } = require('../../data/categories')
+
 document.addEventListener(
   'DOMContentLoaded',
   () => {
@@ -50,4 +52,10 @@ function like(e) {
         Number(button.querySelector('.likes-count').innerText) + add
     })
     .catch(console.error)
+}
+
+//INDEX WHERE DO YOU MAPPET TODAY?
+function getvalue(event) {
+  console.log(event.target.value)
+  window.location = `/${event.target.value}`
 }
