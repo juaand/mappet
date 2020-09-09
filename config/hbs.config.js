@@ -24,6 +24,12 @@ hbs.registerHelper('small', (cat) => {
 })
 
 hbs.registerHelper('average', (rate) => {
-  const average = rate.reduce((a, b) => a + b) / rate.length
-  return average.toFixed(1)
+  if (rate[0] === 0 && rate.length > 1) {
+    rate.shift()
+    const average = rate.reduce((a, b) => a + b, [0]) / rate.length
+    return average.toFixed(1)
+  } else {
+    const average = rate.reduce((a, b) => a + b, [0]) / rate.length
+    return average.toFixed(1)
+  }
 })

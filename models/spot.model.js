@@ -43,7 +43,7 @@ const spotSchema = new Schema(
     },
     rate: {
       type: [Number],
-      default: []
+      default: [0]
     },
     phone: {
       type: String
