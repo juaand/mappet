@@ -23,7 +23,7 @@
   </div>
 </section>
 <section class="container-fluid results">
-  <div class="big-avatar" style="background: url({{profile.avatar}}) no-repeat center center / cover;">
+  <div class="big-avatar" style="background: #35396e url({{profile.avatar}}) no-repeat center center / cover;">
     <span class="cat-label">
       <div class="label-dark" tabindex="0">{{profile.level}}</div>
     </span>
@@ -88,7 +88,7 @@
           {{/each}}
         </div>
         {{else}}
-        <p>Don´t have any spot published yet</p>
+        <p class="no-pet text-center" style="margin-top: 6rem;">Don´t have any spot published yet <a href="/spot/{{profile._id}}/new">add a new one here</a></p>
         {{/if}}
         <hr>
         {{#if owner}}
@@ -123,7 +123,7 @@
           {{/each}}
         </div>
         {{else}}
-        <p class="no-pet">Don´t have any pet yet, <a href="/pets/{{profile._id}}">add a new one here</a></p>
+        <p class="no-pet text-center" style="margin-bottom: 6rem;">Don´t have any pet yet, <a href="/pets/{{profile._id}}">add a new one here</a></p>
         {{/if}}
         {{else}}
         <h1 class="title">{{profile.name}} <strong>pets</strong></h1>

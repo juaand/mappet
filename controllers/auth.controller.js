@@ -101,7 +101,7 @@ module.exports.postRegister = (req, res, next) => {
     .then((salt) => bcryptjs.hash(password, salt))
     .then(() => {
       const userParams = req.body
-      userParams.avatar = req.file ? req.file.filename : 'image/upload/v1599689330/mappet/petmap_bjo8wy.png'
+      userParams.avatar = req.file ? req.file.filename : 'image/upload/v1599690642/mappet/petmap_ywtbnw.png'
       return User.create({
         name: userParams.name,
         username,
