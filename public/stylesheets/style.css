@@ -1326,15 +1326,10 @@ form .range-slider__value {
           justify-content: center;
 }
 
-.single-results .spot-info .make-comment {
-  position: relative;
-}
-
 .single-results .spot-info .make-comment .btn {
   background: #ea7676;
   color: #fff;
-  width: 4rem;
-  height: 4rem;
+  width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1344,10 +1339,9 @@ form .range-slider__value {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-radius: 50%;
-  position: absolute;
-  right: 3rem;
-  bottom: -2rem;
+  border-radius: 3rem;
+  padding: 0.8rem 3.2rem;
+  font-size: 1.6rem;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
 }
@@ -1358,6 +1352,7 @@ form .range-slider__value {
 
 .single-results .spot-info .make-comment .btn svg {
   width: 1.6rem;
+  margin-right: 1.6rem;
 }
 
 .single-results .spot-info .make-comment .textarea {
@@ -1376,10 +1371,7 @@ form .range-slider__value {
 }
 
 .single-results .spot-info .make-comment .ranger {
-  position: absolute;
-  bottom: -1.2rem;
   margin: 0;
-  left: 2rem;
 }
 
 .single-results .spot-info .make-comment .ranger .range-slider__value {
