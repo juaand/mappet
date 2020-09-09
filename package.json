@@ -21,6 +21,7 @@
     "hbs": "^4.0.1",
     "jquery": "^3.5.1",
     "jquery-migrate": "^3.3.1",
+    "jshint": "^2.12.0",
     "mongoose": "^5.10.0",
     "morgan": "^1.9.0",
     "multer": "^1.4.2",
