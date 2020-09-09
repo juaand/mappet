@@ -240,7 +240,7 @@
         {{/each}}
 
         {{#unless owner}}
-        <h2>wanna comment?</h2>
+        <h2>wanna post a review?</h2>
         <div class="col-12 comments">
           <div class="row">
             {{#if user}}
@@ -252,27 +252,31 @@
             {{/if}}
             <div class="col-10">
               <form action="/{{spot.category}}/{{spot._id}}/comment" class="make-comment" method="POST">
-                <div class="form-group col-12 col-sm-5 ranger">
-                  <div class="range-slider">
-                    <label for="open">Rate this spot</label>
-                    <input class="custom-range range-slider__range" type="range" value="5" min="1" max="5" step="1"
-                      name="rate">
-                    <span class="range-slider__value">5</span>
-                  </div>
-                </div>
                 <div class="form-group">
                   <span class="textarea">
                     <textarea type="text" class="form-control" id="content" name="content" rows="5"></textarea>
                   </span>
                 </div>
-                <button type="submit" class="btn">
-                  <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="arrow-from-bottom" role="img"
-                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                    <path fill="#fff"
-                      d="M35.5 183.9l148-148.4c4.7-4.7 12.3-4.7 17 0l148 148.4c4.7 4.7 4.7 12.3 0 17l-19.6 19.6c-4.8 4.8-12.5 4.7-17.1-.2L218 123.2V372c0 6.6-5.4 12-12 12h-28c-6.6 0-12-5.4-12-12V123.2l-93.7 97.1c-4.7 4.8-12.4 4.9-17.1.2l-19.6-19.6c-4.8-4.7-4.8-12.3-.1-17zM372 428H12c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h360c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12z"
-                      class=""></path>
-                  </svg>
-                </button>
+                <div class="row">
+                  <div class="form-group col-sm-6 ranger">
+                    <div class="range-slider">
+                      <label for="open">please, rate this spot</label>
+                      <input class="custom-range range-slider__range" type="range" value="5" min="1" max="5" step="1"
+                        name="rate">
+                      <span class="range-slider__value">5</span>
+                    </div>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center align-items-center">
+                    <button type="submit" class="btn">
+                      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="arrow-from-bottom"
+                        role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path fill="#fff"
+                          d="M35.5 183.9l148-148.4c4.7-4.7 12.3-4.7 17 0l148 148.4c4.7 4.7 4.7 12.3 0 17l-19.6 19.6c-4.8 4.8-12.5 4.7-17.1-.2L218 123.2V372c0 6.6-5.4 12-12 12h-28c-6.6 0-12-5.4-12-12V123.2l-93.7 97.1c-4.7 4.8-12.4 4.9-17.1.2l-19.6-19.6c-4.8-4.7-4.8-12.3-.1-17zM372 428H12c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h360c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12z"
+                          class=""></path>
+                      </svg> post a review
+                    </button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>

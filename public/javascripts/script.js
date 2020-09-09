@@ -1,5 +1,3 @@
-const { pop } = require('../../data/categories')
-
 document.addEventListener(
   'DOMContentLoaded',
   () => {
@@ -12,7 +10,7 @@ $(document).ready(function () {
   bsCustomFileInput.init()
 })
 
-// CAROUSEL
+// RANGE SLIDER (HORAS Y RATE DE COMMENTS)
 const rangeSlider = function () {
   const slider = $('.range-slider'),
     range = $('.range-slider__range'),

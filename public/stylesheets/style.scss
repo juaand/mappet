@@ -1089,20 +1089,17 @@ form {
     }
 
     .make-comment {
-      position: relative;
 
       .btn {
         background: $pink;
         color: $white;
-        width: 4rem;
-        height: 4rem;
+        width: auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        position: absolute;
-        right: 3rem;
-        bottom: -2rem;
+        border-radius: 3rem;
+        padding: 0.8rem 3.2rem;
+        font-size: 1.6rem;
         transition: all 200ms ease;
 
         &:hover {
@@ -1111,6 +1108,7 @@ form {
 
         svg {
           width: 1.6rem;
+          margin-right: 1.6rem;
         }
       }
 
@@ -1130,10 +1128,7 @@ form {
       }
 
       .ranger {
-        position: absolute;
-        bottom: -1.2rem;
         margin: 0;
-        left: 2rem;
 
         .range-slider__value {
           right: 0.5rem;
