@@ -1754,6 +1754,11 @@ aside {
   .title {
     color: $white;
     padding-bottom: 3rem;
+    text-transform: lowercase;
+
+    span {
+      border-color: $white !important;
+    }
   }
 
   &:before {
@@ -1761,21 +1766,18 @@ aside {
   }
 
   .map {
-    span {
+    button {
       position: absolute;
       right: 5rem;
       top: 3rem;
+      background: none;
+      border: none;
+      padding: 0;
+      color: $pink;
+      outline: none;
 
-      button {
-        background: none;
-        border: none;
-        padding: 0;
-        color: $pink;
-        outline: none;
-
-        &:hover {
-          color: $white;
-        }
+      &:hover {
+        color: $white;
       }
     }
   }
