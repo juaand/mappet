@@ -1708,6 +1708,12 @@ form .range-slider__value {
   left: 10rem;
 }
 
+.no-spots {
+  height: 32rem;
+  background: url(../images/no-spots-bg.jpg) no-repeat center bottom/30rem auto;
+  border-bottom: solid 0.1rem #ea7676;
+}
+
 .user-single-profile {
   margin-top: 8rem;
   font-size: 1.6rem;

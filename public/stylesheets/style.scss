@@ -1089,7 +1089,6 @@ form {
     }
 
     .make-comment {
-
       .btn {
         background: $pink;
         color: $white;
@@ -1386,6 +1385,13 @@ form {
       }
     }
   }
+}
+
+.no-spots {
+  height: 32rem;
+  background: url(../images/no-spots-bg.jpg) no-repeat center bottom / 30rem
+    auto;
+  border-bottom: solid 0.1rem $pink;
 }
 
 .user-single-profile {
