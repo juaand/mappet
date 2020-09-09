@@ -2101,19 +2101,21 @@ aside .aside-cats .aside-lastest span small {
 .map-container .title {
   color: #fff;
   padding-bottom: 3rem;
+  text-transform: lowercase;
+}
+
+.map-container .title span {
+  border-color: #fff !important;
 }
 
 .map-container:before {
   content: none;
 }
 
-.map-container .map span {
+.map-container .map button {
   position: absolute;
   right: 5rem;
   top: 3rem;
-}
-
-.map-container .map span button {
   background: none;
   border: none;
   padding: 0;
@@ -2121,7 +2123,7 @@ aside .aside-cats .aside-lastest span small {
   outline: none;
 }
 
-.map-container .map span button:hover {
+.map-container .map button:hover {
   color: #fff;
 }
 
