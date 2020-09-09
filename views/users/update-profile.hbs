@@ -77,12 +77,13 @@
               {{/if}}
             </div>
           </div>
+          {{#unless admin}}
           <div class="form-group">
             <button type="button" class="delete-spot" data-toggle="modal" data-target="#changePassword">
               Change password
             </button>
           </div>
-
+          {{/unless}}
           <div class="form-group">
             <label for="bio">Bio</label>
             <textarea name="bio" type="text" class="form-control {{#if error.bio }}is-invalid{{/if}} textarea" id="bio"
@@ -93,6 +94,17 @@
             </div>
             {{/if}}
           </div>
+          {{#if admin}}
+          <hr>
+          <div class="form-group">
+            <label for="role">User role</label>
+            <select class="form-control" id="role" name="role">
+              <option value="GUEST">guest user</option>
+              <option value="EDITOR">editor user</option>
+              <option value="ADMIN">admin user</option>
+            </select>
+          </div>
+          {{/if}}
           <div class="row">
             <div class="col-12 col-sm-6">
               <button type="submit" class="form-btn w-100">

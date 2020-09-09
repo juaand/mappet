@@ -40,15 +40,15 @@ module.exports.editUser = (req, res, next) => {
 ////////////////////////////////////////////////////////////////////////
 
 module.exports.saveEditedUser = (req, res, next) => {
-  const { username, email, avatar, password, bio, name } = req.body
+  const { avatar, bio, name, role } = req.body
   const id = req.params.id
   req.body.avatar = req.file ? req.file.filename : undefined
   if (req.body.avatar) {
     User.findByIdAndUpdate(id, {
-      name: req.body.name,
-      avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
-      // password: hashedPassword,
-      bio: req.body.bio
+      name: name,
+      avatar: `${process.env.CLOUDINARY_SECURE}/${avatar}`,
+      bio: bio,
+      role: role
     })
       .then(() => {
         const userRole = req.session.currentUser.role
@@ -61,9 +61,9 @@ module.exports.saveEditedUser = (req, res, next) => {
       .catch((error) => next(error))
   } else {
     User.findByIdAndUpdate(id, {
-      name: req.body.name,
-      // password: hashedPassword,
-      bio: req.body.bio
+      name: name,
+      bio: bio,
+      role: role
     })
       .then(() => {
         const userRole = req.session.currentUser.role
@@ -143,7 +143,8 @@ module.exports.saveSpot = (req, res, next) => {
         name: req.body.name,
         content: req.body.content,
         creatorId: id,
-        pictures: req.files ? req.files.map(
+        pictures: req.files
+          ? req.files.map(
               (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
             )
           : '',
@@ -203,7 +204,8 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files ? req.files.map(
+      pictures: req.files
+        ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : '',
