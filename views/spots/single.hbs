@@ -316,8 +316,10 @@
           <ul>
             {{#each lastest as |last|}}
             <li>
-              <a class="aside-lastest" href="/">
-                <div class="last-bg" style="background: url({{#if last.pictures}}{{last.pictures}}{{else}}https://res.cloudinary.com/dutvbml2i/image/upload/v1599250707/mappet/nofile_eabd8z.jpg{{/if}}) no-repeat center center / cover;"></div>
+              <a class="aside-lastest" href="/{{last.category}}/{{last._id}}">
+                <div class="last-bg"
+                  style="background: url({{#if last.pictures}}{{last.pictures}}{{else}}https://res.cloudinary.com/dutvbml2i/image/upload/v1599250707/mappet/nofile_eabd8z.jpg{{/if}}) no-repeat center center / cover;">
+                </div>
                 <span>
                   <p>{{last.name}}</p>
                   <small><strong>added</strong> {{date last.createdAt}}</small>
