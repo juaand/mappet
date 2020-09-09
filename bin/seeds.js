@@ -5,6 +5,7 @@ const Spot = require('../models/spot.model')
 const Comment = require('../models/comment.model')
 const Pet = require('../models/pet.model')
 const faker = require('faker')
+const database = require('../data/mappet (database).json')
 
 const userIds = []
 
@@ -15,7 +16,6 @@ Promise.all([
   Comment.deleteMany()
 ]).then(() => {
   console.log('empty database')
-
   for (let i = 0; i < 5; i++) {
     const user = new User({
       name: faker.name.findName(),
@@ -39,21 +39,16 @@ Promise.all([
         })
         pet.save()
       }
-      for (let j = 0; j < 30; j++) {
+      for (let j = 0; j < database.length; j++) {
         const spot = new Spot({
           creatorId: user._id,
-          name: faker.name.title(),
+          name: database[j].properties.name,
           content: faker.lorem.paragraph(),
           pictures: faker.random.image(),
           url: faker.internet.url(),
-          category: faker.random.arrayElement([
-            'Restaurants',
-            'Services',
-            'Activities',
-            'Events'
-          ]),
-          lat: faker.address.latitude(),
-          lng: faker.address.longitude(),
+          category: database[j].category,
+          lat: database[j].geometry.coordinates[1],
+          lng: database[j].geometry.coordinates[0],
           rate: faker.random.float({ min: 0, max: 5 }).toFixed(1),
           phone: faker.phone.phoneNumber(),
           city: faker.address.city(),
