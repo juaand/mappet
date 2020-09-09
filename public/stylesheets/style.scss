@@ -47,6 +47,11 @@ h1 {
     font-size: 5rem;
     font-weight: 300;
     margin-bottom: 3rem;
+
+    [class*='mappet-'] {
+      border-right: solid 0.2rem $dark-purple;
+      padding-right: 2rem;
+    }
   }
 }
 
@@ -58,6 +63,7 @@ h1 {
   color: $white;
   padding: 2rem 0;
   box-shadow: 0 0 2.4rem 0 rgba($black, 0.75);
+  z-index: 10;
 
   &.hide {
     animation: hiding 2s linear 200ms forwards;
@@ -1368,38 +1374,6 @@ form {
       }
     }
 
-    .aside-iframe {
-      position: relative;
-
-      hr {
-        margin-top: 4rem;
-      }
-
-      iframe {
-        width: 100%;
-        height: 32rem;
-        margin-top: 3rem;
-        border-radius: 2.4rem;
-      }
-
-      .expand {
-        position: absolute;
-        top: 4.6rem;
-        left: 2rem;
-        background: $pink;
-        color: $white;
-        z-index: 5;
-        padding: 0.8rem 2.4rem;
-        border-radius: 2rem;
-        border: 0;
-        transition: all 200ms ease;
-
-        &:hover {
-          background: $dark-purple;
-        }
-      }
-    }
-
     .pet-avatar {
       display: block;
       width: 4rem;
@@ -1630,11 +1604,17 @@ form {
 }
 
 aside {
+  .title {
+    font-size: 4rem;
+    margin-top: 7rem;
+  }
+
   .mapa {
     width: 100%;
     height: 20rem;
     background: url(../images/view-map-bg.jpg) no-repeat center center / cover;
     position: relative;
+    border-radius: 2.4rem;
 
     .view-cats-map {
       position: absolute;
@@ -1644,7 +1624,168 @@ aside {
       padding: 0.6rem 3.2rem;
       top: 1rem;
       left: 1rem;
+      border-radius: 3rem;
     }
+  }
+  .aside-iframe {
+    position: relative;
+
+    hr {
+      margin-top: 4rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 32rem;
+      border-radius: 2.4rem;
+    }
+
+    .expand {
+      position: absolute;
+      top: 4.6rem;
+      left: 2rem;
+      background: $pink;
+      color: $white;
+      z-index: 5;
+      padding: 0.8rem 2.4rem;
+      border-radius: 2rem;
+      border: 0;
+      transition: all 200ms ease;
+
+      &:hover {
+        background: $dark-purple;
+      }
+    }
+  }
+
+  .aside-cats {
+    justify-content: center;
+    border: solid 0.1rem rgba($dark-purple, 0.4);
+    border-radius: 2.4rem;
+    margin: 3rem auto;
+    padding: 0 4rem 2rem 4rem;
+
+    .title {
+      margin-top: 2.4rem;
+      text-transform: lowercase;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-transform: lowercase;
+    }
+
+    hr {
+      &:last-child {
+        display: none;
+      }
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+
+      a {
+        color: $dark-purple;
+        font-size: 1.8rem;
+        margin-left: 0;
+        transition: all 200ms ease;
+        display: block;
+        width: 100%;
+
+        &:hover {
+          text-decoration: none;
+          font-weight: 600;
+          margin-left: 1.6rem;
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .aside-lastest {
+      position: relative;
+      .last-bg {
+        height: 12rem;
+        border-radius: 2.4rem;
+      }
+
+      span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba($dark-purple, 0.75);
+        color: $white;
+        width: 100%;
+        border-radius: 0 2.4rem 2.4rem 2.4rem;
+        padding: 0.8rem 2rem;
+
+        &:before {
+          content: '';
+          background: url(../images/title-before.svg) no-repeat center center /
+            cover;
+          width: 2.4rem;
+          height: 2.4rem;
+          position: absolute;
+          top: -2.4rem;
+          left: 0;
+        }
+
+        small {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.map-container {
+  background: rgba($dark-purple, 0.8);
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .title {
+    color: $white;
+    padding-bottom: 3rem;
+  }
+
+  &:before {
+    content: none;
+  }
+
+  .map {
+    span {
+      position: absolute;
+      right: 5rem;
+      top: 3rem;
+
+      button {
+        background: none;
+        border: none;
+        padding: 0;
+        color: $pink;
+        outline: none;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  #map {
+    border-radius: 2.4rem;
+    border-radius: 2.4rem;
+    border: solid 0.4rem $pink;
+    padding: 2.4rem;
+    box-shadow: 0 0 10rem 0 rgba($black, 0.75);
   }
 }
 
