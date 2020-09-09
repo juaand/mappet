@@ -70,7 +70,7 @@ module.exports = [
     master_cat: 'Services'
   },
   {
-    id: 'vet',
+    id: 'veterinary',
     name: 'Veterinary',
     master_cat: 'Services'
   },

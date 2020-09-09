@@ -90,7 +90,7 @@ router.get(
 )
 
 router.get(
-  '/vet',
+  '/veterinary',
   routeGuard.isNotAuthenticated,
   navController.getVeterinary
 )
