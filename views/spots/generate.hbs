@@ -25,8 +25,8 @@
 <section class="container-fluid results">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-sm-9">
-        <h1 class="title">pet friendly {{category}}</h1>
+      <div class="col-12 col-sm-8">
+        <h1 class="title"><span class="mappet-{{category}}"></span> pet friendly {{category}}</h1>
         <div class="row">
           {{#each values as |value|}}
           <div class="card col-12 col-sm-6">
@@ -72,11 +72,21 @@
         </div>
 
       </div>
-      <aside class="col-12 col-sm-3">
-        <div class="row">
-          <div class="col-12 mapa">
-            <a href="/map-show/map/cat/{{category}}" class="view-cats-map">View {{category}} in map</a>
-          </div>
+      <aside class="col-12 col-sm-4">
+        <h1 class="title">see in map</h1>
+        <div class="col-12 mapa">
+          <a href="/map-show/map/cat/{{category}}" class="view-cats-map">View {{category}} in map</a>
+        </div>
+        <div class="col-12 aside-cats">
+          <h1 class="title">search other categories</h1>
+          <ul>
+            {{#each allCategories as |cat|}}
+            <li>
+              <a href="/{{cat.name}}"><span class="mappet-{{cat.id}}"></span> {{cat.name}}</a>
+            </li>
+            <hr>
+            {{/each}}
+          </ul>
         </div>
       </aside>
     </div>

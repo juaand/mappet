@@ -29,32 +29,56 @@ module.exports.getSpot = (req, res, next) => {
 
       if (user) {
         if (req.session.currentUser.role === 'ADMIN') {
-          res.render('spots/single', {
-            user,
-            spot,
-            title: spot.name,
-            admin: true
-          })
+          Spot.find({ category: spot.category })
+            .limit(3)
+            .then((lastest) => {
+              res.render('spots/single', {
+                lastest,
+                user,
+                spot,
+                title: spot.name,
+                admin: true
+              })
+            })
+            .catch((error) => next(error))
         } else if (user._id == spot.creatorId._id) {
-          const owner = true
-          res.render('spots/single', {
-            user,
-            spot,
-            title: spot.name,
-            owner: owner
-          })
+          Spot.find({ category: spot.category })
+            .limit(3)
+            .then((lastest) => {
+              const owner = true
+              res.render('spots/single', {
+                lastest,
+                user,
+                spot,
+                title: spot.name,
+                owner: owner
+              })
+            })
+            .catch((error) => next(error))
         } else {
-          res.render('spots/single', {
-            user,
-            spot,
-            title: spot.name
-          })
+          Spot.find({ category: spot.category })
+            .limit(3)
+            .then((lastest) => {
+              res.render('spots/single', {
+                lastest,
+                user,
+                spot,
+                title: spot.name
+              })
+            })
+            .catch((error) => next(error))
         }
       } else {
-        res.render('spots/single', {
-          spot,
-          title: spot.name
-        })
+        Spot.find({ category: spot.category })
+          .limit(3)
+          .then((lastest) => {
+            res.render('spots/single', {
+              lastest,
+              spot,
+              title: spot.name
+            })
+          })
+          .catch((error) => next(error))
       }
     })
     .catch((error) => next(error))

@@ -279,7 +279,7 @@
         </div>
         {{/unless}}
       </div>
-      <div class="col-12 col-sm-4 user-info">
+      <aside class="col-12 col-sm-4 user-info">
         <div class="d-flex justify-content-start">
           <span class="avatar" style="background: url({{spot.creatorId.avatar}}) no-repeat center center / cover">
           </span>
@@ -300,17 +300,38 @@
         <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
         <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot">delete spot</a>
         {{/if}}
+
         <div class="col-12 aside-iframe">
           <hr>
           {{#if spot.address}}
-          <button type="button" class="expand" data-toggle="modal" data-target="#mapModal">
-            Expand map
-          </button>
+          <h1 class="title">see in map</h1>
           <iframe scrolling="no" frameborder="0" marginheight="0" marginwidth="0"
             src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q={{spot.address}}&amp;iwloc=near&amp;z=15&amp;output=embed"></iframe>
           {{/if}}
         </div>
-      </div>
+
+        <div class="col-12 aside-cats">
+          <h1 class="title">lastest {{spot.category}} added</h1>
+          {{#if lastest}}
+          <ul>
+            {{#each lastest as |last|}}
+            <li>
+              <a class="aside-lastest" href="/">
+                <div class="last-bg" style="background: url({{last.pictures}}) no-repeat center center / cover;"></div>
+                <span>
+                  <p>{{last.name}}</p>
+                  <small><strong>added</strong> {{date last.createdAt}}</small>
+                </span>
+              </a>
+            </li>
+            <hr>
+            {{/each}}
+          </ul>
+          {{else}}
+          <p>Nobody mappet more {{spot.category}} yet...</p>
+          {{/if}}
+        </div>
+      </aside>
     </div>
   </div>
 </section>
