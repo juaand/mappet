@@ -26,8 +26,11 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-8">
-        <h1 class="title"><span class="mappet-{{category}}"></span> pet friendly {{category}}</h1>
+        <h1 class="title">
+          <span class="mappet-{{category}}"></span> pet friendly {{category}}
+        </h1>
         <div class="row">
+          {{#if values}}
           {{#each values as |value|}}
           <div class="card col-12 col-sm-6">
             <picture>
@@ -69,20 +72,27 @@
             </div>
           </div>
           {{/each}}
+          {{else}}
+          <div class="col-12 col-sm-11 no-spots text-center">
+            <h3>Oops! no spots to show in this category</h3>
+            <p>You can mappet some other spots in the right column!</p>
+          </div>
+          {{/if}}
         </div>
-
       </div>
       <aside class="col-12 col-sm-4">
+        {{#if values}}
         <h1 class="title">see in map</h1>
         <div class="col-12 mapa">
           <a href="/map-show/map/cat/{{category}}" class="view-cats-map">View {{category}} in map</a>
         </div>
+        {{/if}}
         <div class="col-12 aside-cats">
           <h1 class="title">search other categories</h1>
           <ul>
             {{#each allCategories as |cat|}}
             <li>
-              <a href="/{{cat.name}}"><span class="mappet-{{cat.id}}"></span> {{cat.name}}</a>
+              <a href="/{{cat.id}}"><span class="mappet-{{cat.id}}"></span> {{cat.name}}</a>
             </li>
             <hr>
             {{/each}}

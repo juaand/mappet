@@ -59,7 +59,7 @@ module.exports.sendValidationEmail = (email, activationToken, name) => {
           mso-table-lspace: 0pt !important;
           mso-table-rspace: 0pt !important;
           height: 50vh;
-          background: url('https://res.cloudinary.com/dutvbml2i/image/upload/v1598613317/mappet/email-bg_x87jqi.jpg')
+          background: url('https://res.cloudinary.com/dutvbml2i/image/upload/v1598613317/mappet/mail-bg_x87jqi.jpg')
             no-repeat top center/cover;
         "
       >
