@@ -303,9 +303,15 @@ module.exports.createPet = (req, res, next) => {
 
 module.exports.editPet = (req, res, next) => {
   const petId = req.params.id
+  const user = req.session.currentUser
+
   Pet.findById(petId)
     .then((pet) => {
-      res.render('pets/edit-pet', { pet, title: 'Edit pet' })
+      if (user.role === 'ADMIN') {
+        res.render('pets/edit-pet', { pet, title: 'Edit pet', admin: true })
+      } else {
+        res.render('pets/edit-pet', { pet, title: 'Edit pet' })
+      }
     })
     .catch((error) => next(error))
 }
@@ -322,7 +328,12 @@ module.exports.updatePet = (req, res, next) => {
       breed: req.body.breed
     })
       .then((pet) => {
-        res.redirect(`/user/${pet.creatorId._id}`)
+        const userRole = req.session.currentUser.role
+        if (userRole === 'ADMIN') {
+          res.redirect('/admin/stats/pets')
+        } else {
+          res.redirect(`/user/${pet.creatorId._id}`)
+        }
       })
       .catch((error) => next(error))
   } else {
@@ -333,7 +344,12 @@ module.exports.updatePet = (req, res, next) => {
       breed: req.body.breed
     })
       .then((pet) => {
-        res.redirect(`/user/${pet.creatorId._id}`)
+        const userRole = req.session.currentUser.role
+        if (userRole === 'ADMIN') {
+          res.redirect('/admin/stats/pets')
+        } else {
+          res.redirect(`/user/${pet.creatorId._id}`)
+        }
       })
       .catch((error) => next(error))
   }
