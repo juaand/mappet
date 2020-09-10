@@ -55,7 +55,7 @@ Promise.all([
       name: "Juan Romero Gómez",
       username: "Juanito",
       avatar: process.env.ADMINAVATAR,
-      email: process.env.ADMINUSER,
+      email: process.env.NM_USER,
       password: process.env.ADMINPASS,
       bio: "Soy admin",
       role: "ADMIN",
