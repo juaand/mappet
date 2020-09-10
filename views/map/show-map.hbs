@@ -47,17 +47,18 @@
     const restaurant = {{{cat}}}[i];
 
   const contentString =
-    `<div id="content"> 
-    <div id="siteNotice"> 
-      <img src="${restaurant[5]}"
-    </div> 
-    <h1 id="firstHeading" class="firstHeading">${restaurant[0]}</h1> 
-    <div id="bodyContent"> 
-    <p>${restaurant[3]}</p> 
-    <a href="${restaurant[4]}"> 
-    Web site</a>  
-    </p> 
-    </div> 
+    `<div class="container-fluid google-map"> 
+      <div class="row">
+        <div class="col-12 col-sm-6 siteNotice" style="background: url(${restaurant[5]}) no-repeat center center / cover">
+        </div>
+        <div class="col-12 col-sm-6 siteNotice">
+          <h1 class="title">${restaurant[0]}</h1> 
+          <div class="bodyContent"> 
+            <p>${restaurant[3]}</p> 
+            Visit our website at: <a href="${restaurant[4]}" target="_new">${restaurant[4]}</a>  
+          </div> 
+        </div>
+      </div>
     </div>`;
 
   const infowindow = new google.maps.InfoWindow({
