@@ -18,8 +18,7 @@ module.exports.editUser = (req, res, next) => {
     .then((user) => {
       // res.json(user)
       const userId = req.session.currentUser._id
-      const userRole = req.session.currentUser.role
-      if (userId === id || userRole === 'ADMIN') {
+      if (userId === id || req.session.currentUser.role === 'ADMIN') {
         res.render('users/update-profile', {
           user,
           title: `edit ${user.username}`,
@@ -51,8 +50,7 @@ module.exports.saveEditedUser = (req, res, next) => {
       role: role
     })
       .then(() => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/users')
         } else {
           res.redirect(`/user-profile/${id}`)
@@ -66,8 +64,7 @@ module.exports.saveEditedUser = (req, res, next) => {
       role: role
     })
       .then(() => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/users')
         } else {
           res.redirect(`/user-profile/${id}`)
@@ -177,9 +174,9 @@ module.exports.editSpot = (req, res, next) => {
   const id = req.params.id
   Spot.findById(id)
     .then((spot) => {
-      const userRole = req.session.currentUser.role
+
       const userId = req.session.currentUser._id
-      if (userId === id || userRole === 'ADMIN') {
+      if (userId === id || req.session.currentUser.role === 'ADMIN') {
         res.render('spots/edit', {
           spot,
           title: `Edit ${spot.name}`,
@@ -221,8 +218,7 @@ module.exports.updateSpot = (req, res, next) => {
       phone: req.body.phone
     })
       .then(() => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/spots')
         } else {
           res.redirect(`/${category}/${id}`)
@@ -248,8 +244,7 @@ module.exports.updateSpot = (req, res, next) => {
       phone: req.body.phone
     })
       .then(() => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/spots')
         } else {
           res.redirect(`/${category}/${id}`)
@@ -328,8 +323,7 @@ module.exports.updatePet = (req, res, next) => {
       breed: req.body.breed
     })
       .then((pet) => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/pets')
         } else {
           res.redirect(`/user/${pet.creatorId._id}`)
@@ -344,8 +338,7 @@ module.exports.updatePet = (req, res, next) => {
       breed: req.body.breed
     })
       .then((pet) => {
-        const userRole = req.session.currentUser.role
-        if (userRole === 'ADMIN') {
+        if (req.session.currentUser.role === 'ADMIN') {
           res.redirect('/admin/stats/pets')
         } else {
           res.redirect(`/user/${pet.creatorId._id}`)

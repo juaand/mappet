@@ -1,4 +1,5 @@
 require("../config/db.config");
+require("dotenv").config();
 
 const User = require("../models/user.model");
 const Spot = require("../models/spot.model");
@@ -54,8 +55,8 @@ Promise.all([
       name: "Juan Romero Gómez",
       username: "Juanito",
       avatar: process.env.ADMINAVATAR,
-      email: 'ptmad042020@gmail.com',
-      password: 'Hola8989',
+      email: process.env.ADMINUSER,
+      password: process.env.ADMINPASS,
       bio: "Soy admin",
       role: "ADMIN",
     }).then((user) => {
