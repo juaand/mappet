@@ -10,7 +10,7 @@ module.exports.getHome = (req, res, next) => {
     .populate('creatorId')
     .then((values) => {
       // res.json(values)
-      if (req.session.currentUser.role === 'ADMIN') {
+      if (req.session.currentUser && req.session.currentUser.role === 'ADMIN') {
         res.render('index', {
           values,
           admin: true,
