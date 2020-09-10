@@ -59,7 +59,7 @@
         <h1 class="title">{{spot.name}}</h1>
         <div class="map-social">
           {{#if spot.address}}
-          <button type="button" class="map-link" data-toggle="modal" data-target="#mapModal">
+          <button type="button" class="map-link text-left" data-toggle="modal" data-target="#mapModal">
             {{spot.address}}, {{spot.city}} - {{spot.zipCode}}
           </button>
           {{/if}}
@@ -72,16 +72,16 @@
                   class=""></path>
               </svg>
             </a>
-            <a href="https://www.facebook.com/{{spot.facebook}}" target="_new"> <svg aria-hidden="true"
-                focusable="false" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512">
+            <a href="https://www.facebook.com/{{spot.facebook}}" target="_new" class="mt-2 d-block">
+              <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path fill="currentColor"
                   d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
                   class=""></path>
               </svg>
             </a>
-          </span></div>
-
+          </span>
+        </div>
         <div class="row">
           <div class="col-3 rating">
             <span>
@@ -97,8 +97,12 @@
               <span class="value-rate">{{average spot.rate}}</span> / 5
             </span>
           </div>
-          <div class="col-9 description">
+          <div class="col-9 description {{#unless spot.content}}justify-content-start{{/unless}}">
+            {{#if spot.content}}
             <p>{{spot.content}}</p>
+            {{else}}
+            <p>No content received for this spot yet.</p>
+            {{/if}}
           </div>
         </div>
 
@@ -200,7 +204,13 @@
         <div class="col-12">
           <h2 class="text-center mb-3">Working hours</h2>
           <div class="row justify-content-center">
-            <p class="col-12 col-sm-3"><strong>Days</strong> {{spot.days}}</p>
+            <p class="col-12 col-sm-3"><strong>Days</strong>
+              {{#ifvalue spot.days.length equals = 7}}
+              All days
+              {{else}}
+              {{spot.days}}
+              {{/ifvalue}}
+            </p>
             <p class="col-12 col-sm-3"><strong>Open at</strong> {{spot.open}}</p>
             <p class="col-12 col-sm-3"><strong>Close at</strong> {{spot.close}}</p>
           </div>
@@ -285,7 +295,8 @@
       </div>
       <aside class="col-12 col-sm-4 user-info">
         <div class="d-flex justify-content-start">
-          <span class="avatar" style="background: #35396e url({{spot.creatorId.avatar}}) no-repeat center center / cover">
+          <span class="avatar"
+            style="background: #35396e url({{spot.creatorId.avatar}}) no-repeat center center / cover">
           </span>
           <span class="spot-info">
             <p><strong>posted by</strong>

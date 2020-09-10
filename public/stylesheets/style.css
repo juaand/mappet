@@ -1736,6 +1736,25 @@ form .range-slider__value {
   height: 0.3rem;
 }
 
+.google-map {
+  color: #333;
+}
+
+.google-map .title {
+  color: #35396e !important;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem !important;
+}
+
+.google-map .siteNotice {
+  border-radius: 2.4rem;
+}
+
+.google-map a {
+  color: #ea7676;
+  font-weight: 600;
+}
+
 #delete.show {
   display: -webkit-box !important;
   display: -ms-flexbox !important;

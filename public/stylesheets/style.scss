@@ -1416,6 +1416,25 @@ form {
   }
 }
 
+.google-map {
+  color: $text;
+
+  .title {
+    color: $dark-purple !important;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem !important;
+  }
+
+  .siteNotice {
+    border-radius: 2.4rem;
+  }
+
+  a {
+    color: $pink;
+    font-weight: 600;
+  }
+}
+
 #delete {
   &.show {
     display: flex !important;
