@@ -91,6 +91,17 @@ module.exports.getAdminPets = (req, res, next) => {
   }
 }
 
+module.exports.aproveComment = (req, res, next) => {
+  const id = req.params.id
+  Comment.findByIdAndUpdate(id, {
+    verify: true
+  })
+    .then(() => {
+      res.redirect('/admin/stats/comments')
+    })
+    .catch((error) => next(error))
+}
+
 module.exports.getAdminComments = (req, res, next) => {
   const user = req.session.currentUser
   if (user.role === 'ADMIN') {
@@ -98,13 +109,13 @@ module.exports.getAdminComments = (req, res, next) => {
       .populate('authorId')
       .populate('spotId')
       .then((comments) => {
-        const badwords = ['Expedita', 'Placeat']
+        const badwords = ['Such', 'Voluptate', 'Eveniet']
         let result = []
 
         badwords.forEach((bw) => {
           comments.forEach((com) => {
-            if (com.content.includes(bw)) {
-              // console.log(com)
+            if (com.verify === false && com.content.includes(bw)) {
+              //console.log(com)
               result.push(com)
             }
           })

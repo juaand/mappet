@@ -4,8 +4,21 @@ const { Router } = require('express')
 const router = new Router()
 const routeGuard = require('../middlewares/session.middleware')
 const adminController = require('../controllers/admin.controller')
+const commentController = require('../controllers/comment.controllers')
 
 router.get('/admin', routeGuard.isAuthenticated, adminController.getAdmin)
+
+router.get(
+  '/admin/comment/:id/aprove',
+  routeGuard.isAuthenticated,
+  adminController.aproveComment
+)
+
+router.get(
+  '/admin/comment/:id/delete',
+  routeGuard.isAuthenticated,
+  commentController.deleteComment
+)
 
 router.get(
   '/admin/data/comments',

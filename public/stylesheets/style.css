@@ -1243,6 +1243,15 @@ form .range-slider__value {
   color: #fff;
 }
 
+.label-pill.verified {
+  background: #714b9c;
+  color: #fff;
+  border-color: #714b9c;
+  display: inline-block;
+  font-weight: 400;
+  padding: 0rem 1.6rem;
+}
+
 .rating {
   display: -webkit-box;
   display: -ms-flexbox;
