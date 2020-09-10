@@ -1012,6 +1012,15 @@ form {
     border: solid 0.2rem $white;
     color: $white;
   }
+
+  &.verified {
+    background: $purple;
+    color: $white;
+    border-color: $purple;
+    display: inline-block;
+    font-weight: 400;
+    padding: 0rem 1.6rem;
+  }
 }
 
 .rating {

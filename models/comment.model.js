@@ -13,6 +13,10 @@ const commentSchema = new Schema(
     spotId: {
       type: ObjectId,
       ref: 'Spot'
+    },
+    verify: {
+      type: Boolean,
+      default: false
     }
   },
   {
