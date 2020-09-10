@@ -6,13 +6,24 @@ const Like = require('../models/like.model')
 module.exports.getHome = (req, res, next) => {
   Spot.find()
     .sort({ createdAt: -1 })
+    .limit(8)
     .populate('creatorId')
     .then((values) => {
+      const userRole = req.session.currentUser.role
       // res.json(values)
-      res.render('index', {
-        values,
-        title: 'Welcome to mappet'
-      })
+      if (userRole === 'ADMIN') {
+
+        res.render('index', {
+          values,
+          admin: true,
+          title: 'Welcome to mappet'
+        })
+      } else {
+        res.render('index', {
+          values,
+          title: 'Welcome to mappet'
+        })
+      }
     })
     .catch((error) => next(error))
 }
