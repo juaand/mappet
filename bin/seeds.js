@@ -7,7 +7,7 @@ const Comment = require('../models/comment.model')
 const Pet = require('../models/pet.model')
 const Like = require('../models/like.model')
 const faker = require('faker')
-const database = require('../data/mappet(database).json')
+const database = require('../data/mappet.json')
 
 const userIds = []
 
