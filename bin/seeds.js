@@ -56,9 +56,9 @@ Promise.all([
       username: "Juanito",
       avatar: process.env.ADMINAVATAR,
       email: process.env.NM_USER,
-      password: process.env.ADMINPASS,
+      password: process.env.NM_PASS,
       bio: "Soy admin",
-      role: "ADMIN",
+      role: "ADMIN"
     }).then((user) => {
       for (let j = 0; j < database.length; j++) {
         const spot = new Spot({
