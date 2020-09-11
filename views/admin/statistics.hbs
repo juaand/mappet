@@ -1,34 +1,44 @@
 {{>adminnav}}
-<section class="container-fluid banner user-single"></section>
-<section class="container-fluid results">
+<section class="container-fluid banner admin-statistics"></section>
+<section class="container-fluid results statistics">
   <div class="big-avatar" style="background: #35396e url({{user.avatar}}) no-repeat center center / cover;">
     <span class="cat-label">
       <div class="label-dark" tabindex="0">{{user.role}}</div>
     </span>
   </div>
-  <div class="container">
-    <div class="row">
-      <h1 class="title">Statistics</h1>
-      <div class="col-6">
-        <h1 class="title">User / date</h1>
-        <canvas id="my-chart"></canvas>
+  <div class="row justify-content-center m-0">
+    <div class="col-12 col-sm-10">
+      <div class="row justify-content-around">
+        <div class="col-12 col-sm-5">
+          <h1 class="title text-center">User / date</h1>
+          <canvas id="my-chart"></canvas>
+          <div class="user-date-info"></div>
+        </div>
+        <div class="col-12 col-sm-5">
+          <h1 class="title text-center">User & Spots / month</h1>
+          <canvas id="mix-canvas"></canvas>
+          <div class="user-spot-info"></div>
+        </div>
       </div>
-      <div class="col-6">
-        <h1 class="title">User & Spots / month</h1>
-        <canvas id="mix-canvas"></canvas>
-      </div>
-      <div class="col-6">
-        <h1 class="title">Spots/Cities</h1>
-        <canvas id="cities-canvas"></canvas>
-      </div>
-            <div class="col-6">
-        <h1 class="title">Kind of pets</h1>
-        <canvas id="pets-canvas"></canvas>
-      </div>
-                  <div class="col-6">
-        <h1 class="title">Spots Categories</h1>
-        <canvas id="spots-categories-canvas"></canvas>
+      <hr>
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-5">
+          <h1 class="title text-center">Spots/Cities</h1>
+          <canvas id="cities-canvas"></canvas>
+          <div class="spot-cities-info"></div>
+        </div>
+        <div class="col-12 col-sm-5">
+          <h1 class="title text-center">Kind of pets</h1>
+          <canvas id="pets-canvas"></canvas>
+          <div class="kind-pets-info"></div>
+        </div>
+        <div class="col-12 col-sm-5">
+          <h1 class="title text-center">Spots Categories</h1>
+          <canvas id="spots-categories-canvas"></canvas>
+          <div class="spots-categories-info"></div>
+        </div>
       </div>
     </div>
   </div>
+
 </section>
