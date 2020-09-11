@@ -96,11 +96,11 @@
           <ul>
             {{#each allCategories as |cat|}}
             <li>
-              <a href="/{{cat.id}}" {{#ifvalue ../category equals = cat.id}}class="active"{{/ifvalue}}>
+              <a href="/{{cat.id}}" class="aside-links {{#ifvalue ../category equals = cat.id}}active{{/ifvalue}}">
                 <span class="mappet-{{cat.id}}"></span> {{cat.name}}
               </a>
             </li>
-            <hr>
+            <hr class="m-0">
             {{/each}}
           </ul>
         </div>

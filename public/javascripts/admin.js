@@ -79,8 +79,8 @@ axios
 
       numberOfUsers = Object.values(numberOfDates)
 
-      console.log(numberOfDates)
-      console.log(numberOfUsers)
+      // console.log(numberOfDates)
+      // console.log(numberOfUsers)
 
       let spotDates = []
       let numberOfSpots = []
@@ -307,7 +307,7 @@ axios.get(spotsJson).then((responseFromAPI) => {
     {}
   )
 
-  console.log(JSON.stringify(categoriesQuantity))
+  // console.log(JSON.stringify(categoriesQuantity))
   // console.log(JSON.stringify(Object.keys(categoriesQuantity)))
   // console.log(JSON.stringify(Object.values(categoriesQuantity)))
 
