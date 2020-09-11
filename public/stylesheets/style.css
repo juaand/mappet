@@ -136,6 +136,19 @@ h1.title [class*='mappet-'] {
   padding-right: 2rem;
 }
 
+.small {
+  font-size: 1.6rem;
+  display: block;
+  margin-left: 10rem;
+  margin-top: 1rem;
+  position: absolute;
+  top: 4rem;
+}
+
+.small strong {
+  color: #ea7676;
+}
+
 .cookies {
   position: fixed;
   bottom: 0;
@@ -2091,16 +2104,30 @@ aside .aside-cats ul a {
   transition: all 200ms ease;
   display: block;
   width: 100%;
+  padding: 1rem 0;
+  padding-left: 0.8rem;
+}
+
+aside .aside-cats ul a.active, aside .aside-cats ul a:hover {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+aside .aside-cats ul a.active span, aside .aside-cats ul a:hover span {
+  font-weight: 600;
+}
+
+aside .aside-cats ul a.active {
+  pointer-events: none;
+  background: rgba(53, 57, 110, 0.1);
 }
 
 aside .aside-cats ul a:hover {
-  text-decoration: none;
-  font-weight: 600;
   margin-left: 1.6rem;
 }
 
-aside .aside-cats ul a:hover span {
-  font-weight: 600;
+aside .aside-cats ul hr {
+  margin: 0;
 }
 
 aside .aside-cats .aside-lastest {
