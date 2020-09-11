@@ -55,6 +55,19 @@ h1 {
   }
 }
 
+.small {
+  font-size: 1.6rem;
+  display: block;
+  margin-left: 10rem;
+  margin-top: 1rem;
+  position: absolute;
+  top: 4rem;
+
+  strong {
+    color: $pink;
+  }
+}
+
 .cookies {
   position: fixed;
   bottom: 0;
@@ -1755,16 +1768,31 @@ aside {
         transition: all 200ms ease;
         display: block;
         width: 100%;
+        padding: 1rem 0;
+        padding-left: 0.8rem;
 
+        &.active,
         &:hover {
           text-decoration: none;
           font-weight: 600;
-          margin-left: 1.6rem;
 
           span {
             font-weight: 600;
           }
         }
+
+        &.active {
+          pointer-events: none;
+          background: rgba($dark-purple, 0.1);
+        }
+
+        &:hover {
+          margin-left: 1.6rem;
+        }
+      }
+
+      hr {
+        margin: 0;
       }
     }
 

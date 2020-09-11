@@ -28,7 +28,11 @@
       <div class="col-12 col-sm-8">
         <h1 class="title">
           <span class="mappet-{{category}}"></span> pet friendly {{category}}
+          {{#if values}}
+          <span class="small"><strong>total</strong> {{values.length}} spots</span>
+          {{/if}}
         </h1>
+
         <div class="row">
           {{#if values}}
           {{#each values as |value|}}
@@ -92,7 +96,9 @@
           <ul>
             {{#each allCategories as |cat|}}
             <li>
-              <a href="/{{cat.id}}"><span class="mappet-{{cat.id}}"></span> {{cat.name}}</a>
+              <a href="/{{cat.id}}" {{#ifvalue ../category equals = cat.id}}class="active"{{/ifvalue}}>
+                <span class="mappet-{{cat.id}}"></span> {{cat.name}}
+              </a>
             </li>
             <hr>
             {{/each}}
