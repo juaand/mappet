@@ -714,7 +714,12 @@ form {
   &.new-spot,
   &.user-single,
   &.user-profile,
-  &.user-admin {
+  &.user-admin,
+  &.admin-spots,
+  &.admin-users,
+  &.admin-pets,
+  &.admin-comments,
+  &.admin-statistics {
     height: 66rem;
   }
 
@@ -791,6 +796,33 @@ form {
 
   &.user-admin {
     background: url(../images/user-profile-bg.jpg) no-repeat center -20rem / cover;
+    background-attachment: fixed;
+  }
+
+  &.admin-spots {
+    background: url(../images/admin-spots-bg.jpg) no-repeat center -10rem / cover;
+    background-attachment: fixed;
+  }
+
+  &.admin-users {
+    background: url(../images/admin-users-bg.jpg) no-repeat center -50rem / cover;
+    background-attachment: fixed;
+  }
+
+  &.admin-pets {
+    background: url(../images/admin-pets-bg.jpg) no-repeat center -50rem / cover;
+    background-attachment: fixed;
+  }
+
+  &.admin-comments {
+    background: url(../images/admin-comments-bg.jpg) no-repeat center -30rem / cover;
+    background-attachment: fixed;
+  }
+
+  &.admin-statistics {
+    background: url(../images/admin-statistics-bg.jpg) no-repeat center -30rem /
+      cover;
+    background-attachment: fixed;
   }
 }
 
@@ -2375,6 +2407,26 @@ footer {
   }
 }
 
+.statistics {
+  hr {
+    margin: 10rem 0 4rem 0;
+    display: block;
+  }
+
+  .spots-categories-info,
+  .kind-pets-info,
+  .spot-cities-info {
+    hr {
+      margin-top: 4rem;
+    }
+  }
+
+  .info {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
 @media (max-width: 576px) {
   h1 {
     &.title {
@@ -2397,7 +2449,12 @@ footer {
     &.new-spot,
     &.user-single,
     &.user-profile,
-    &.user-admin {
+    &.user-admin,
+    &.admin-spots,
+    &.admin-users,
+    &.admin-pets,
+    &.admin-comments,
+    &.admin-statistics {
       height: 40rem;
     }
   }

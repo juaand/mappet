@@ -885,7 +885,7 @@ form .range-slider__value {
   opacity: 0.5;
 }
 
-.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics {
   height: 66rem;
 }
 
@@ -957,6 +957,32 @@ form .range-slider__value {
 
 .banner.user-admin {
   background: url(../images/user-profile-bg.jpg) no-repeat center -20rem/cover;
+  background-attachment: fixed;
+}
+
+.banner.admin-spots {
+  background: url(../images/admin-spots-bg.jpg) no-repeat center -10rem/cover;
+  background-attachment: fixed;
+}
+
+.banner.admin-users {
+  background: url(../images/admin-users-bg.jpg) no-repeat center -50rem/cover;
+  background-attachment: fixed;
+}
+
+.banner.admin-pets {
+  background: url(../images/admin-pets-bg.jpg) no-repeat center -50rem/cover;
+  background-attachment: fixed;
+}
+
+.banner.admin-comments {
+  background: url(../images/admin-comments-bg.jpg) no-repeat center -30rem/cover;
+  background-attachment: fixed;
+}
+
+.banner.admin-statistics {
+  background: url(../images/admin-statistics-bg.jpg) no-repeat center -30rem/cover;
+  background-attachment: fixed;
 }
 
 .attributtes,
@@ -2760,6 +2786,22 @@ footer .copy {
   color: #fff;
 }
 
+.statistics hr {
+  margin: 10rem 0 4rem 0;
+  display: block;
+}
+
+.statistics .spots-categories-info hr,
+.statistics .kind-pets-info hr,
+.statistics .spot-cities-info hr {
+  margin-top: 4rem;
+}
+
+.statistics .info {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
 @media (max-width: 576px) {
   h1.title {
     font-size: 3rem;
@@ -2768,7 +2810,7 @@ footer .copy {
   .banner .redes {
     display: none;
   }
-  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin {
+  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics {
     height: 40rem;
   }
   .navbar {
