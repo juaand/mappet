@@ -2104,6 +2104,9 @@ aside .aside-cats ul a {
   transition: all 200ms ease;
   display: block;
   width: 100%;
+}
+
+aside .aside-cats ul a.aside-links {
   padding: 1rem 0;
   padding-left: 0.8rem;
 }
@@ -2124,10 +2127,6 @@ aside .aside-cats ul a.active {
 
 aside .aside-cats ul a:hover {
   margin-left: 1.6rem;
-}
-
-aside .aside-cats ul hr {
-  margin: 0;
 }
 
 aside .aside-cats .aside-lastest {
@@ -2162,6 +2161,11 @@ aside .aside-cats .aside-lastest span:before {
 
 aside .aside-cats .aside-lastest span small {
   font-size: 1rem;
+}
+
+.admin-btns {
+  border-left: solid 0.1rem rgba(51, 51, 51, 0.2);
+  padding-left: 4rem;
 }
 
 .map-container {

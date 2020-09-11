@@ -1768,8 +1768,11 @@ aside {
         transition: all 200ms ease;
         display: block;
         width: 100%;
-        padding: 1rem 0;
-        padding-left: 0.8rem;
+
+        &.aside-links {
+          padding: 1rem 0;
+          padding-left: 0.8rem;
+        }
 
         &.active,
         &:hover {
@@ -1789,10 +1792,6 @@ aside {
         &:hover {
           margin-left: 1.6rem;
         }
-      }
-
-      hr {
-        margin: 0;
       }
     }
 
@@ -1830,6 +1829,11 @@ aside {
       }
     }
   }
+}
+
+.admin-btns {
+  border-left: solid 0.1rem rgba($text, 0.2);
+  padding-left: 4rem;
 }
 
 .map-container {
