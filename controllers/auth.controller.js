@@ -28,6 +28,9 @@ module.exports.postLogin = (req, res, next) => {
             if (user.activation.active && user.role === 'ADMIN') {
               req.session.currentUser = user
               res.redirect('/admin')
+            } else if (user.activation.active && user.role === 'EDITOR') {
+              req.session.currentUser = user
+              res.redirect('/editor')
             } else if (user.activation.active) {
               req.session.currentUser = user
               res.redirect('/')
@@ -101,7 +104,8 @@ module.exports.postRegister = (req, res, next) => {
     .then((salt) => bcryptjs.hash(password, salt))
     .then(() => {
       const userParams = req.body
-      userParams.avatar = req.file ? req.file.filename : 'image/upload/v1599776492/mappet/mappet_kggshx.png'
+      userParams.avatar = req.file ? req.file.filename
+        : 'image/upload/v1599776492/mappet/mappet_kggshx.png'
       return User.create({
         name: userParams.name,
         username,

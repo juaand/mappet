@@ -1995,18 +1995,25 @@ form .range-slider__value {
   border: solid 0.1rem #714b9c;
 }
 
-.blog {
-  background: #fff;
+.icon-blog {
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding-right: 8rem;
+  border-right: solid 0.2rem #35396e;
+}
+
+.blog-home {
   margin-top: 0rem;
   padding-bottom: 10rem;
 }
 
-.blog h1 {
+.blog-home h1 {
   color: #35396e;
   margin-bottom: 0;
 }
 
-.blog p {
+.blog-home p {
   margin-bottom: 4rem;
 }
 
@@ -2161,6 +2168,54 @@ aside .aside-cats .aside-lastest span:before {
 
 aside .aside-cats .aside-lastest span small {
   font-size: 1rem;
+}
+
+.list-post h2 {
+  margin-bottom: 4rem;
+}
+
+.list-post ul {
+  padding: 0;
+  list-style: none;
+}
+
+.list-post ul hr {
+  margin: 1rem 0;
+}
+
+.list-post ul a {
+  color: #ea7676;
+}
+
+.list-post ul a:hover {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.list-post ul small {
+  display: block;
+}
+
+.blog-single-content p {
+  margin: 3rem 0 !important;
+}
+
+.blog-single-content a {
+  color: #ea7676;
+}
+
+.blog-single-content h1,
+.blog-single-content h2,
+.blog-single-content h3,
+.blog-single-content h4,
+.blog-single-content h5,
+.blog-single-content h6 {
+  margin-bottom: 2rem;
+}
+
+.blog-single-content img {
+  border-radius: 2.4rem;
+  margin-top: 2rem;
 }
 
 .admin-btns {

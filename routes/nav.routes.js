@@ -1,66 +1,68 @@
-const express = require("express");
-const router = express.Router();
-const navController = require("../controllers/nav.controller");
-const routeGuard = require("../middlewares/session.middleware");
+const express = require('express')
+const router = express.Router()
+const navController = require('../controllers/nav.controller')
+const routeGuard = require('../middlewares/session.middleware')
 
 router.get(
-  "/activities",
+  '/activities',
   routeGuard.isNotAuthenticated,
   navController.getActivities
-);
+)
 
 router.get(
-  "/animal-shelter",
+  '/animal-shelter',
   routeGuard.isNotAuthenticated,
   navController.getAnimalShelter
-);
+)
 
-router.get("/beach", routeGuard.isNotAuthenticated, navController.getBeach);
+router.get('/blog', routeGuard.isNotAuthenticated, navController.getBlog)
 
-router.get("/events", routeGuard.isNotAuthenticated, navController.getEvents);
+router.get('/beach', routeGuard.isNotAuthenticated, navController.getBeach)
+
+router.get('/events', routeGuard.isNotAuthenticated, navController.getEvents)
 
 router.get(
-  "/grooming",
+  '/grooming',
   routeGuard.isNotAuthenticated,
   navController.getGrooming
-);
+)
 
-router.get("/hiking", routeGuard.isNotAuthenticated, navController.getHiking);
+router.get('/hiking', routeGuard.isNotAuthenticated, navController.getHiking)
 
-router.get("/hotel", routeGuard.isNotAuthenticated, navController.getHotel);
+router.get('/hotel', routeGuard.isNotAuthenticated, navController.getHotel)
 
-router.get("/park", routeGuard.isNotAuthenticated, navController.getPark);
+router.get('/park', routeGuard.isNotAuthenticated, navController.getPark)
 
-router.get("/pipican", routeGuard.isNotAuthenticated, navController.getPipican);
+router.get('/pipican', routeGuard.isNotAuthenticated, navController.getPipican)
 
 router.get(
-  "/restaurants",
+  '/restaurants',
   routeGuard.isNotAuthenticated,
   navController.getRestaurants
-);
+)
 
 router.get(
-  "/services",
+  '/services',
   routeGuard.isNotAuthenticated,
   navController.getServices
-);
+)
 
-router.get("/store", routeGuard.isNotAuthenticated, navController.getStore);
+router.get('/store', routeGuard.isNotAuthenticated, navController.getStore)
 
-router.get("/tour", routeGuard.isNotAuthenticated, navController.getTour);
+router.get('/tour', routeGuard.isNotAuthenticated, navController.getTour)
 
 router.get(
-  "/training",
+  '/training',
   routeGuard.isNotAuthenticated,
   navController.getTraining
-);
+)
 
 router.get(
-  "/veterinary",
+  '/veterinary',
   routeGuard.isNotAuthenticated,
   navController.getVeterinary
-);
+)
 
-router.get("/walk", routeGuard.isNotAuthenticated, navController.getWalk);
+router.get('/walk', routeGuard.isNotAuthenticated, navController.getWalk)
 
-module.exports = router;
+module.exports = router
