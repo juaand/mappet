@@ -6,6 +6,7 @@ const Spot = require('../models/spot.model')
 const Comment = require('../models/comment.model')
 const Pet = require('../models/pet.model')
 const Like = require('../models/like.model')
+const Blog = require('../models/blog.model')
 const faker = require('faker')
 const database = require('../data/mappet.json')
 
@@ -16,7 +17,8 @@ Promise.all([
   Spot.deleteMany(),
   Pet.deleteMany(),
   Comment.deleteMany(),
-  Like.deleteMany()
+  Like.deleteMany(),
+  Blog.deleteMany()
 ])
   .then(() => {
     console.log('empty database')
@@ -58,7 +60,8 @@ Promise.all([
       activation: {
         active: true
       }
-    }).then((user) => {
+    })
+    .then((user) => {
       for (let j = 0; j < database.length; j++) {
         const spot = new Spot({
           creatorId: user._id,
@@ -101,7 +104,8 @@ Promise.all([
           facebook: faker.internet.url(),
           createdAt: faker.date.past()
         })
-        spot.save().then((p) => {
+        spot.save()
+        .then((p) => {
           for (let k = 0; k < 1; k++) {
             const comment = new Comment({
               authorId: userIds[Math.floor(Math.random() * userIds.length)],
@@ -114,6 +118,31 @@ Promise.all([
         })
       }
     })
+    .then(() => {
+      for (let i = 0; i < 10; i++) {
+        const blog = new Blog({
+          title: faker.name.jobTitle(),
+          content: faker.lorem.paragraph(),
+          authorId: userIds[Math.floor(Math.random() * userIds.length)],
+          picPath: faker.random.image()
+        })
+        blog.save()
+      }
+    })
+    .then(() => {
+      User.create({
+        name: 'mappet editor',
+        username: 'editor',
+        avatar: process.env.ADMINAVATAR,
+        email: process.env.NM_EDITOR,
+        password: process.env.NM_PASS,
+        bio: 'This is an admin profile',
+        role: 'EDITOR',
+        activation: {
+          active: true
+        }
+      })
+    }) 
   })
   .then(() => {
     console.log('users database added')
@@ -121,4 +150,5 @@ Promise.all([
     console.log('admin user added')
     console.log('spots database added')
     console.log('comments database added')
-  })
+    console.log('posts database added')
+    })
