@@ -1,18 +1,26 @@
 const Spot = require('../models/spot.model')
 const User = require('../models/user.model')
 const Pet = require('../models/pet.model')
+const Blog = require('../models/blog.model')
 const Like = require('../models/like.model')
 
 module.exports.getHome = (req, res, next) => {
-  Spot.find()
+  const spots = Spot.find()
     .sort({ createdAt: -1 })
     .limit(8)
     .populate('creatorId')
-    .then((values) => {
-      // res.json(values)
+  const posts = Blog.find()
+    .sort({ createdAt: -1 })
+    .limit(8)
+    .populate('authorId')
+
+  Promise.all([spots, posts])
+    .then((results) => {
+      // res.json(results)
       if (req.session.currentUser && req.session.currentUser.role === 'ADMIN') {
         res.render('index', {
-          values,
+          values: results[0],
+          posts: results[1],
           admin: true,
           title: 'Welcome to mappet'
         })
@@ -26,7 +34,8 @@ module.exports.getHome = (req, res, next) => {
         })
       } else {
         res.render('index', {
-          values,
+          values: results[0],
+          posts: results[1],
           title: 'Welcome to mappet'
         })
       }
