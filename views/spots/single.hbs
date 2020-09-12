@@ -307,6 +307,7 @@
               {{#each spot.creatorId.pets as |pet|}}
               <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
               {{/each}}
+              {{#ifvalue spot.category equals = "ONG"}}
               <form id="stripe-form" action="/ong/{{spot._id}}/charge" method="POST">
                 {{!-- <button id="checkout-button" data-target="#donateModal">Donate</button> --}}
                 <div id="paybtn">
@@ -316,6 +317,7 @@
                   </button>
                 </div>
               </form>
+              {{/ifvalue}}
             </span>
           </span>
         </div>
