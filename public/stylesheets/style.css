@@ -2318,13 +2318,11 @@ h1 {
 
 .spot-card:hover {
   cursor: pointer;
-  /* > .details {
-      margin-top: 0;
-    }*/
 }
 
 .spot-card:hover > .spot-block > .text-overflow {
   margin-top: 0;
+  height: 100%;
 }
 
 .spot-card .spot-block {
@@ -2342,8 +2340,8 @@ h1 {
   padding-bottom: 0;
   color: #fff;
   background: rgba(234, 118, 118, 0.9);
-  height: 100%;
-  margin-top: 37%;
+  height: 50%;
+  margin-top: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2352,6 +2350,7 @@ h1 {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  border-radius: 0 1.2rem 0 0;
 }
 
 .spot-card .spot-block .text-overflow h4 {

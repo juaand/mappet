@@ -50,7 +50,7 @@
                     <h4>
                       <strong>{{value.title}}</strong>
                     </h4>
-                    <a href="/blog/{{value._id}}" class="single">
+                    <a href="/mappet/blog/{{value._id}}" class="single">
                       <strong>Read More</strong>
                       <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="angle-right" role="img"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
@@ -69,7 +69,7 @@
                     background: url(./images/home-bg.jpg) no-repeat center
                       center / cover;
                   "></span>
-                <a href="/" class="author-name">{{value.authorId.username}}</a>
+                <a href="/user/{{value.authorId._id}}" class="author-name">{{value.authorId.username}}</a>
               </div>
             </div>
           </div>
