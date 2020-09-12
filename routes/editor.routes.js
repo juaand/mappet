@@ -16,5 +16,5 @@ router.post(
   editorController.postBlog
 )
 
-router.get('/mappet/blog/:id', routeGuard.isAuthenticated, editorController.getSingle)
+router.get('/mappet/blog/:id', routeGuard.isNotAuthenticated, editorController.getSingle)
 module.exports = router

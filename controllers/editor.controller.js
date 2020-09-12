@@ -26,7 +26,9 @@ module.exports.getBlog = (req, res, next) => {
 
 module.exports.postBlog = (req, res, next) => {
   const id = req.params.id
-  req.body.picPath = req.file ? req.file.filename : undefined
+  req.body.picPath = req.file
+    ? req.file.filename
+    : 'image/upload/v1599250707/mappet/nofile_eabd8z.jpg'
 
   Blog.create({
     title: req.body.title,
@@ -41,21 +43,59 @@ module.exports.postBlog = (req, res, next) => {
 }
 
 module.exports.getSingle = (req, res, next) => {
+  const user = req.session.currentUser
   const id = req.params.id
-  Blog.findById(id)
-    .populate('authorId')
-    .then((post) => {
-      Blog.find()
+
+  if (user) {
+    if (user.role === 'EDITOR') {
+      Blog.findById(id)
         .populate('authorId')
-        .limit(3)
-        .then((lastest) => {
-          res.render('blog/single', {
-            lastest,
-            post,
-            editor: true
-          })
+        .then((post) => {
+          Blog.find()
+            .populate('authorId')
+            .limit(3)
+            .then((lastest) => {
+              res.render('blog/single', {
+                lastest,
+                post,
+                editor: true
+              })
+            })
+            .catch((error) => next(error))
         })
         .catch((error) => next(error))
-    })
-    .catch((error) => next(error))
+    } else {
+      Blog.findById(id)
+        .populate('authorId')
+        .then((post) => {
+          Blog.find()
+            .populate('authorId')
+            .limit(3)
+            .then((lastest) => {
+              res.render('blog/single', {
+                lastest,
+                post
+              })
+            })
+            .catch((error) => next(error))
+        })
+        .catch((error) => next(error))
+    }
+  } else {
+    Blog.findById(id)
+      .populate('authorId')
+      .then((post) => {
+        Blog.find()
+          .populate('authorId')
+          .limit(3)
+          .then((lastest) => {
+            res.render('blog/single', {
+              lastest,
+              post
+            })
+          })
+          .catch((error) => next(error))
+      })
+      .catch((error) => next(error))
+  }
 }

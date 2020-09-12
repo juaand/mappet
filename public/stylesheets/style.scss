@@ -1988,12 +1988,9 @@ h1 {
     > .spot-block {
       > .text-overflow {
         margin-top: 0;
+        height: 100%;
       }
     }
-
-    /* > .details {
-      margin-top: 0;
-    }*/
   }
 
   .spot-block {
@@ -2009,11 +2006,12 @@ h1 {
       padding-bottom: 0;
       color: $white;
       background: rgba($pink, 0.9);
-      height: 100%;
-      margin-top: 37%;
+      height: 50%;
+      margin-top: 40%;
       display: flex;
       transition: all 200ms ease-in-out;
       align-items: flex-end;
+      border-radius: 0 1.2rem 0 0;
 
       h4 {
         margin-bottom: 2rem;
