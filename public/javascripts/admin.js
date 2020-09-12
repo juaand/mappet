@@ -174,8 +174,11 @@ axios.get(spotsJson).then((responseFromAPI) => {
 
   // console.log(JSON.stringify(Object.keys(citiesQuantity)))
   // console.log(JSON.stringify(Object.values(citiesQuantity)))
+// items.sort(function (a, b) {
+//   return a.value - b.value;
+// })
 
-  const sortedCities = Object.keys(citiesQuantity).sort((a, b) => b - a)
+  const sortedCities = Object.keys(citiesQuantity).sort((a, b) => citiesQuantity[b] - citiesQuantity[a])
   document.querySelector('.spot-cities-info').innerHTML = `
   <hr>
   <p class="info">At the time, the most mappet city is <strong>${sortedCities[0]}</strong> with a total of <strong>${citiesQuantity[sortedCities[0]]}</strong> spots.</p>
@@ -240,7 +243,7 @@ axios.get(petsJson).then((responseFromAPI) => {
     return petQuantity
   }, {})
 
-  const sortedPets = Object.keys(petsQuantity).sort((a, b) => b - a)
+  const sortedPets = Object.keys(petsQuantity).sort((a, b) => petsQuantity[b] - petsQuantity[a])
   document.querySelector('.kind-pets-info').innerHTML = `
   <hr>
   <p class="info">At the time, the most mappet animal is <strong>${sortedPets[0]}</strong> with a total of <strong>${petsQuantity[sortedPets[0]]}</strong>.</p>
@@ -314,7 +317,7 @@ axios.get(spotsJson).then((responseFromAPI) => {
   // console.log(JSON.stringify(Object.keys(categoriesQuantity)))
   // console.log(JSON.stringify(Object.values(categoriesQuantity)))
 
-  const sortedCategories = Object.keys(categoriesQuantity).sort((a, b) => b - a)
+  const sortedCategories = Object.keys(categoriesQuantity).sort((a, b) => categoriesQuantity[b] - categoriesQuantity[a])
   document.querySelector('.spots-categories-info').innerHTML = `
   <hr>
   <p class="info">At the time, the most mappet category is <strong>${sortedCategories[0]}</strong> with a total of <strong>${categoriesQuantity[sortedCategories[0]]}</strong> spots.</p>
