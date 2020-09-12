@@ -16,6 +16,14 @@ module.exports.getHome = (req, res, next) => {
           admin: true,
           title: 'Welcome to mappet'
         })
+      } else if (
+        req.session.currentUser &&
+        req.session.currentUser.role === 'EDITOR'
+      ) {
+        res.render('editor/', {
+          editor: true,
+          title: 'Mappet editor'
+        })
       } else {
         res.render('index', {
           values,

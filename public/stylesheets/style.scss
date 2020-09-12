@@ -1663,8 +1663,15 @@ form {
   border: solid 0.1rem $purple;
 }
 
-.blog {
-  background: $white;
+.icon-blog {
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  padding-right: 8rem;
+  border-right: solid 0.2rem $dark-purple;
+}
+
+.blog-home {
   margin-top: 0rem;
   padding-bottom: 10rem;
 
@@ -1828,6 +1835,58 @@ aside {
         }
       }
     }
+  }
+}
+
+.list-post {
+  h2 {
+    margin-bottom: 4rem;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+
+    hr {
+      margin: 1rem 0;
+    }
+
+    a {
+      color: $pink;
+
+      &:hover {
+        text-decoration: none;
+        font-weight: 600;
+      }
+    }
+
+    small {
+      display: block;
+    }
+  }
+}
+
+.blog-single-content {
+  p {
+    margin: 3rem 0 !important;
+  }
+
+  a {
+    color: $pink;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 2rem;
+  }
+
+  img {
+    border-radius: 2.4rem;
+    margin-top: 2rem;
   }
 }
 

@@ -1,0 +1,83 @@
+<section class="container-fluid banner admin-statistics"></section>
+<section class="container-fluid results statistics">
+  <div class="big-avatar" style="background: #35396e url({{user.avatar}}) no-repeat center center / cover;">
+    <span class="cat-label">
+      <div class="label-dark" tabindex="0">{{user.role}}</div>
+    </span>
+  </div>
+  <div class="container">
+    <div class="row justify-content-between m-0">
+      <div class="col-12">
+        <h1 class="title">Hello <strong>{{user.name}}</strong></h1>
+      </div>
+      <div class="col-12 col-sm-3 list-post">
+        <h2>Your posts</h2>
+        <ul>
+          {{#each posts as |post|}}
+          <li>
+            <a href="/mappet/blog/{{post._id}}">{{post.title}}</a>
+            <small>posted {{date post.createdAt}}</small>
+          </li>
+          <hr>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="col-12 col-sm-7">
+        {{#if message}}
+        <div class="alert alert-primary" role="alert">
+          {{message}}
+        </div>
+        {{/if}}
+        <form action="/editor/blog/{{user._id}}" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Post title</label>
+            <input name="title" type="text" class="form-control" id="title" placeholder="Enter title">
+          </div>
+          <div class="form-group">
+            <label>Post hero pic</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="picPath" name="picPath">
+              <label class="custom-file-label" for="picPath">Choose pic</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="content">Post content</label>
+            <textarea id="content" name="content"></textarea>
+          </div>
+          <button type="submit" class="btn mr-3 form-btn">Publicar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  tinymce.init({
+    selector: 'textarea#content',
+    height: 500,
+    menubar: false,
+    plugins: [
+      'image code',
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar: 'undo redo | image code | formatselect | ' +
+      'bold italic backcolor | alignleft aligncenter ' +
+      'alignright alignjustify | bullist numlist outdent indent | ' +
+      'removeformat | help',
+
+    /* without images_upload_url set, Upload tab won't show up*/
+    images_upload_url: 'postAcceptor.php',
+
+    /* we override default upload handler to simulate successful upload*/
+    images_upload_handler: function (blobInfo, success, failure) {
+      setTimeout(function () {
+        /* no matter what you upload, we will turn it into TinyMCE logo :)*/
+        success('/images/android-chrome-512x512.png');
+      }, 2000);
+    },
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+  });
+</script>
