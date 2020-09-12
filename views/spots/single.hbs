@@ -307,6 +307,15 @@
               {{#each spot.creatorId.pets as |pet|}}
               <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
               {{/each}}
+              <form id="stripe-form" action="/ong/{{spot._id}}/charge" method="POST">
+                {{!-- <button id="checkout-button" data-target="#donateModal">Donate</button> --}}
+                <div id="paybtn">
+                  <input id="amount" type="number" placeholder="50,00">
+                  <button id="donate-button" type="submit">No seas rata
+                    <script src="https://checkout.stripe.com/checkout.js"></script>
+                  </button>
+                </div>
+              </form>
             </span>
           </span>
         </div>
@@ -366,11 +375,51 @@
   </div>
 </div>
 
+
 <script>
+  document.querySelector('.stripe-button-el').addEventListener('click', () => {
+    document.querySelector('.stripe-button').setAttribute('data-amount', document.querySelector('#amount').value)
+  })
+
   document.querySelector('.carousel-item').classList.add('active')
 </script>
 
 
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=236015370779811&autoLogAppEvents=1"
-  nonce="rDMJVL8Q"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<button id="customButton">Purchase</button>
+<script>
+  const handler = StripeCheckout.configure({
+    key: 'pk_test_51HQGSzAht42ulJLICiMtO9fDINNmtf44YOqX7XKBoh7JStN8sNnYuIFAZHfMsYnux5ms4F02OJ2qomTIOnrkOob700aMj5mGjw',
+    locale: "es",
+    currency: "EUR",
+    token: (t) => {
+      console.log(t)
+      axios.post('/ong/{{spot._id}}/charge', {
+        stripeEmail: t.email,
+        stripeToken: t.id,
+        amount: document.querySelector('#amount').value * 100
+      })
+        .then(r => {
+          console.log(r)
+          window.location = "/"
+        })
+        .catch(error => error)
+
+    },
+    closed: (e) => {
+      console.log(e)
+    }
+  });
+
+  document.getElementById('donate-button').addEventListener('click', function (e) {
+    // This line is the only real modification...
+    var amount = document.querySelector('#amount').value * 100;
+    handler.open({
+      name: 'Donations',
+      description: 'Some donation',
+      // ... aside from this line where we use the value.
+      amount: amount
+    });
+    e.preventDefault();
+  });
+</script>
