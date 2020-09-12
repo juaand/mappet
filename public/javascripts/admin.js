@@ -178,8 +178,11 @@ axios.get(spotsJson).then((responseFromAPI) => {
   const sortedCities = Object.keys(citiesQuantity).sort((a, b) => b - a)
   document.querySelector('.spot-cities-info').innerHTML = `
   <hr>
-  <p class="info">At the time, the most mappet city is <strong>${sortedCities[0]}</strong> with an total of <strong>${citiesQuantity[sortedCities[0]]}</strong> spots.</p>
+  <p class="info">At the time, the most mappet city is <strong>${sortedCities[0]}</strong> with a total of <strong>${citiesQuantity[sortedCities[0]]}</strong> spots.</p>
   `
+  console.log(JSON.stringify(citiesQuantity))  
+  console.log(JSON.stringify(Object.values(sortedCities)))
+ 
 
   let citiesData = {
     labels: Object.keys(citiesQuantity),
@@ -240,7 +243,7 @@ axios.get(petsJson).then((responseFromAPI) => {
   const sortedPets = Object.keys(petsQuantity).sort((a, b) => b - a)
   document.querySelector('.kind-pets-info').innerHTML = `
   <hr>
-  <p class="info">At the time, the most mappet animal is <strong>${sortedPets[0]}</strong> with an total of <strong>${petsQuantity[sortedPets[0]]}</strong>.</p>
+  <p class="info">At the time, the most mappet animal is <strong>${sortedPets[0]}</strong> with a total of <strong>${petsQuantity[sortedPets[0]]}</strong>.</p>
   `
 
   // console.log(JSON.stringify(Object.keys(petsQuantity)))
@@ -285,7 +288,7 @@ axios.get(petsJson).then((responseFromAPI) => {
   })
 })
 
-// Kind of pets
+// Categories
 
 axios.get(spotsJson).then((responseFromAPI) => {
   // console.log(responseFromAPI.data)
@@ -314,7 +317,7 @@ axios.get(spotsJson).then((responseFromAPI) => {
   const sortedCategories = Object.keys(categoriesQuantity).sort((a, b) => b - a)
   document.querySelector('.spots-categories-info').innerHTML = `
   <hr>
-  <p class="info">At the time, the most mappet category is <strong>${sortedCategories[0]}</strong> with an total of <strong>${categoriesQuantity[sortedCategories[0]]}</strong> spots.</p>
+  <p class="info">At the time, the most mappet category is <strong>${sortedCategories[0]}</strong> with a total of <strong>${categoriesQuantity[sortedCategories[0]]}</strong> spots.</p>
   `
 
   let categoriesData = {

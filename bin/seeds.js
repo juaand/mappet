@@ -102,7 +102,7 @@ Promise.all([
           createdAt: faker.date.past()
         })
         spot.save().then((p) => {
-          for (let k = 0; k < 3; k++) {
+          for (let k = 0; k < 1; k++) {
             const comment = new Comment({
               authorId: userIds[Math.floor(Math.random() * userIds.length)],
               spotId: p._id,
