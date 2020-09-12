@@ -31,6 +31,8 @@ router.get('/hiking', routeGuard.isNotAuthenticated, navController.getHiking)
 
 router.get('/hotel', routeGuard.isNotAuthenticated, navController.getHotel)
 
+router.get('/ong', routeGuard.isNotAuthenticated, navController.getOng)
+
 router.get('/park', routeGuard.isNotAuthenticated, navController.getPark)
 
 router.get('/pipican', routeGuard.isNotAuthenticated, navController.getPipican)

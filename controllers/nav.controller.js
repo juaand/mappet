@@ -67,6 +67,14 @@ module.exports.getHotel = (req, res, next) => {
     })
 }
 
+module.exports.getOng = (req, res, next) => {
+  Spot.find({ category: 'ONG' })
+    .populate('creatorId')
+    .then((values) => {
+      res.render('spots/generate', { values, category: 'ong' })
+    })
+}
+
 module.exports.getPark = (req, res, next) => {
   Spot.find({ category: 'Park' })
     .populate('creatorId')
