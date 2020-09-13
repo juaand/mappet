@@ -840,8 +840,7 @@ form {
   }
 
   &.thankyou {
-    background: url(../images/thankyou-bg.jpg) no-repeat center center /
-      cover;
+    background: url(../images/thankyou-bg.jpg) no-repeat center center / cover;
   }
 }
 
@@ -2562,6 +2561,10 @@ footer {
       display: none;
     }
 
+    select {
+      width: 100%;
+    }
+
     &.restaurants,
     &.services,
     &.activities,
@@ -2615,7 +2618,8 @@ footer {
 
           ul {
             width: 100%;
-            padding: 0 1.5rem;
+            padding: 0;
+            flex-direction: column;
 
             .logged {
               background: rgba($white, 0.4);
@@ -2740,11 +2744,31 @@ footer {
     }
   }
 
+  .lastest-spots {
+    background: $white;
+  }
+
+  .categories-bg {
+    &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background: url(../images/search.jpg) no-repeat center center / cover;
+    }
+  }
+
   .categories {
     .cat-items {
       .cat-card {
         background-size: 2rem 2rem !important;
         height: 9rem;
+        text-align: center;
+        font-size: 1.2rem;
       }
     }
   }
