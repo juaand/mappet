@@ -194,10 +194,15 @@ module.exports.editSpot = (req, res, next) => {
             title: `Edit ${spot.name}`,
             admin: true
           })
-        } else {
+        } else if (spotOwnerId == userId) {
           res.render('spots/edit', {
             spot,
             title: `Edit ${spot.name}`
+          })
+        } else {
+          req.session.destroy()
+          res.render('auth/login', {
+            message: 'Something is wrong with your user, please login again.'
           })
         }
       } else {
