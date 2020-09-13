@@ -898,7 +898,7 @@ form .range-slider__value {
   opacity: 0.5;
 }
 
-.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics {
+.banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics, .banner.thankyou {
   height: 66rem;
 }
 
@@ -996,6 +996,10 @@ form .range-slider__value {
 .banner.admin-statistics {
   background: url(../images/admin-statistics-bg.jpg) no-repeat center -30rem/cover;
   background-attachment: fixed;
+}
+
+.banner.thankyou {
+  background: url(../images/thankyou-bg.jpg) no-repeat center center/cover;
 }
 
 .attributtes,
@@ -1697,7 +1701,9 @@ form .range-slider__value {
   margin-left: -3rem;
 }
 
-.single-results .user-info .edit-spot {
+.single-results .user-info .edit-spot,
+.single-results .user-info .delete-spot,
+.single-results .user-info .donate-spot {
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1708,18 +1714,63 @@ form .range-slider__value {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #ea7676;
-  color: #fff;
-  margin: 6rem auto auto auto;
   padding: 1rem;
   border-radius: 4rem;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
 }
 
-.single-results .user-info .edit-spot:hover {
+.single-results .user-info .edit-spot:hover,
+.single-results .user-info .delete-spot:hover,
+.single-results .user-info .donate-spot:hover {
   background: #35396e;
   text-decoration: none;
+}
+
+.single-results .user-info .edit-spot {
+  background: #ea7676;
+  color: #fff;
+  margin: 3rem auto auto auto;
+}
+
+.single-results .user-info .delete-spot {
+  background: #fff;
+  color: #ea7676;
+  margin: 2rem auto auto auto;
+  border: solid 0.1rem #ea7676;
+  font-weight: 400;
+}
+
+.single-results .user-info .delete-spot:hover {
+  color: #fff;
+  border-color: #35396e;
+}
+
+.single-results .user-info #paybtn {
+  margin-top: 2rem;
+}
+
+.single-results .user-info .charge-message {
+  margin: 2rem auto 0 auto;
+  color: #ea7676;
+  font-weight: 600;
+}
+
+.single-results .user-info .donate-spot {
+  background: #35396e;
+  color: #fff;
+  border: 0;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.single-results .user-info .donate-spot:hover {
+  background: #ea7676;
+}
+
+.single-results .user-info .donate-txt {
+  margin: 4rem auto 2rem auto;
+  display: block;
 }
 
 .single-results .user-info .pet-avatar {
@@ -1755,6 +1806,10 @@ form .range-slider__value {
 
 .single-results .user-info .pet-avatar:nth-child(5) {
   left: 10rem;
+}
+
+.stripe_checkout_app {
+  background: rgba(53, 57, 110, 0.9) !important;
 }
 
 .no-spots {
@@ -1843,34 +1898,6 @@ form .range-slider__value {
 #delete.show .modal-dialog .modal-header,
 #delete.show .modal-dialog .modal-footer {
   border: 0;
-}
-
-.delete-spot {
-  width: 80%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: #fff;
-  color: #ea7676;
-  margin: 2rem auto auto auto;
-  padding: 1rem;
-  border-radius: 4rem;
-  border: solid 0.1rem #ea7676;
-  -webkit-transition: all 200ms ease;
-  transition: all 200ms ease;
-}
-
-.delete-spot:hover {
-  background: #35396e;
-  text-decoration: none;
-  color: #fff;
-  border-color: #35396e;
 }
 
 #mapModal .modal-dialog,
@@ -2895,7 +2922,7 @@ footer .copy {
   .banner .redes {
     display: none;
   }
-  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics {
+  .banner.restaurants, .banner.services, .banner.activities, .banner.events, .banner.register, .banner.login, .banner.single, .banner.new-spot, .banner.user-single, .banner.user-profile, .banner.user-admin, .banner.admin-spots, .banner.admin-users, .banner.admin-pets, .banner.admin-comments, .banner.admin-statistics, .banner.thankyou {
     height: 40rem;
   }
   .navbar {

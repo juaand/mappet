@@ -30,4 +30,6 @@ router.get(
 
 router.get('/logout', routeGuard.isAuthenticated, authController.doLogout)
 
+router.get('/thankyou', routeGuard.isNotAuthenticated, authController.getThankyou)
+
 module.exports = router

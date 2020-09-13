@@ -36,8 +36,8 @@ module.exports = [
   },
   {
     id: 'ong',
-    name: 'ONG',
-    master_cat: 'ONG'
+    name: 'Ong',
+    master_cat: 'Ong'
   },
   {
     id: 'park',

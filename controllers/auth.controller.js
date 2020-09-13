@@ -104,7 +104,8 @@ module.exports.postRegister = (req, res, next) => {
     .then((salt) => bcryptjs.hash(password, salt))
     .then(() => {
       const userParams = req.body
-      userParams.avatar = req.file ? req.file.filename
+      userParams.avatar = req.file
+        ? req.file.filename
         : 'image/upload/v1599776492/mappet/mappet_kggshx.png'
       return User.create({
         name: userParams.name,
@@ -179,4 +180,19 @@ module.exports.getToken = (req, res, next) => {
 module.exports.doLogout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
+}
+
+module.exports.getThankyou = (req, res, next) => {
+  const user = req.session.currentUser
+  if (user) {
+    res.render('thankyou', {
+      title: 'Mappet thank you',
+      name: user.name
+    })
+  } else {
+    res.render('thankyou', {
+      title: 'Mappet thank you',
+      name: 'anonimous petlover'
+    })
+  }
 }
