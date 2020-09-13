@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 map">
-          <h1 class="title"><span class="mappet-{{small cat}}"></span> view {{cat}} spots in map</h1>
+          <h1 class="title"><span class="mappet-{{#ifvalue cat equals = "Ong"}}bone{{else}}{{small cat}}{{/ifvalue}}"></span> view {{cat}} spots in map</h1>
           <button type="button" onclick="window.history.back()">volver</button>
           <div id="map"></div>
         </div>

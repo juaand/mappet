@@ -153,7 +153,7 @@
           {{#each allCategories as |category|}}
           <div class="col-sm-2 col-4">
             <a href="/{{category.id}}" class="col-12 cat-card">
-              <span class="mappet-{{category.id}}"></span>
+              <span class="mappet-{{#ifvalue category.id equals = "ong"}}bone{{else}}{{category.id}}{{/ifvalue}}"></span>
               <p>{{category.name}}</p>
             </a>
           </div>

@@ -83,7 +83,7 @@
             {{#each allCategories as |cat|}}
             <li>
               <a href="/{{cat.id}}" class="aside-links {{#ifvalue ../category equals = cat.id}}active{{/ifvalue}}">
-                <span class="mappet-{{cat.id}}"></span> {{cat.name}}
+                <span class="mappet-{{#ifvalue cat.id equals = "ong"}}bone{{else}}{{cat.id}}{{/ifvalue}}"></span> {{cat.name}}
               </a>
             </li>
             <hr class="m-0">

@@ -35,6 +35,11 @@ module.exports = [
     master_cat: 'Services'
   },
   {
+    id: 'ong',
+    name: 'ONG',
+    master_cat: 'ONG'
+  },
+  {
     id: 'park',
     name: 'Park',
     master_cat: 'Activities'
@@ -78,10 +83,5 @@ module.exports = [
     id: 'walk',
     name: 'Walk',
     master_cat: 'Activities'
-  },
-  {
-    id: 'ong',
-    name: 'ONG',
-    master_cat: 'ONG'
   }
 ]
