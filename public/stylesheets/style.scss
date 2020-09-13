@@ -2683,6 +2683,11 @@ footer {
     }
   }
 
+  .attributtes,
+  .results {
+    padding: 0rem 0 6rem 0;
+  }
+
   .attributtes {
     margin-top: -7rem;
     border-radius: 0 7rem 0 0;
@@ -2748,6 +2753,15 @@ footer {
     }
   }
 
+  .results,
+  .slider {
+    .card {
+      picture {
+        height: 9rem;
+      }
+    }
+  }
+
   .lastest-spots {
     background: $white;
   }
@@ -2770,7 +2784,7 @@ footer {
   .small {
     margin-left: 7rem;
     margin-top: -1rem;
-}
+  }
 
   .results,
   .attributtes {

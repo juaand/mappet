@@ -3010,6 +3010,10 @@ footer .copy {
   .navbar .navbar-collapse .navbar-nav .more .dropdown-menu .dropdown-item {
     padding: 1.5rem;
   }
+  .attributtes,
+  .results {
+    padding: 0rem 0 6rem 0;
+  }
   .attributtes {
     margin-top: -7rem;
     border-radius: 0 7rem 0 0;
@@ -3062,6 +3066,10 @@ footer .copy {
   }
   .attributtes .spot-card .details {
     margin-top: 0rem;
+  }
+  .results .card picture,
+  .slider .card picture {
+    height: 9rem;
   }
   .lastest-spots {
     background: #fff;
