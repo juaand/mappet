@@ -2956,6 +2956,7 @@ footer .copy {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    background: none;
   }
   .navbar .navbar-collapse .navbar-nav .login ul {
     width: 100%;
