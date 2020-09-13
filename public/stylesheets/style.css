@@ -3067,9 +3067,37 @@ footer .copy {
   .attributtes .spot-card .details {
     margin-top: 0rem;
   }
+  .results .card,
+  .slider .card {
+    border-bottom: solid 0.1rem rgba(53, 57, 110, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
   .results .card picture,
   .slider .card picture {
-    height: 9rem;
+    height: 6rem;
+  }
+  .results .card picture h3,
+  .slider .card picture h3 {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+  .results .card picture .cat-label,
+  .slider .card picture .cat-label {
+    display: none;
+  }
+  .results .card .info,
+  .slider .card .info {
+    display: none;
+  }
+  .results .card .card-body,
+  .slider .card .card-body {
+    padding: 0 1.25rem;
+  }
+  .results .card .card-body .go-single,
+  .slider .card .card-body .go-single {
+    top: -5rem;
+    right: -1rem;
   }
   .lastest-spots {
     background: #fff;

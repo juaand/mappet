@@ -2756,8 +2756,34 @@ footer {
   .results,
   .slider {
     .card {
+      border-bottom: solid 0.1rem rgba($dark-purple, 0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+
       picture {
-        height: 9rem;
+        height: 6rem;
+
+        h3 {
+          font-size: 1.2rem;
+          padding: 1rem;
+        }
+
+        .cat-label {
+          display: none;
+        }
+      }
+
+      .info {
+        display: none;
+      }
+
+      .card-body {
+        padding: 0 1.25rem;
+
+        .go-single {
+          top: -5rem;
+          right: -1rem;
+        }
       }
     }
   }
