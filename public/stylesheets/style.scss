@@ -375,7 +375,6 @@ form {
     border-radius: 4rem;
     font-size: 1.6rem;
     margin: 2rem auto auto auto;
-    width: 30%;
     border: 0;
     transition: all 200ms ease;
 
@@ -593,6 +592,10 @@ form {
           }
         }
       }
+    }
+
+    .post-btn {
+      width: 100%;
     }
 
     &.admin-links {
@@ -2634,6 +2637,11 @@ footer {
               background: rgba($white, 0.4);
               padding: 1rem;
               position: relative;
+              margin-top: 2rem;
+
+              .user-login {
+                margin-top: 1rem !important;
+              }
 
               .user-info {
                 .nav-avatar {

@@ -498,7 +498,6 @@ form .form-btn {
   border-radius: 4rem;
   font-size: 1.6rem;
   margin: 2rem auto auto auto;
-  width: 30%;
   border: 0;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
@@ -763,6 +762,10 @@ form .range-slider__value {
 .navbar .nav-item.more .dropdown-menu .dropdown-item:hover {
   background: transparent;
   opacity: 0.7;
+}
+
+.navbar .nav-item .post-btn {
+  width: 100%;
 }
 
 .navbar .nav-item.admin-links a {
@@ -2974,6 +2977,10 @@ footer .copy {
     background: rgba(255, 255, 255, 0.4);
     padding: 1rem;
     position: relative;
+    margin-top: 2rem;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul .logged .user-login {
+    margin-top: 1rem !important;
   }
   .navbar .navbar-collapse .navbar-nav .login ul .logged .user-info .nav-avatar {
     border: solid 0.4rem #35396e;
