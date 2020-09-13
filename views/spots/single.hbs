@@ -311,7 +311,7 @@
           </span>
         </div>
         <div class="col-12">
-          
+
           {{#if owner}}
           <hr>
           <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
@@ -406,7 +406,7 @@
 <script>
   const handler = StripeCheckout.configure({
     key: 'pk_test_51HQGSzAht42ulJLICiMtO9fDINNmtf44YOqX7XKBoh7JStN8sNnYuIFAZHfMsYnux5ms4F02OJ2qomTIOnrkOob700aMj5mGjw',
-    locale: "es",
+    locale: "en",
     currency: "EUR",
     token: (t) => {
       console.log(t)
