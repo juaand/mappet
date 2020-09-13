@@ -29,25 +29,27 @@
       <h1 class="title">all spots</h1>
       {{#each spots as |spot|}}
       <div class="info">
-        <div class="avatar" style="background: url({{spot.pictures}}) no-repeat center center / cover;">
-        </div>
         <div class="row">
-          <div class="col-12 col-sm-7 d-flex justify-content-start">
-            <span class="col user roles">
-              <span>
-                <h2>{{spot.name}}</h2>
-                <strong>posted by</strong> <a href="/user/{{spot.creatorId._id}}"> @{{spot.creatorId.username}}</a>
+          <div class="col-12 col-sm-10">
+            <div class="row">
+              <span class="col-sm-6 col-12 user roles">
+                <div class="avatar" style="background: url({{spot.pictures}}) no-repeat center center / cover;">
+                </div>
+                <span>
+                  <h2>{{spot.name}}</h2>
+                  <strong>posted by</strong> <a href="/user/{{spot.creatorId._id}}"> @{{spot.creatorId.username}}</a>
+                </span>
               </span>
-            </span>
-            <span class="col align-self-center">
-              {{#each spot.category as |cat|}}
-              <span class="label">{{cat}}</span>
-              {{/each}}
-              <p>{{spot.address}}</p>
-              <p>{{spot.email}}</p>
-            </span>
+              <span class="col-sm-6 col-12 align-self-center">
+                {{#each spot.category as |cat|}}
+                <span class="label-pill">{{cat}}</span>
+                {{/each}}
+                <p>{{spot.address}}</p>
+                <p>{{spot.email}}</p>
+              </span>
+            </div>
           </div>
-          <div class="col-12 col-sm-5 d-flex justify-content-end">
+          <div class="col-12 col-sm-2 d-flex justify-content-end edit-spot-btns">
             <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="btn-edit">
               <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="edit" role="img"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -110,18 +112,18 @@
 
           info.setAttribute('class', 'info')
           info.innerHTML = `
-              <div class="avatar" style="background: url(${spot.pictures[0]}) no-repeat center center / cover;">
-        </div>
         <div class="row">
           <div class="col-12 col-sm-7 d-flex justify-content-start">
             <span class="col user roles">
               <span>
+              <div class="avatar" style="background: url(${spot.pictures[0]}) no-repeat center center / cover;">
+        </div>
                 <h2>${spot.name}</h2>
                 <strong>posted by</strong> <a href="/user/${spot.creatorId._id}"> ${spot.creatorId.username}</a>
               </span>
             </span>
             <span class="col align-self-center">
-              <span class="label">${spot.category}</span>
+              <span class="label-pill">${spot.category}</span>
               <p>${spot.address}</p>
               <p>${spot.email}</p>
             </span>

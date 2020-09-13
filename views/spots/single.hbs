@@ -311,12 +311,14 @@
           </span>
         </div>
         <div class="col-12">
-          <hr>
+          
           {{#if owner}}
+          <hr>
           <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
-          <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot">delete spot</a>
+          <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot mb-5">delete spot</a>
           {{/if}}
           {{#ifvalue spot.category equals = "Ong"}}
+          <hr>
           <p class="donate-txt col-11">If you <strong>want to contribute</strong> to {{spot.name}}' cause, we invite you
             to
             <strong>make a donation</strong>. Please, enter the amount and then click on the donate button: </p>

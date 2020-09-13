@@ -2806,7 +2806,6 @@ footer .copy {
   border: solid 0.3rem #ea7676;
   display: block;
   margin-right: 3rem;
-  position: absolute;
 }
 
 [class*='-pages'] .user {
@@ -2822,7 +2821,6 @@ footer .copy {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-left: 6rem;
 }
 
 [class*='-pages'] .user.roles .label {
@@ -2919,6 +2917,10 @@ footer .copy {
     font-size: 3rem;
     margin-top: 5rem;
   }
+  h1.title.admin-title {
+    text-align: center;
+    margin-top: 8rem;
+  }
   .banner .redes {
     display: none;
   }
@@ -2945,6 +2947,9 @@ footer .copy {
   .navbar .navbar-brand .res-logo {
     display: block;
     width: 10rem;
+  }
+  .navbar .nav-item.welcome-txt {
+    padding-left: 1.6rem;
   }
   .navbar .navbar-collapse {
     background: #35396e;
@@ -2986,6 +2991,18 @@ footer .copy {
   }
   .navbar .navbar-collapse .navbar-nav .login ul .user-login a {
     background: none;
+  }
+  .navbar .navbar-collapse .navbar-nav .login.admin-links {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .navbar .navbar-collapse .navbar-nav .login.admin-links a {
+    margin-left: 0;
   }
   .navbar .navbar-collapse .navbar-nav .nav-link {
     padding-left: 1.5rem;
@@ -3181,6 +3198,46 @@ footer .copy {
   }
   .single-results .spot-info .ranger .make-comment .range-slider__value {
     right: 1.5rem;
+  }
+  .admin-pages .search-input {
+    margin-top: 10rem !important;
+  }
+  .admin-home-bg {
+    height: 16rem;
+  }
+  .admin-btns {
+    padding: 0 1.6rem;
+  }
+  .admin-card {
+    margin: 1rem 0;
+  }
+  .admin-card .admin-tab {
+    height: 7rem;
+    min-height: unset;
+    padding: 1rem 2rem;
+  }
+  .admin-card .go-single {
+    right: 0.5rem;
+    top: 1.8rem;
+  }
+  [class*='-pages'] .avatar {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  [class*='-pages'] .user.roles {
+    margin-left: 0;
+  }
+  [class*='-pages'] .label-pill {
+    margin: 1rem 0;
+    display: inline-block;
+  }
+  [class*='-pages'] .edit-spot-btns {
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+  }
+  .statistics h1.first-title {
+    margin-top: 10rem;
   }
   aside h1.title {
     margin-top: 1rem;

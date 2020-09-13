@@ -2444,7 +2444,6 @@ footer {
     border: solid 0.3rem $pink;
     display: block;
     margin-right: 3rem;
-    position: absolute;
   }
 
   .user {
@@ -2453,7 +2452,6 @@ footer {
 
     &.roles {
       justify-content: flex-start;
-      margin-left: 6rem;
 
       .label {
         text-transform: lowercase;
@@ -2554,6 +2552,11 @@ footer {
     &.title {
       font-size: 3rem;
       margin-top: 5rem;
+
+      &.admin-title {
+        text-align: center;
+        margin-top: 8rem;
+      }
     }
   }
   .banner {
@@ -2606,6 +2609,12 @@ footer {
       }
     }
 
+    .nav-item {
+      &.welcome-txt {
+        padding-left: 1.6rem;
+      }
+    }
+
     .navbar-collapse {
       background: $dark-purple;
 
@@ -2648,6 +2657,14 @@ footer {
               a {
                 background: none;
               }
+            }
+          }
+
+          &.admin-links {
+            flex-direction: column;
+            align-items: flex-start;
+            a {
+              margin-left: 0;
             }
           }
         }
@@ -2887,6 +2904,65 @@ footer {
             right: 1.5rem;
           }
         }
+      }
+    }
+  }
+
+  .admin-pages {
+    .search-input {
+      margin-top: 10rem !important;
+    }
+  }
+
+  .admin-home-bg {
+    height: 16rem;
+  }
+
+  .admin-btns {
+    padding: 0 1.6rem;
+  }
+
+  .admin-card {
+    margin: 1rem 0;
+
+    .admin-tab {
+      height: 7rem;
+      min-height: unset;
+      padding: 1rem 2rem;
+    }
+
+    .go-single {
+      right: 0.5rem;
+      top: 1.8rem;
+    }
+  }
+
+  [class*='-pages'] {
+    .avatar {
+      position: static;
+      margin-bottom: 1rem;
+    }
+
+    .user {
+      &.roles {
+        margin-left: 0;
+      }
+    }
+
+    .label-pill {
+      margin: 1rem 0;
+      display: inline-block;
+    }
+
+    .edit-spot-btns {
+      justify-content: flex-start !important;
+    }
+  }
+
+  .statistics {
+    h1 {
+      &.first-title {
+        margin-top: 10rem;
       }
     }
   }
