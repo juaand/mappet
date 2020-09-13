@@ -2615,7 +2615,6 @@ footer {
           border: 0;
           height: auto;
           justify-content: flex-start;
-          background: none;
 
           ul {
             width: 100%;
@@ -2645,6 +2644,10 @@ footer {
             .user-login {
               width: 100%;
               padding: 0;
+
+              a {
+                background: none;
+              }
             }
           }
         }

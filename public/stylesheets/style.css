@@ -2956,7 +2956,6 @@ footer .copy {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    background: none;
   }
   .navbar .navbar-collapse .navbar-nav .login ul {
     width: 100%;
@@ -2984,6 +2983,9 @@ footer .copy {
   .navbar .navbar-collapse .navbar-nav .login ul .user-login {
     width: 100%;
     padding: 0;
+  }
+  .navbar .navbar-collapse .navbar-nav .login ul .user-login a {
+    background: none;
   }
   .navbar .navbar-collapse .navbar-nav .nav-link {
     padding-left: 1.5rem;
