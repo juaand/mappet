@@ -19,12 +19,13 @@
 
 <script>
   const spots = {{{spots}}}
+
   function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 12,
       center: {lat: 40.416906, lng: -3.7056721}
     });
-    setMarkers(map);
+    setMarkers(map)
   }
 
   const {{{cat}}} =[]
@@ -42,6 +43,8 @@
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 32)
     };
+    
+    console.log({{{cat}}})
 
     for (let i = 0; i < {{{cat}}}.length; i++) {
     const restaurant = {{{cat}}}[i];

@@ -307,26 +307,39 @@
               {{#each spot.creatorId.pets as |pet|}}
               <span class="avatar pet" style="background: url({{pet.avatar}}) no-repeat center center /cover;"></span>
               {{/each}}
-              {{#ifvalue spot.category equals = "ONG"}}
-              <form id="stripe-form" action="/ong/{{spot._id}}/charge" method="POST">
-                {{!-- <button id="checkout-button" data-target="#donateModal">Donate</button> --}}
-                <div id="paybtn">
-                  <input id="amount" type="number" placeholder="50,00">
-                  <button id="donate-button" type="submit">No seas rata
-                    <script src="https://checkout.stripe.com/checkout.js"></script>
-                  </button>
-                </div>
-              </form>
-              {{/ifvalue}}
             </span>
           </span>
         </div>
-
-        {{#if owner}}
-        <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
-        <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot">delete spot</a>
-        {{/if}}
-
+        <div class="col-12">
+          <hr>
+          {{#if owner}}
+          <a href="/{{spot.category.[0]}}/{{spot._id}}/update" class="edit-spot">Edit spot</a>
+          <a href="/{{spot.category.[0]}}/{{spot._id}}/delete" class="delete-spot">delete spot</a>
+          {{/if}}
+          {{#ifvalue spot.category equals = "Ong"}}
+          <p class="donate-txt col-11">If you <strong>want to contribute</strong> to {{spot.name}}' cause, we invite you
+            to
+            <strong>make a donation</strong>. Please, enter the amount and then click on the donate button: </p>
+          <form id="stripe-form" action="/ong/{{spot._id}}/charge" method="POST">
+            {{!-- <button id="checkout-button" data-target="#donateModal">Donate</button> --}}
+            <div id="paybtn">
+              <div class="form-group col-11 m-auto">
+                <label for="amount">Enter an amount</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                  </div>
+                  <input type="number" class="form-control" id="amount" placeholder="50,00" name="amount">
+                </div>
+              </div>
+              <button id="donate-button" type="submit" class="donate-spot" title="make a donation">Make a donation
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+              </button>
+            </div>
+          </form>
+          <div class="charge-message col-11 text-center"></div>
+          {{/ifvalue}}
+        </div>
         <div class="col-12 aside-iframe">
           <hr>
           {{#if spot.address}}
@@ -377,6 +390,7 @@
   </div>
 </div>
 
+<script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
   document.querySelector('.stripe-button-el').addEventListener('click', () => {
@@ -384,12 +398,9 @@
   })
 
   document.querySelector('.carousel-item').classList.add('active')
-
 </script>
 
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-<button id="customButton">Purchase</button>
 <script>
   const handler = StripeCheckout.configure({
     key: 'pk_test_51HQGSzAht42ulJLICiMtO9fDINNmtf44YOqX7XKBoh7JStN8sNnYuIFAZHfMsYnux5ms4F02OJ2qomTIOnrkOob700aMj5mGjw',
@@ -404,7 +415,7 @@
       })
         .then(r => {
           console.log(r)
-          window.location = "/"
+          window.location = "/thankyou"
         })
         .catch(error => error)
 
@@ -416,14 +427,20 @@
 
   document.getElementById('donate-button').addEventListener('click', function (e) {
     // This line is the only real modification...
-    var amount = document.querySelector('#amount').value * 100;
-    handler.open({
-      name: 'Donations',
-      description: 'Some donation',
-      // ... aside from this line where we use the value.
-      amount: amount
-    });
-    e.preventDefault();
-  });
+    var amount = document.querySelector('#amount').value
+    var name = document.querySelector('h1.title').innerText
 
+    if (!amount) {
+      document.querySelector('.charge-message').innerText = 'Please enter an amount'
+    } else {
+      handler.open({
+        name: name,
+        description: 'donation',
+        // ... aside from this line where we use the value.
+        amount: amount * 100
+      })
+    }
+
+    e.preventDefault()
+  })
 </script>

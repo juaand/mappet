@@ -53,7 +53,7 @@ Promise.all([
       name: 'mappet admin',
       username: 'admin',
       avatar: process.env.ADMINAVATAR,
-      email: process.env.NM_USER,
+      email: process.env.NM_ADMIN,
       password: process.env.NM_PASS,
       bio: 'This is an admin profile',
       role: 'ADMIN',

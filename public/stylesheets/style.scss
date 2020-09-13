@@ -732,7 +732,8 @@ form {
   &.admin-users,
   &.admin-pets,
   &.admin-comments,
-  &.admin-statistics {
+  &.admin-statistics,
+  &.thankyou {
     height: 66rem;
   }
 
@@ -836,6 +837,11 @@ form {
     background: url(../images/admin-statistics-bg.jpg) no-repeat center -30rem /
       cover;
     background-attachment: fixed;
+  }
+
+  &.thankyou {
+    background: url(../images/thankyou-bg.jpg) no-repeat center center /
+      cover;
   }
 }
 
@@ -1405,14 +1411,13 @@ form {
       }
     }
 
-    .edit-spot {
+    .edit-spot,
+    .delete-spot,
+    .donate-spot {
       width: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: $pink;
-      color: $white;
-      margin: 6rem auto auto auto;
       padding: 1rem;
       border-radius: 4rem;
       transition: all 200ms ease;
@@ -1421,6 +1426,52 @@ form {
         background: $dark-purple;
         text-decoration: none;
       }
+    }
+
+    .edit-spot {
+      background: $pink;
+      color: $white;
+      margin: 3rem auto auto auto;
+    }
+
+    .delete-spot {
+      background: $white;
+      color: $pink;
+      margin: 2rem auto auto auto;
+      border: solid 0.1rem $pink;
+      font-weight: 400;
+
+      &:hover {
+        color: $white;
+        border-color: $dark-purple;
+      }
+    }
+
+    #paybtn {
+      margin-top: 2rem;
+    }
+
+    .charge-message {
+      margin: 2rem auto 0 auto;
+      color: $pink;
+      font-weight: 600;
+    }
+
+    .donate-spot {
+      background: $dark-purple;
+      color: $white;
+      border: 0;
+      margin: auto;
+      margin-top: 3rem;
+
+      &:hover {
+        background: $pink;
+      }
+    }
+
+    .donate-txt {
+      margin: 4rem auto 2rem auto;
+      display: block;
     }
 
     .pet-avatar {
@@ -1440,6 +1491,10 @@ form {
       }
     }
   }
+}
+
+.stripe_checkout_app {
+  background: rgba($dark-purple, 0.9) !important;
 }
 
 .no-spots {
@@ -1526,27 +1581,6 @@ form {
         border: 0;
       }
     }
-  }
-}
-
-.delete-spot {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: $white;
-  color: $pink;
-  margin: 2rem auto auto auto;
-  padding: 1rem;
-  border-radius: 4rem;
-  border: solid 0.1rem $pink;
-  transition: all 200ms ease;
-
-  &:hover {
-    background: $dark-purple;
-    text-decoration: none;
-    color: $white;
-    border-color: $dark-purple;
   }
 }
 
@@ -2543,7 +2577,8 @@ footer {
     &.admin-users,
     &.admin-pets,
     &.admin-comments,
-    &.admin-statistics {
+    &.admin-statistics,
+    &.thankyou {
       height: 40rem;
     }
   }

@@ -26,8 +26,7 @@ module.exports.getBlog = (req, res, next) => {
 
 module.exports.postBlog = (req, res, next) => {
   const id = req.params.id
-  req.body.picPath = req.file
-    ? req.file.filename
+  req.body.picPath = req.file ? req.file.filename
     : 'image/upload/v1599250707/mappet/nofile_eabd8z.jpg'
 
   Blog.create({
