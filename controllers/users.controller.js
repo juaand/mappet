@@ -16,6 +16,7 @@ module.exports.getHome = (req, res, next) => {
 
   Promise.all([spots, posts])
     .then((results) => {
+      const cookies = 'true'
       // res.json(results)
       if (req.session.currentUser && req.session.currentUser.role === 'ADMIN') {
         res.render('index', {
@@ -34,6 +35,7 @@ module.exports.getHome = (req, res, next) => {
         })
       } else {
         res.render('index', {
+          cookies,
           values: results[0],
           posts: results[1],
           title: 'Welcome to mappet'

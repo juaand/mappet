@@ -1,14 +1,13 @@
+console.log(sessionStorage.length)
 function checkCookies() {
-  if (localStorage.cookies == 'true') {
+  if (sessionStorage.cookies === 'accepted') {
     document.querySelector('.cookies').style.display = 'none'
   }
 }
 
 function acceptCookies() {
-  localStorage.cookies = 'true'
+  sessionStorage.setItem('cookies', 'accepted')
   document.querySelector('.cookies').style.display = 'none'
 }
 
-$(document).ready(function () {
-  checkCookies()
-})
+document.cookie 
