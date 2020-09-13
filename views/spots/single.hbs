@@ -83,7 +83,7 @@
           </span>
         </div>
         <div class="row">
-          <div class="col-3 rating">
+          <div class="col-12 col-sm-3 rating">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.15 55.1" fill="#ea7676">
                 <path
@@ -97,7 +97,7 @@
               <span class="value-rate">{{average spot.rate}}</span> / 5
             </span>
           </div>
-          <div class="col-9 description {{#unless spot.content}}justify-content-start{{/unless}}">
+          <div class="col-12 col-sm-9 description {{#unless spot.content}}justify-content-start{{/unless}}">
             {{#if spot.content}}
             <p>{{spot.content}}</p>
             {{else}}
@@ -110,7 +110,7 @@
         <div class="col-12 alt-info">
           <hr>
           <div class="row justify-content-center">
-            <div class="col-6 col-sm-2 share">
+            <div class="col-4 col-sm-2 share">
               <p class="d-block">share</p>
               <div class="dropdown">
                 <button class="share-btn" type="button" id="shareSpot" data-toggle="dropdown" aria-haspopup="true"
@@ -149,7 +149,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-2 website">
+            <div class="col-4 col-sm-2 website">
               <p>website</p>
               <a href="{{spot.url}}" target="_new">
                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="browser" role="img"
@@ -161,7 +161,7 @@
               </a>
             </div>
             {{#if spot.address}}
-            <div class="col-6 col-sm-2 website">
+            <div class="col-4 col-sm-2 website">
               <p>directions</p>
               <a href="https://www.google.com/maps/search/{{spot.address}},+{{spot.zipCode}}+{{spot.city}}/"
                 target="_new">
@@ -174,7 +174,7 @@
               </a>
             </div>
             {{/if}}
-            <div class="col-6 col-sm-2 website">
+            <div class="col-4 col-sm-2 website">
               <p>call us</p>
               <a href="tel:{{spot.phone}}">
                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="mobile" role="img"
@@ -186,7 +186,7 @@
               </a>
             </div>
 
-            <div class="col-6 col-sm-2 website">
+            <div class="col-4 col-sm-2 website">
               <p>email us</p>
               <!-- Trigger -->
               <button class="copy-clipboard" onclick="copyToClipboard()" data-clipboard-text="{{spot.email}}">
@@ -235,12 +235,12 @@
         {{#each spot.comments as |comment|}}
         <div class="col-12 comments">
           <div class="row">
-            <div class="col-2">
+            <div class="col-12 col-sm-2">
               <span class="avatar" style="background: #35396e url({{authorId.avatar}}) center center / cover"></span>
               <small>member since</small>
               <span class="date">{{date authorId.createdAt}}</span>
             </div>
-            <div class="col-10">
+            <div class="col-12 col-sm-10">
               <p class="content"><a href="/user/{{authorId._id}}">@{{authorId.username}}</a> wrote:</p>
               <p>{{comment.content}}</p>
             </div>
@@ -254,13 +254,13 @@
         <div class="col-12 comments">
           <div class="row">
             {{#if user}}
-            <div class="col-2">
+            <div class="col-sm-2 col-12">
               <span class="avatar" style="background: #35396e url({{user.avatar}}) center center / cover"></span>
               <small>member since</small>
               <span class="date">{{date user.createdAt}}</span>
             </div>
             {{/if}}
-            <div class="col-10">
+            <div class="col-sm-10 col-12">
               <form action="/{{spot.category}}/{{spot._id}}/comment" class="make-comment" method="POST">
                 <div class="form-group">
                   <span class="textarea">
@@ -276,7 +276,7 @@
                       <span class="range-slider__value">5</span>
                     </div>
                   </div>
-                  <div class="col-6 d-flex justify-content-center align-items-center">
+                  <div class="col-sm-6 col-12 d-flex justify-content-center align-items-center">
                     <button type="submit" class="btn">
                       <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="arrow-from-bottom"
                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

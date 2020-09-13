@@ -3122,6 +3122,69 @@ footer .copy {
   .register-pets {
     display: none;
   }
+  .map-container .title {
+    font-size: 2.4rem;
+    margin-top: 10rem;
+  }
+  .map-container .map button {
+    right: 3rem;
+    top: 13rem;
+  }
+  .single-results .spot-info {
+    margin-top: 3rem;
+  }
+  .single-results .spot-info .title {
+    padding: 1rem 0 0 0;
+  }
+  .single-results .spot-info .map-social {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .single-results .spot-info .map-social .map-link {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+  .single-results .spot-info .map-social .follow-us {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    border-left: 0;
+    border-top: solid 0.1rem rgba(51, 51, 51, 0.5);
+    margin-left: 1rem;
+    padding: 0;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+  }
+  .single-results .spot-info .rating {
+    border-right: 0;
+    border-bottom: solid 0.1rem #ea7676;
+    border-top: solid 0.1rem #ea7676;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+  }
+  .single-results .spot-info .share,
+  .single-results .spot-info .website {
+    margin-bottom: 2rem;
+  }
+  .single-results .spot-info .comments {
+    padding: 1rem 0;
+  }
+  .single-results .spot-info .ranger .make-comment .range-slider__value {
+    right: 1.5rem;
+  }
+  aside h1.title {
+    margin-top: 1rem;
+  }
   footer .logo {
     -webkit-box-pack: start;
         -ms-flex-pack: start;

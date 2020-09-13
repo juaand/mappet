@@ -27,7 +27,8 @@
     <div class="row">
       <div class="col-12 col-sm-8">
         <h1 class="title">
-          <span class="mappet-{{#ifvalue category equals = "ong"}}bone{{else}}{{category}}{{/ifvalue}}"></span> pet friendly {{category}}
+          <span class="mappet-{{#ifvalue category equals = "ong"}}bone{{else}}{{category}}{{/ifvalue}}"></span> pet
+          friendly {{category}}
           {{#if values}}
           <span class="small"><strong>total</strong> {{values.length}} spots</span>
           {{/if}}
@@ -68,7 +69,8 @@
                     <circle cx="18.64" cy="4.75" r="4.75" />
                     <circle cx="39.46" cy="4.75" r="4.75" />
                   </svg>
-                  <span class="value-rate">{{average value.rate}}</span> / 5</div>
+                  <span class="value-rate">{{average value.rate}}</span> / 5
+                </div>
                 <div class="city col-7 text-right">{{value.city}}
                   <span class="added"><strong>added</strong> {{date value.createdAt}}</span>
                 </div>
@@ -97,7 +99,8 @@
             {{#each allCategories as |cat|}}
             <li>
               <a href="/{{cat.id}}" class="aside-links {{#ifvalue ../category equals = cat.id}}active{{/ifvalue}}">
-                <span class="mappet-{{#ifvalue cat.id equals = "ong"}}bone{{else}}{{cat.id}}{{/ifvalue}}"></span> {{cat.name}}
+                <span class="mappet-{{#ifvalue cat.id equals = "ong"}}bone{{else}}{{cat.id}}{{/ifvalue}}"></span>
+                {{cat.name}}
               </a>
             </li>
             <hr class="m-0">
