@@ -146,7 +146,8 @@ module.exports.saveSpot = (req, res, next) => {
         name: req.body.name,
         content: req.body.content,
         creatorId: id,
-        pictures: req.files ? req.files.map(
+        pictures: req.files
+          ? req.files.map(
               (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
             )
           : '',
@@ -178,15 +179,27 @@ module.exports.saveSpot = (req, res, next) => {
 
 module.exports.editSpot = (req, res, next) => {
   const id = req.params.id
+
   Spot.findById(id)
+    .populate('creatorId')
     .then((spot) => {
       const userId = req.session.currentUser._id
-      if (userId === id || req.session.currentUser.role === 'ADMIN') {
-        res.render('spots/edit', {
-          spot,
-          title: `Edit ${spot.name}`,
-          admin: true
-        })
+      const spotOwnerId = spot.creatorId._id
+      const user = req.session.currentUser
+
+      if (user) {
+        if (req.session.currentUser.role === 'ADMIN') {
+          res.render('spots/edit', {
+            spot,
+            title: `Edit ${spot.name}`,
+            admin: true
+          })
+        } else {
+          res.render('spots/edit', {
+            spot,
+            title: `Edit ${spot.name}`
+          })
+        }
       } else {
         req.session.destroy()
         res.render('auth/login', {
@@ -205,7 +218,8 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files ? req.files.map(
+      pictures: req.files
+        ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : '',
