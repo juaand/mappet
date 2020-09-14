@@ -222,10 +222,7 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files ? req.files.map(
-            (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
-          )
-        : '',
+      pictures: req.files ? req.files.map((file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`) : '',
       url: req.body.url,
       category: req.body.categories,
       address: req.body.address,
