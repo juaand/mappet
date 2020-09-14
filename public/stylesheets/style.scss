@@ -1074,6 +1074,12 @@ form {
     font-weight: 400;
     padding: 0rem 1.6rem;
   }
+
+  @for $i from 4 through 20 {
+    &:nth-child(#{$i}) {
+      display: none;
+    }
+  }
 }
 
 .rating {
@@ -1196,6 +1202,11 @@ form {
           right: 0.5rem;
         }
       }
+    }
+
+    .cat-label {
+      display: inline-block;
+      margin-bottom: 0.8rem;
     }
   }
 
