@@ -1,11 +1,12 @@
-console.log(sessionStorage.length)
 function checkCookies() {
-  if (sessionStorage.cookies === 'accepted') {
+  if (localStorage.cookies === 'accepted') {
     document.querySelector('.cookies').style.display = 'none'
-  }
+  } else {
+    document.querySelector('.cookies').style.display = 'block'
+  } 
 }
 
 function acceptCookies() {
-  sessionStorage.setItem('cookies', 'accepted')
+  localStorage.setItem('cookies', 'accepted')
   document.querySelector('.cookies').style.display = 'none'
 }

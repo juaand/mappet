@@ -31,10 +31,11 @@
 
   <!-- COOKIES POLICY -->
   <script type="text/javascript" src="/javascripts/cookies.js"></script>
-
 </head>
 
 <body>
+  {{!-- {{>cookies}} --}}
+
   {{#if admin}}
   {{>adminnav}}
   {{else}}
@@ -43,13 +44,6 @@
 
   {{{body}}}
   {{>footer}}
-
-
-
-  {{>cookies}}
-
-
-
 
   <!-- JS, Popper.js, and jQuery, BS4 -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
