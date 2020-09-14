@@ -2675,6 +2675,14 @@ footer {
       &.welcome-txt {
         padding-left: 1.6rem;
       }
+
+      &.login {
+        ul {
+          .user-info {
+            padding: 1rem;
+          }
+        }
+      }
     }
 
     .navbar-collapse {
@@ -2738,6 +2746,13 @@ footer {
 
         .nav-link {
           padding-left: 1.5rem;
+
+          &.active {
+            color: $pink;
+            &:before {
+              content: none;
+            }
+          }
         }
 
         .more {
@@ -2837,8 +2852,7 @@ footer {
     }
   }
 
-  .results,
-  .slider {
+  .results {
     .card {
       border-bottom: solid 0.1rem rgba($dark-purple, 0.1);
       padding-bottom: 1rem;
@@ -2917,6 +2931,10 @@ footer {
         top: 13rem;
       }
     }
+  }
+
+  .rating {
+    justify-content: flex-start;
   }
 
   .single-results {
