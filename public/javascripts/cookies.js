@@ -9,5 +9,3 @@ function acceptCookies() {
   sessionStorage.setItem('cookies', 'accepted')
   document.querySelector('.cookies').style.display = 'none'
 }
-
-document.cookie 

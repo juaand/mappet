@@ -395,11 +395,13 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
+  document.querySelector('.carousel-item').classList.add('active')
+</script>
+
+<script>
   document.querySelector('.stripe-button-el').addEventListener('click', () => {
     document.querySelector('.stripe-button').setAttribute('data-amount', document.querySelector('#amount').value)
   })
-
-  document.querySelector('.carousel-item').classList.add('active')
 </script>
 
 
