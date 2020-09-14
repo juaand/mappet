@@ -50,7 +50,7 @@ module.exports.saveEditedUser = (req, res, next) => {
   if (req.body.avatar) {
     User.findByIdAndUpdate(id, {
       name: name,
-      avatar: `${process.env.CLOUDINARY_SECURE}/${avatar}`,
+      avatar: `${process.env.CLOUDINARY_SECURE}/${req.body.avatar}`,
       bio: bio,
       role: role
     })
@@ -146,7 +146,8 @@ module.exports.saveSpot = (req, res, next) => {
         name: req.body.name,
         content: req.body.content,
         creatorId: id,
-        pictures: req.files ? req.files.map(
+        pictures: req.files
+          ? req.files.map(
               (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
             )
           : '',
@@ -222,7 +223,8 @@ module.exports.updateSpot = (req, res, next) => {
       name: req.body.name,
       content: req.body.content,
       creatorId: req.session.currentUser._id,
-      pictures: req.files ? req.files.map(
+      pictures: req.files
+        ? req.files.map(
             (file) => `${process.env.CLOUDINARY_SECURE}/${file.filename}`
           )
         : '',
