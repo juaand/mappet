@@ -352,7 +352,7 @@
         </div>
 
         <div class="col-12 aside-cats">
-          <h1 class="title">lastest {{spot.category}} added</h1>
+          <h1 class="title">lastest {{spot.category.[0]}} added</h1>
           {{#if lastest}}
           <ul>
             {{#each lastest as |last|}}
