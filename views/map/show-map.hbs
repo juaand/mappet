@@ -49,10 +49,13 @@
     for (let i = 0; i < {{{cat}}}.length; i++) {
     const restaurant = {{{cat}}}[i];
 
+    const noImage = 'https://res.cloudinary.com/dutvbml2i/image/upload/v1598899480/mappet/xp157h8wzhv1k2vmdzgu.jpg'
+
+
   const contentString =
     `<div class="container-fluid google-map"> 
       <div class="row">
-        <div class="col-12 col-sm-6 siteNotice" style="background: url(${restaurant[5]}) no-repeat center center / cover">
+        <div class="col-12 col-sm-6 siteNotice" style="background: url(${restaurant[5]}) no-repeat center center / cover, url(${noImage}) no-repeat center center / cover">
         </div>
         <div class="col-12 col-sm-6 siteNotice">
           <h1 class="title">${restaurant[0]}</h1> 
@@ -63,6 +66,7 @@
         </div>
       </div>
     </div>`;
+
 
   const infowindow = new google.maps.InfoWindow({
     content: contentString

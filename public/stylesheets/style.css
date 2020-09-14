@@ -1977,6 +1977,10 @@ form .range-slider__value {
   border-radius: 2.4rem;
 }
 
+.google-map .siteNotice .bodyContent {
+  width: 22rem;
+}
+
 .google-map a {
   color: #ea7676;
   font-weight: 600;
