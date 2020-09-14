@@ -1460,16 +1460,6 @@ form {
       }
     }
 
-    #paybtn {
-      margin-top: 2rem;
-    }
-
-    .charge-message {
-      margin: 2rem auto 0 auto;
-      color: $pink;
-      font-weight: 600;
-    }
-
     .donate-spot {
       background: $dark-purple;
       color: $white;
@@ -1480,6 +1470,16 @@ form {
       &:hover {
         background: $pink;
       }
+    }
+
+    .charge-message {
+      margin: 2rem auto 0 auto;
+      color: $pink;
+      font-weight: 600;
+    }
+
+    #paybtn {
+      margin-top: 2rem;
     }
 
     .donate-txt {
@@ -1503,6 +1503,54 @@ form {
         }
       }
     }
+  }
+}
+
+.edit-spot,
+.delete-spot,
+.donate-spot {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 4rem;
+  transition: all 200ms ease;
+
+  &:hover {
+    background: $dark-purple;
+    text-decoration: none;
+  }
+}
+
+.edit-spot {
+  background: $pink;
+  color: $white;
+  margin: 3rem auto auto auto;
+}
+
+.delete-spot {
+  background: $white;
+  color: $pink;
+  margin: 2rem auto auto auto;
+  border: solid 0.1rem $pink;
+  font-weight: 400;
+
+  &:hover {
+    color: $white;
+    border-color: $dark-purple;
+  }
+}
+
+.donate-spot {
+  background: $dark-purple;
+  color: $white;
+  border: 0;
+  margin: auto;
+  margin-top: 3rem;
+
+  &:hover {
+    background: $pink;
   }
 }
 
