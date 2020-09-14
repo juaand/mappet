@@ -1672,7 +1672,7 @@ form .range-slider__value {
   display: block;
   width: 8rem;
   height: 8rem;
-  border: solid 0.3rem #ea7676;
+  border: solid 0.3rem #35396e;
 }
 
 .single-results .comments .content {
@@ -1762,7 +1762,7 @@ form .range-slider__value {
   width: 10rem;
   height: 10rem;
   display: block;
-  border: solid 0.4rem #ea7676;
+  border: solid 0.4rem #35396e;
   border-radius: 5rem;
 }
 
@@ -2940,7 +2940,7 @@ footer .copy {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  border: solid 0.3rem #ea7676;
+  border: solid 0.3rem #35396e;
   display: block;
   margin-right: 3rem;
 }

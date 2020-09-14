@@ -105,6 +105,7 @@ module.exports.postRegister = (req, res, next) => {
     .then(() => {
       const userParams = req.body
       userParams.avatar = req.file ? req.file.filename : 'image/upload/v1599776492/mappet/mappet_kggshx.png'
+      image/upload/v1600092506/mappet/mapet_tcnej3.png
       return User.create({
         name: userParams.name,
         username,
