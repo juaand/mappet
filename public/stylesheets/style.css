@@ -3084,6 +3084,9 @@ footer .copy {
   .navbar .nav-item.welcome-txt {
     padding-left: 1.6rem;
   }
+  .navbar .nav-item.login ul .user-info {
+    padding: 1rem;
+  }
   .navbar .navbar-collapse {
     background: #35396e;
   }
@@ -3143,6 +3146,12 @@ footer .copy {
   }
   .navbar .navbar-collapse .navbar-nav .nav-link {
     padding-left: 1.5rem;
+  }
+  .navbar .navbar-collapse .navbar-nav .nav-link.active {
+    color: #ea7676;
+  }
+  .navbar .navbar-collapse .navbar-nav .nav-link.active:before {
+    content: none;
   }
   .navbar .navbar-collapse .navbar-nav .more {
     background: none;
@@ -3221,35 +3230,28 @@ footer .copy {
   .attributtes .spot-card .details {
     margin-top: 0rem;
   }
-  .results .card,
-  .slider .card {
+  .results .card {
     border-bottom: solid 0.1rem rgba(53, 57, 110, 0.1);
     padding-bottom: 1rem;
     margin-bottom: 1rem;
   }
-  .results .card picture,
-  .slider .card picture {
+  .results .card picture {
     height: 6rem;
   }
-  .results .card picture h3,
-  .slider .card picture h3 {
+  .results .card picture h3 {
     font-size: 1.2rem;
     padding: 1rem;
   }
-  .results .card picture .cat-label,
-  .slider .card picture .cat-label {
+  .results .card picture .cat-label {
     display: none;
   }
-  .results .card .info,
-  .slider .card .info {
+  .results .card .info {
     display: none;
   }
-  .results .card .card-body,
-  .slider .card .card-body {
+  .results .card .card-body {
     padding: 0 1.25rem;
   }
-  .results .card .card-body .go-single,
-  .slider .card .card-body .go-single {
+  .results .card .card-body .go-single {
     top: -5rem;
     right: -1rem;
   }
@@ -3283,6 +3285,11 @@ footer .copy {
   .map-container .map button {
     right: 3rem;
     top: 13rem;
+  }
+  .rating {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
   .single-results .spot-info {
     margin-top: 3rem;
